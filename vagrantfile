@@ -1,0 +1,69 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.network "private_network", ip: "192.168.33.157"
+  config.vm.hostname = "berichtverwaltung"
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+  end
+
+
+  config.vm.synced_folder "./berichteverwaltung", "/www/website"
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo add-apt-repository -y ppa:ondrej/php
+	  sudo apt update
+    sudo apt upgrade
+    sudo apt install -y php apache2 apache2-utils libapache2-mod-php7.3  php-mysql php-xdebug php7.3-mbstring php7.3-gettext
+    sudo apt install -y zip htop
+    sudo timedatectl set-timezone Europe/Amsterdam
+    #sudo ln -s /vagrant/vhosts/* /etc/apache2/conf-available
+    #sudo a2enconf pentest
+    # Install and Configure DB
+    DBHOST=localhost
+    DBNAME=Berichte
+    DBUSER=berichte
+    DBPASSWD=secret
+    echo -e "\n--- Install MySQL specific packages and settings ---\n"
+    debconf-set-selections <<< "mysql-server mysql-server/root_password password $DBPASSWD"
+    debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DBPASSWD"
+    debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
+    debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $DBPASSWD"
+    debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $DBPASSWD"
+    debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $DBPASSWD"
+    debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none"
+    mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME"
+    mysql -uroot -p$DBPASSWD -e "grant all privileges on $DBNAME.* to '$DBUSER'@'localhost' identified by '$DBPASSWD'"
+    sudo apt install -y mariadb-server phpmyadmin
+    echo "[mysqld]" | sudo tee -a /etc/mysql/my.cnf
+    echo "skip-grant-tables" | sudo tee -a /etc/mysql/my.cnf
+    sudo service mysql restart
+    cd /etc/apache2/sites-available
+    VHOST=$(cat << EOF
+    <VirtualHost *:80>
+      DocumentRoot "/www/website/public"
+      ServerName berichteverwaltung.loc
+      ServerAlias www.berichteverwaltung.loc
+      <Directory "/www/website/public">
+        AllowOverride All
+        Require all granted
+      </Directory>
+    </VirtualHost>
+EOF
+    )
+    sudo echo "${VHOST}" > /etc/apache2/sites-available/berichteverwaltung.conf
+	sudo ln -s /vagrant/server/config/apache/sites-available/* /etc/apache2/sites-available
+    sudo a2ensite *
+    #sudo ln -s /vagrant/server/config/php/victim-php.ini /etc/php/7.3/apache2/conf.d/victim-php.ini
+    sudo sed -i "s/APACHE_RUN_USER=www-data/APACHE_RUN_USER=ubuntu/" /etc/apache2/envvars
+    chown -R ubuntu:www-data /var/lock/apache2
+	sudo a2enmod rewrite && sudo service apache2 restart
+    echo "Vagrant provision done"
+  SHELL
+
+  config.trigger.after :up do
+    run_remote = {inline:"sudo service apache2 start"}
+   # run_remote = {inline:"bash /vagrant/server/database/reset-database.sh"}
+  end
+end
