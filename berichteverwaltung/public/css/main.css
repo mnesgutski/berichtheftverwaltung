@@ -1,5 +1,5 @@
 @font-face {        
-    font-family: roboto_light;
+    font-family: roboto-light;
     src: url(./fonts/Roboto-Light.ttf);
 }
 @font-face {        
@@ -7,20 +7,33 @@
     src: url(./fonts/Roboto-Regular.ttf);
 } 
 @font-face {        
-    font-family: roboto_thin;
+    font-family: roboto-thin;
     src: url(./fonts/Roboto-Thin.ttf);
 } 
 
 .blue{border: 1px solid blue}
+.red{border: 1px solid red}
 .green{border: 1px solid green}
 .greenX{border: 4px solid green}
 
 *{
     font-family: roboto;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
+
+h1{font-size: 50px}
+
+.lbl-light{font-family: roboto-light}
+.lbl-thin{font-family: roboto-thin}
 
 .full-size{
     position: absolute;
     width: 100%;
     height: 100%;
 }
+
+.d-flex{display: flex;}
+.jc-center{justify-content: center;}
+.ai-center{align-items: center;}
