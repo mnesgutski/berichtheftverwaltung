@@ -1,6 +1,23 @@
+@font-face {        
+    font-family: roboto_light;
+    src: url(./fonts/Roboto-Light.ttf);
+}
+@font-face {        
+    font-family: roboto;
+    src: url(./fonts/Roboto-Regular.ttf);
+} 
+@font-face {        
+    font-family: roboto_thin;
+    src: url(./fonts/Roboto-Thin.ttf);
+} 
+
 .blue{border: 1px solid blue}
 .green{border: 1px solid green}
 .greenX{border: 4px solid green}
+
+*{
+    font-family: roboto;
+}
 
 .full-size{
     position: absolute;
