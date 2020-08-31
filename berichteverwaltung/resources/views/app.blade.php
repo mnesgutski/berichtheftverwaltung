@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="app"></div>
+    <app></app>
 </body>
 <script src="js/app.js"></script>
 </html>
