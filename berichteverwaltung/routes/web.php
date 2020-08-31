@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','ViewController@index')->name('home');
+Route::get('/login','ViewController@index')->name('home');
 
 Route::get('/test','TestController@index');
