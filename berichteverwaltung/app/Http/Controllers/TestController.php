@@ -10,8 +10,12 @@ class TestController extends Controller
     //
 
     public function index(){
-    	$users = User::all();
-    
+    	$users = User::where('username','=','maik.nesgutski')->first();
+
     	return view('tests',['users' => $users]);
     }
+
+    public function loginTest(){
+  
+  	}
 }
