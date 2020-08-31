@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\HTTP\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +13,6 @@ use App\HTTP\Controllers\TestController;
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-});
+Route::get('/','ViewController@index')->name('home');
 
 Route::get('/test','TestController@index');
