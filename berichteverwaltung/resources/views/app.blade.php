@@ -7,8 +7,9 @@
     <title>Nice App</title>    
 </head>
 <body>
-    <div id="app"></div>
-    <app></app>
+    <div id="app">
+        <app></app>
+    </div>
 </body>
 <script src="js/app.js"></script>
 </html>
