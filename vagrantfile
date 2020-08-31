@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
     vb.memory = "1024"
   end
 
-
+	config.ssh.insert_key = false
   config.vm.synced_folder "./berichteverwaltung", "/www/website"
   config.vm.provision "shell", inline: <<-SHELL
     sudo add-apt-repository -y ppa:ondrej/php
