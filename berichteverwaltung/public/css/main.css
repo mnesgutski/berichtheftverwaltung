@@ -1,2 +1,9 @@
 .blue{border: 1px solid blue}
 .green{border: 1px solid green}
+.greenX{border: 4px solid green}
+
+.full-size{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
