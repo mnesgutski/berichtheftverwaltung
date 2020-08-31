@@ -10,8 +10,6 @@ class ViewController extends Controller
     //
 
     public function index(){
-    	$users = User::all();
-    
-    	return view('tests',['users' => $users]);
+    	return view('app');
     }
 }
