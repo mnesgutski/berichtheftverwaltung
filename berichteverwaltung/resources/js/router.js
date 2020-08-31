@@ -10,19 +10,12 @@ export default new Router({
 	routes:
 	[
 		{
-			path: '/',
-			name: 'home',
-			components: {default : App},
-			props: {},
-			children:[]
-		},
-		{
-				path: '/login',
+			path: '/login',
 			name: 'login',
 			components: {default: Login},
 			props: {},
 			children: [],
 		}
-	] 
+	],
 
-);
+});
