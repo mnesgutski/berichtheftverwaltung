@@ -8,7 +8,7 @@
     <title>Nice App</title>    
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="full-size greenX">
         <app></app>
     </div>
 </body>
