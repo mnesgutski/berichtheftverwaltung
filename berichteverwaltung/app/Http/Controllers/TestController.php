@@ -12,73 +12,78 @@ class TestController extends Controller
 {
     //
 
-    public function index(){
+    public function index()
+    {
 
-    	return view('tests.login');
+        return view('tests.login');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
-    	$credentials = ['username' => $request->username, 'password' => $request->password];
-    	$user = User::where('username','=',$request->username)->first();
-    	$responses = [
-    		'error' => true,
-    		'error_message' => '',
-    		'data' => [
-    			'login' => false,
-    			'pw' => false,
-    			'username' => '',
-    			'registered' => false,
-    		]
-    		];
-		if( $user !== null){
-			if(Auth::attempt($credentials)){
-				
-				$response['error'] = false;
-				$response['data']['login'] = true;
-				$response['data']['pw'] = true;
-				$response['data']['username'] = $user->username;
+        $credentials = ['username' => $request->username, 'password' => $request->password];
+        $user = User::where('username', '=', $request->username)->first();
+        $responses = [
+            'error' => true,
+            'error_message' => '',
+            'data' => [
+                'login' => false,
+                'pw' => false,
+                'username' => '',
+                'registered' => false,
+            ]
+        ];
+        if ($user !== null) {
+            if (Auth::attempt($credentials)) {
 
-				return redirect()->route('test.reportBooks');
-			}
-			$response['error'] = false;
-			return response()->json($response);
-		}  
-		
-		$user = User::create([
-			'username' => $request->username,
-			'password' => Hash::make($request->password),
-		]);
+                $response['error'] = false;
+                $response['data']['login'] = true;
+                $response['data']['pw'] = true;
+                $response['data']['username'] = $user->username;
 
-		$user->save();
-		Auth::attempt($credentials);
+                return redirect()->route('test.reportBooks');
+            }
+            $response['error'] = false;
+            return response()->json($response);
+        }
 
-		$response['error'] = false;
-		$response['data']['login'] = true;
-		$response['data']['pw'] = true;
-		$response['data']['username'] = $user->username;
-		$response['data']['registered'] = true;
+        $user = User::create([
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+        ]);
 
-		return redirect()->route('test.reportBooks');
-  	}
+        $user->save();
+        Auth::attempt($credentials);
 
-  	public function reportBooks(){
-  		return view('tests.reportBooks');
-  	}
+        $response['error'] = false;
+        $response['data']['login'] = true;
+        $response['data']['pw'] = true;
+        $response['data']['username'] = $user->username;
+        $response['data']['registered'] = true;
 
-  	public function createReportBook(){
-  		if(Auth::check()){
-  			$UserId = Auth::id();
-  			$book = report_books::create([
-  				'owner' => $UserId
-  			]);
-  			$book->save();
-  			return response()->json(['worked' =>true]);
-  		}
-  		return response()->json(['worked' =>false]);
-  	}
+        return redirect()->route('test.reportBooks');
+    }
 
-  	public function dumpStuff(){
-  		dd(User::where('id','=',1)->first()->reportBooks);
-  	}
+    public function reportBooks()
+    {
+        return view('tests.reportBooks');
+    }
+
+    public function createReportBook()
+    {
+        if (Auth::check()) {
+            $UserId = Auth::id();
+            $book = report_books::create([
+                'owner' => $UserId
+            ]);
+            $book->save();
+            return response()->json(['worked' => true]);
+        }
+        return response()->json(['worked' => false]);
+    }
+
+    public function dumpStuff()
+    {
+        dd(User::where('id', '=', 1)->first()->reportBooks);
+    }
 }

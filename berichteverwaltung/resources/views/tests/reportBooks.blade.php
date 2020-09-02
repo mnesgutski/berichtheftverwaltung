@@ -9,28 +9,27 @@
 
 </head>
 <body>
-	login war erfolgreich
+login war erfolgreich
 
-	@if(Auth::check())
-		hallo
-		{{auth()->user()->username}}
-		@if(null !== $reportBooks = auth()->user()->reportBooks)
-			@foreach($reportBooks as $reportBook)
-				<div class="col-3">report book ID: {{$reportBook->id}}</div>
-			@endforeach
-		@endif
+@if(Auth::check())
+    hallo
+    {{auth()->user()->username}}
+    @if(null !== $reportBooks = auth()->user()->reportBooks)
+        @foreach($reportBooks as $reportBook)
+            <div class="col-3">report book ID: {{$reportBook->id}}</div>
+        @endforeach
+    @endif
 
-		<div class="col-2">
-			<form action="{{route('test.create.reportBook')}}" method="post">
-				@CSRF
-				<button type="submit">
-					create reportBook
-				</button>
-			</form>
-		</div>
+    <div class="col-2">
+        <form action="{{route('test.create.reportBook')}}" method="post">
+            @CSRF
+            <button type="submit">
+                create reportBook
+            </button>
+        </form>
+    </div>
 
-	@endif
-
+@endif
 
 
 </body>

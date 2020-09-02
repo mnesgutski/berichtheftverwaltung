@@ -18768,7 +18768,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _app_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.vue */ "./resources/js/app.vue");
 /* harmony import */ var _components_login_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login.vue */ "./resources/js/components/login.vue");
-/* harmony import */ var _components_reportBooks_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/reportBooks.vue */ "./resources/js/components/reportBooks.vue");
+/* harmony import */ var _components_reportBooks_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/reportBooks.vue */ "./resources/js/components/reportBooks.vue");
 
 
 
@@ -18789,7 +18789,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/reportBooks',
     name: 'reportBooks',
     components: {
-      "default": _components_reportBooks_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+      "default": _components_reportBooks_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
     },
     props: {},
     children: []
@@ -18816,8 +18816,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

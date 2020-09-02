@@ -9,12 +9,12 @@
 
 </head>
 <body>
-	<form action="{{route('test.login')}}" method="post">
-	@CSRF
-	<input type="text" name="username" id="username"><br>
-	<input type="password" name="password" id="password"><br>
-	<button type="submit">Submit</button>
-	</form>
+<form action="{{route('test.login')}}" method="post">
+    @CSRF
+    <input type="text" name="username" id="username"><br>
+    <input type="password" name="password" id="password"><br>
+    <button type="submit">Submit</button>
+</form>
 
 </body>
 </html>
