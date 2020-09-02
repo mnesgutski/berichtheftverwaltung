@@ -18,11 +18,12 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username' => 'required|unique',
+            'username' => 'required',
             'password' => 'required|min:6'
         ]);
 
         $user = User::where('username', '=', $request->username)->first();
+
         $credentials = ['username' => $request->username, 'password' => $request->password];
         $response = [
             'error' => true,
