@@ -21,7 +21,8 @@
 		@endif
 
 		<div class="col-2">
-			<form action="" method="post">
+			<form action="{{route('test.create.reportBook')}}" method="post">
+				@CSRF
 				<button type="submit">
 					create reportBook
 				</button>

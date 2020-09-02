@@ -28,4 +28,4 @@ Route::get('/testapi','TestController@loginTest');
 Route::get('/test/reportBooks', 'TestController@reportBooks')->name('test.reportBooks');
 
 Route::post('/test/login', 'TestController@login')->name('test.login');
-Route::post('/test/reportBooks')->name('test.create.reportBook');
+Route::post('/test/reportBooks','TestController@createReportBook')->name('test.create.reportBook');
