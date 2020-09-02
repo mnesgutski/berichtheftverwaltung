@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//@Todo:Maik authentication middleware to only allow guests to login and require auth users for further actions
+// proper route grouping
+
 Route::get('/','ViewController@index')->name('home');
 Route::get('/login','ViewController@index')->name('login');
 Route::get('/reportBooks', 'ViewController@index')->name('reportBooks');
