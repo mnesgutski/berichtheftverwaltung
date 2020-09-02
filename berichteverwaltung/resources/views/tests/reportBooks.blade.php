@@ -14,9 +14,9 @@
 	@if(Auth::check())
 		hallo
 		{{auth()->user()->username}}
-		@if(null !== $reportBooks = auth()->user()->reportBooks())
+		@if(null !== $reportBooks = auth()->user()->reportBooks)
 			@foreach($reportBooks as $reportBook)
-				<div class="col-3">heyo</div>
+				<div class="col-3">report book ID: {{$reportBook->id}}</div>
 			@endforeach
 		@endif
 
