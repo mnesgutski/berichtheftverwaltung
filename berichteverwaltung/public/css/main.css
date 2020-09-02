@@ -1,3 +1,7 @@
+:root{
+    --c-main: rgb(3, 199, 3);
+}
+
 @font-face {        
     font-family: roboto-light;
     src: url(./fonts/Roboto-Light.ttf);
@@ -39,6 +43,7 @@ h1{
 
 .d-flex{display: flex;}
 .jc-center{justify-content: center;}
+.jc-end{justify-content: flex-end;}
 .ai-center{align-items: center;}
 
 .fd-column{flex-direction: column;}
