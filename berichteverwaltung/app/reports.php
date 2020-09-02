@@ -17,10 +17,10 @@ class reports extends Model
    ];
 
    public function report(){
-   	$this->belongsTo('App\report_books');
+   	return $this->belongsTo('App\report_books');
    }
 
    public function entries(){
-   	$this->hasMany('App\entries');
+   	return $this->hasMany('App\entries');
    }
 }

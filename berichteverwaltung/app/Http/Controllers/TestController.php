@@ -68,8 +68,17 @@ class TestController extends Controller
 
   	public function createReportBook(){
   		if(Auth::check()){
-
+  			$UserId = Auth::id();
+  			$book = report_books::create([
+  				'owner' => $UserId
+  			]);
+  			$book->save();
+  			return response()->json(['worked' =>true]);
   		}
-  		return false;
+  		return response()->json(['worked' =>false]);
+  	}
+
+  	public function dumpStuff(){
+  		dd(User::where('id','=',1)->first()->reportBooks);
   	}
 }

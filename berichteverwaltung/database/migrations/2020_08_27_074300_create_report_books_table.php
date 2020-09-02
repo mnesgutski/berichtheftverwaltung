@@ -16,9 +16,9 @@ class CreateReportBooksTable extends Migration
         Schema::create('report_books', function (Blueprint $table) {
             $table->id();
             $table->foreignId('owner');
-            $table->string('apprenticeship_name');
-            $table->date('begin_date');
-            $table->date('end_date');
+            $table->string('apprenticeship_name')->nullable();
+            $table->date('begin_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }
