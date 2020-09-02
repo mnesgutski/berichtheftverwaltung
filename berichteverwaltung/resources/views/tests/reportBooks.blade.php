@@ -27,6 +27,12 @@ login war erfolgreich
                 create reportBook
             </button>
         </form>
+        <form action="{{route('reportBooks.get')}}" method="post">
+            @CSRF
+            <button type="submit">
+                get reportBook
+            </button>
+        </form>
     </div>
 
 @endif
