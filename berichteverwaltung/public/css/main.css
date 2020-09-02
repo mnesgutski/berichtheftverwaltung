@@ -25,11 +25,13 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-style: normal;
+    font-weight: normal;
 }
 
 h1{
-    font-size: 50px;
-    font-family: roboto-light
+    font-size: 60px;
+    font-family: roboto-thin;
 }
 
 .lbl-light{font-family: roboto-light}
