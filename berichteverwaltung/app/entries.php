@@ -15,4 +15,7 @@ class entries extends Model
    		'report_id','position','duration','header','description','type'
    ];
 
+   public function report(){
+   	$this->belongsTo('App\reports');
+   }
 }

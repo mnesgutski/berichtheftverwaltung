@@ -31,4 +31,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function reportBooks(){
+        $this->hasMany('App\report_books');
+    }
 }
