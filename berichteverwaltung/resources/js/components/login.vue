@@ -8,15 +8,15 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" name="username" id="inp-username">
+                    <input type="text" v-model="username" name="username" id="inp-username">
                     <h4 class="lbl-thin m-b-lg">Username</h4>
-                    <input type="password" name="password" id="inp-password">
+                    <input type="password" v-model="password" name="password" id="inp-password">
                     <h4 class="lbl-thin m-b-lg">Passwort</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col d-flex jc-end">
-                    <button type="submit">Login</button>
+                    <button @click="loginCall" type="submit">Login</button>
                 </div>
                 
             </div>
@@ -26,6 +26,30 @@
     </div>
 	
 </template>
+<script>
+import axios from 'axios';
+export default {
+    data: function(){
+        return{
+            username: '',
+            password: ''
+        }
+    },
+    methods:{
+        loginCall(){
+            axios.post('/login', {
+                    username: this.username,
+                    passwort: this.password
+                })
+                .then((response) => {
+                    console.log(response);
+                }, (error) => {
+                    console.log(error);
+                });
+        }
+    }
+}
+</script>
 <style scoped>
 *{color: var(--c-main);}
 
@@ -52,6 +76,7 @@ button{
     font-size: 35px;
     font-family: roboto-thin;
     border: none;
+    outline: none;
     transition: border .1s ease;
     
 }
