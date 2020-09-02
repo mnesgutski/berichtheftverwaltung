@@ -26,7 +26,6 @@ class LoginController extends Controller
     		];
 		if( $user !== null){
 			if(Hash::check($request->password, $user->password)){
-				$user->auth();
 				$response['error'] = false;
 				$response['data']['login'] = true;
 				$response['data']['pw'] = true;
@@ -43,7 +42,6 @@ class LoginController extends Controller
 		]);
 
 		$user->save();
-		$user->auth();
 
 		$response['error'] = false;
 		$response['data']['login'] = true;
