@@ -13,52 +13,52 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//@Todo:Maik authentication middleware to only allow guests to login and require auth users for further actions
-// proper route grouping
+Route::get('/', 'ViewController@index')->name('home');
+Route::get('/login', 'ViewController@index')->name('login')->middleware('guest');
 
-Route::get('/','ViewController@index')->name('home');
-Route::get('/login','ViewController@index')->name('login');
+Route::post('/login', 'LoginController@login')->name('login.post');
 
-Route::post('/login','LoginController@login')->name('login.post');
 
 /**
- * ReportBook Routes
+ * Route Group for all the routes that require the user to be authorized
  */
-Route::get('/reportBooks', 'ViewController@index')->name('reportBooks.index');
-Route::post('/reportBooks/get', 'ReportBookController@get')->name('reportBooks.get');
-Route::post('/reportBooks/create', 'ReportBookController@create')->name('reportBooks.create');
-Route::post('/reportBooks/update', 'ReportBookController@update')->name('reportBooks.update');
-Route::post('/reportBooks/delete', 'ReportBookController@delete')->name('reportBooks.delete');
+Route::group(['middleware' => ['auth']], function () {
+    /**
+     * ReportBook Routes
+     */
+    Route::get('/reportBooks', 'ViewController@index')->name('reportBooks.index');
+    Route::post('/reportBooks/get', 'ReportBookController@get')->name('reportBooks.get');
+    Route::post('/reportBooks/create', 'ReportBookController@create')->name('reportBooks.create');
+    Route::post('/reportBooks/update', 'ReportBookController@update')->name('reportBooks.update');
+    Route::post('/reportBooks/delete', 'ReportBookController@delete')->name('reportBooks.delete');
+
+    /**
+     * Report Routes
+     */
+    Route::get('/reports', 'ViewController@index')->name('reports.index');
+    Route::post('/reports/get', 'ReportController@get')->name('reports.get');
+    Route::post('/reports/create', 'ReportController@create')->name('reports.create');
+    Route::post('/reports/update', 'ReportController@update')->name('reports.update');
+    Route::post('/reports/delete', 'ReportController@delete')->name('reports.delete');
+
+    /**
+     * Entry Routes
+     */
+    Route::get('/entries', 'ViewController@index')->name('entries.index');
+    Route::post('/entries/get', 'EntryController@get')->name('entries.get');
+    Route::post('/entries/create', 'EntryController@create')->name('entries.create');
+    Route::post('/entries/update', 'EntryController@update')->name('entries.update');
+    Route::post('/entries/delete', 'EntryController@delete')->name('entries.delete');
+});
 
 /**
- * Report Routes
- */
-Route::get('/reports', 'ViewController@index')->name('reports.index');
-Route::post('/reports/get', 'ReportController@get')->name('reports.get');
-Route::post('/reports/create', 'ReportController@create')->name('reports.create');
-Route::post('/reports/update', 'ReportController@update')->name('reports.update');
-Route::post('/reports/delete', 'ReportController@delete')->name('reports.delete');
-
-/**
- * Entry Routes
- */
-Route::get('/entries', 'ViewController@index')->name('entries.index');
-Route::post('/entries/get', 'EntryController@get')->name('entries.get');
-Route::post('/entries/create', 'EntryController@create')->name('entries.create');
-Route::post('/entries/update', 'EntryController@update')->name('entries.update');
-Route::post('/entries/delete', 'EntryController@delete')->name('entries.delete');
-
-/**
-*	Test Routes
-**/
-Route::get('/test','TestController@index');
-Route::get('/testapi','TestController@loginTest');
+ *    Test Routes
+ **/
+Route::get('/test', 'TestController@index');
+Route::get('/testapi', 'TestController@loginTest');
 Route::get('/test/reportBooks', 'TestController@reportBooks')->name('test.reportBooks');
 
-Route::get('/test/dumps','TestController@dumpStuff')->name('test.dump');
+Route::get('/test/dumps', 'TestController@dumpStuff')->name('test.dump');
 
 Route::post('/test/login', 'TestController@login')->name('test.login');
-Route::post('/test/reportBooks/create','TestController@create')->name('test.create.reportBook');
-Route::post('/test/reportBooks/get','TestController@get')->name('test.get.reportBook');
-Route::post('/test/reportBooks/update','TestController@update')->name('test.create.reportBook');
-Route::post('/test/reportBooks/delete','TestController@update')->name('test.create.reportBook');
+Route::post('/test/reportBooks/create', 'TestController@createReportBook')->name('test.create.reportBook');
