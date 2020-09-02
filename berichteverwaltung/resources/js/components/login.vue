@@ -42,8 +42,8 @@ export default {
                     passwort: this.password
                 })
                 .then((response) => {
-                    console.log(response);
-                    
+                    this.$router.push({name: 'reportBooks'})
+
                 }, (error) => {
                     console.log(error);
                 });

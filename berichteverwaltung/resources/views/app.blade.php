@@ -9,7 +9,7 @@
     <title>Nice App</title>    
 </head>
 <body>
-    <div id="app" class="full-size greenX">
+    <div id="app" class="full-size">
         <app></app>
     </div>
 </body>
