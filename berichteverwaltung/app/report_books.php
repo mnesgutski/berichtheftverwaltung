@@ -15,4 +15,12 @@ class report_books extends Model
    protected $fillable = [
    		'owner','apprenticeship_name','begin_date','end_date'
    	];
+
+   	public function user(){
+   		$this->belongsTo('App\User');
+   	}
+
+   	public function reports(){
+   		$this->hasMany('App\reports');
+   	}
 }

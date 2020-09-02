@@ -15,4 +15,12 @@ class reports extends Model
    protected $fillable = [
    		'report_book_id','type','begin_date', 'end_date','company','department','hours_targeted'
    ];
+
+   public function report(){
+   	$this->belongsTo('App\report_books');
+   }
+
+   public function entries(){
+   	$this->hasMany('App\entries');
+   }
 }

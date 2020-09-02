@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','ViewController@index')->name('home');
 Route::get('/login','ViewController@index')->name('login');
-
+Route::get('/reportBooks', 'ViewController@index')->name('reportBooks');
 
 Route::post('/login','LoginController@login')->name('login.post');
 
@@ -25,6 +25,7 @@ Route::post('/login','LoginController@login')->name('login.post');
 **/
 Route::get('/test','TestController@index');
 Route::get('/testapi','TestController@loginTest');
-Route::get('/test/berichtshefte', 'TestController@berichtshefte')->name('test.berichtshefte');
+Route::get('/test/reportBooks', 'TestController@reportBooks')->name('test.reportBooks');
 
 Route::post('/test/login', 'TestController@login')->name('test.login');
+Route::post('/test/reportBooks')->name('test.create.reportBook');

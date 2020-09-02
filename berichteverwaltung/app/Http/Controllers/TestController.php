@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\report_books;
 
 class TestController extends Controller
 {
@@ -17,7 +18,7 @@ class TestController extends Controller
     }
 
     public function login(Request $request){
-    	
+
     	$credentials = ['username' => $request->username, 'password' => $request->password];
     	$user = User::where('username','=',$request->username)->first();
     	$responses = [
@@ -38,7 +39,7 @@ class TestController extends Controller
 				$response['data']['pw'] = true;
 				$response['data']['username'] = $user->username;
 
-				return redirect()->route('test.berichtshefte');
+				return redirect()->route('test.reportBooks');
 			}
 			$response['error'] = false;
 			return response()->json($response);
@@ -58,10 +59,17 @@ class TestController extends Controller
 		$response['data']['username'] = $user->username;
 		$response['data']['registered'] = true;
 
-		return redirect()->route('test.berichtshefte');
+		return redirect()->route('test.reportBooks');
   	}
 
-  	public function berichtshefte(){
-  		return view('tests.berichtshefte');
+  	public function reportBooks(){
+  		return view('tests.reportBooks');
+  	}
+
+  	public function createReportBook(){
+  		if(Auth::check()){
+
+  		}
+  		return false;
   	}
 }
