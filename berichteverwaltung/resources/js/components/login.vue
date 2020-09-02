@@ -11,11 +11,14 @@
                     <input type="text" name="username" id="inp-username">
                     <h4 class="lbl-thin m-b-lg">Username</h4>
                     <input type="password" name="password" id="inp-password">
-                    <h4 class="lbl-thin">Passwort</h4>
+                    <h4 class="lbl-thin m-b-lg">Passwort</h4>
                 </div>
             </div>
             <div class="row">
-                <button type="submit">Login</button>
+                <div class="col d-flex jc-end">
+                    <button type="submit">Login</button>
+                </div>
+                
             </div>
         </div>
         
@@ -24,7 +27,7 @@
 	
 </template>
 <style scoped>
-*{color: rgb(3, 199, 3);}
+*{color: var(--c-main);}
 
 .comp-w-sm{width: 200px;}
 .comp-w-md{width: 400px;}
@@ -38,9 +41,25 @@ input[type="text"], input[type="password"]{
     width: 100%;
     font-size: 35px;
     font-family: roboto-thin;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
     outline: none;
 }
 
+button{
+    background-color: transparent;
+    font-size: 35px;
+    font-family: roboto-thin;
+    border: none;
+    transition: border .1s ease;
+    
+}
+button:hover{
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--c-main);
+}
 
 .force-center{
     position: absolute;

@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-172b28a4]{color: rgb(3, 199, 3);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\r\n    width: 100%;\r\n    font-size: 35px;\r\n    font-family: roboto-thin;\r\n    outline: none;\n}\n.force-center[data-v-172b28a4]{\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%);\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\r\n    width: 100%;\r\n    font-size: 35px;\r\n    font-family: roboto-thin;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid black;\r\n    outline: none;\n}\nbutton[data-v-172b28a4]{\r\n    background-color: transparent;\r\n    font-size: 35px;\r\n    font-family: roboto-thin;\r\n    border: none;\r\n    transition: border .1s ease;\n}\nbutton[data-v-172b28a4]:hover{\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-main);\n}\n.force-center[data-v-172b28a4]{\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%);\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -1269,12 +1269,14 @@ var staticRenderFns = [
               attrs: { type: "password", name: "password", id: "inp-password" }
             }),
             _vm._v(" "),
-            _c("h4", { staticClass: "lbl-thin" }, [_vm._v("Passwort")])
+            _c("h4", { staticClass: "lbl-thin m-b-lg" }, [_vm._v("Passwort")])
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
-          _c("button", { attrs: { type: "submit" } }, [_vm._v("Login")])
+          _c("div", { staticClass: "col d-flex jc-end" }, [
+            _c("button", { attrs: { type: "submit" } }, [_vm._v("Login")])
+          ])
         ])
       ])
     ])
