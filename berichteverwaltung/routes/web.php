@@ -25,5 +25,6 @@ Route::post('/login','LoginController@login')->name('login.post');
 **/
 Route::get('/test','TestController@index');
 Route::get('/testapi','TestController@loginTest');
+Route::get('/test/berichtshefte', 'TestController@berichtshefte')->name('test.berichtshefte');
 
 Route::post('/test/login', 'TestController@login')->name('test.login');

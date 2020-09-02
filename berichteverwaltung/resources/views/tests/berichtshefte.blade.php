@@ -9,7 +9,12 @@
 
 </head>
 <body>
-	
+	login war erfolgreich
+
+	@if(Auth::check())
+		hallo
+		{{auth()->user()->username}}
+	@endif
 
 </body>
 </html>

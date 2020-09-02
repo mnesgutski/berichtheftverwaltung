@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -14,6 +15,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
     	$user = User::where('username','=',$request->username)->first();
+    	$credentials = ['username' => $request->username, 'password' => $request->password];
     	$responses = [
     		'error' => true,
     		'error_message' => '',
@@ -25,8 +27,9 @@ class LoginController extends Controller
     		]
     		];
 		if( $user !== null){
-			if(Hash::check($request->password, $user->password)){
-				$user->auth();
+			//if(Hash::check($request->password, $user->password))
+			if(Auth::attempt($credentials)){
+				
 				$response['error'] = false;
 				$response['data']['login'] = true;
 				$response['data']['pw'] = true;
@@ -43,7 +46,8 @@ class LoginController extends Controller
 		]);
 
 		$user->save();
-		$user->auth();
+		Auth::attempt($credentials);
+		
 
 		$response['error'] = false;
 		$response['data']['login'] = true;

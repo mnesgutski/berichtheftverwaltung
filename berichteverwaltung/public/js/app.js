@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\r\n    width: 100%;\r\n    font-size: 35px;\r\n    font-family: roboto-thin;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid black;\r\n    outline: none;\n}\nbutton[data-v-172b28a4]{\r\n    background-color: transparent;\r\n    font-size: 35px;\r\n    font-family: roboto-thin;\r\n    border: none;\r\n    transition: border .1s ease;\n}\nbutton[data-v-172b28a4]:hover{\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-main);\n}\n.force-center[data-v-172b28a4]{\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%);\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\n    width: 100%;\n    font-size: 35px;\n    font-family: roboto-thin;\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid black;\n    outline: none;\n}\nbutton[data-v-172b28a4]{\n    background-color: transparent;\n    font-size: 35px;\n    font-family: roboto-thin;\n    border: none;\n    transition: border .1s ease;\n}\nbutton[data-v-172b28a4]:hover{\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid var(--c-main);\n}\n.force-center[data-v-172b28a4]{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%,-50%);\n}\n\n", ""]);
 
 // exports
 
@@ -16704,8 +16704,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/maik/Projects/berichtheftverwaltung/berichteverwaltung/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/maik/Projects/berichtheftverwaltung/berichteverwaltung/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
