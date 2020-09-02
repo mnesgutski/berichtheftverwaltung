@@ -6,20 +6,22 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 
-class TestController extends Controller
+class LoginController extends Controller
 {
-    //
+    
 
-    public function index(){
-
-    	return view('tests');
-    }
-
-    public function login(Request $request){
+    public function login(Request $request)
+    {
     	$user = User::where('username','=',$request->username)->first();
+    	$responses = [
+    		'error' => true,
+    		'error_message' => '',
+    		'data' => []
+    		];
 		if( $user !== null){
 			if(Hash::check($request->password, $user->password)){
 				dd('password correct');
+				$user->auth();
 			}
 			dd('pw wrong');
 		}  
@@ -29,6 +31,8 @@ class TestController extends Controller
 			'password' => Hash::make($request->password),
 		]);
 		$user->save();
+		$user->auth();
 		dd('worked out');
   	}
+    
 }
