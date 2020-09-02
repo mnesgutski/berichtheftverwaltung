@@ -16,12 +16,17 @@ class LoginController extends Controller
     	$responses = [
     		'error' => true,
     		'error_message' => '',
-    		'data' => []
+    		'data' => [
+    			'login' => false,
+    			'pw' => false,
+    			'username' => ''
+    		]
     		];
 		if( $user !== null){
 			if(Hash::check($request->password, $user->password)){
 				dd('password correct');
 				$user->auth();
+				return response()->json($response);
 			}
 			dd('pw wrong');
 		}  
