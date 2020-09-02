@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col">
                     <input type="text" v-model="username" name="username" id="inp-username">
-                    <h4 class="m-b-lg">Username</h4>
+                    <h4 class="m-b-lg">Benutzername</h4>
                     <input type="password" v-model="password" name="password" id="inp-password">
                     <h4 class="m-b-lg">Passwort</h4>
                 </div>
@@ -68,8 +68,9 @@ input[type="text"], input[type="password"]{
     font-family: roboto-light;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--c-second);
     outline: none;
+    color: var(--c-second);
 }
 
 button{
