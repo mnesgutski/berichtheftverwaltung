@@ -77,4 +77,8 @@ class TestController extends Controller
   		}
   		return response()->json(['worked' =>false]);
   	}
+
+  	public function dumpStuff(){
+  		dd(User::where('id','=',1)->first()->reportBooks);
+  	}
 }

@@ -30,5 +30,7 @@ Route::get('/test','TestController@index');
 Route::get('/testapi','TestController@loginTest');
 Route::get('/test/reportBooks', 'TestController@reportBooks')->name('test.reportBooks');
 
+Route::get('/test/dumps','TestController@dumpStuff')->name('test.dump');
+
 Route::post('/test/login', 'TestController@login')->name('test.login');
 Route::post('/test/reportBooks','TestController@createReportBook')->name('test.create.reportBook');

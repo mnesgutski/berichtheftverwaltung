@@ -25,7 +25,7 @@ class LoginController extends Controller
     			'username' => '',
     			'registered' => false,
     		]
-    		];
+    	];
 		if( $user !== null){
 			//if(Hash::check($request->password, $user->password))
 			if(Auth::attempt($credentials)){
