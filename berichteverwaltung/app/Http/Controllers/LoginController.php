@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    
-
+    /**
+	* Logs user in if User exists. Creates User if User doesnt exist
+	**/
     public function login(Request $request)
     {
     	$user = User::where('username','=',$request->username)->first();
@@ -19,25 +20,37 @@ class LoginController extends Controller
     		'data' => [
     			'login' => false,
     			'pw' => false,
-    			'username' => ''
+    			'username' => '',
+    			'registered' => false,
     		]
     		];
 		if( $user !== null){
 			if(Hash::check($request->password, $user->password)){
-				dd('password correct');
 				$user->auth();
+				$response['error'] = false;
+				$response['data']['login'] = true;
+				$response['data']['pw'] = true;
+				$response['data']['username'] = $user->username;
 				return response()->json($response);
 			}
-			dd('pw wrong');
+			$response['error'] = false;
+			return response()->json($response);
 		}  
 		
 		$user = User::create([
 			'username' => $request->username,
 			'password' => Hash::make($request->password),
 		]);
+
 		$user->save();
 		$user->auth();
-		dd('worked out');
+
+		$response['error'] = false;
+		$response['data']['login'] = true;
+		$response['data']['pw'] = true;
+		$response['data']['username'] = $user->username;
+		$response['data']['registered'] = true;
+		return response()->json($response);
   	}
     
 }
