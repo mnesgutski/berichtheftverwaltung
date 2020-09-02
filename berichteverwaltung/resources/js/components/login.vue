@@ -3,20 +3,20 @@
         <div class="row fd-column comp-w-md">
             <div class="row">
                 <div class="col-auto d-flex jc-center">
-                    <h1 class="lbl-thin m-b-lg">Reporter 3000</h1>
+                    <h1 class="lbl-thin m-b-xl">Reports.</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <input type="text" v-model="username" name="username" id="inp-username">
-                    <h4 class="lbl-thin m-b-lg">Username</h4>
+                    <h4 class="m-b-lg">Username</h4>
                     <input type="password" v-model="password" name="password" id="inp-password">
-                    <h4 class="lbl-thin m-b-lg">Passwort</h4>
+                    <h4 class="m-b-lg">Passwort</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col d-flex jc-end">
-                    <button @click="loginCall" type="submit">Login</button>
+                    <button @click="loginCall">Login</button>
                 </div>
                 
             </div>
@@ -64,7 +64,7 @@ export default {
 input[type="text"], input[type="password"]{
     width: 100%;
     font-size: 35px;
-    font-family: roboto-thin;
+    font-family: roboto-light;
     border: none;
     border-radius: 0;
     border-bottom: 1px solid black;
@@ -72,20 +72,17 @@ input[type="text"], input[type="password"]{
 }
 
 button{
+    position: relative;
     background-color: transparent;
+    padding: 5px;
     font-size: 35px;
-    font-family: roboto-thin;
+    font-family: roboto-light;
     border: none;
     outline: none;
-    transition: border .1s ease;
-    
+    transition: transform .1s ease;
 }
-button:hover{
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid var(--c-main);
-}
-
+button:hover{transform: scale(1.02)}
+buttOn:active{transform: scale(1)}
 .force-center{
     position: absolute;
     top: 50%;
