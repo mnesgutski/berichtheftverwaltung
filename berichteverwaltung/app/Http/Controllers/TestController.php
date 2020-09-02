@@ -12,7 +12,7 @@ class TestController extends Controller
 
     public function index(){
 
-    	return view('tests');
+    	return view('tests.login');
     }
 
     public function login(Request $request){
