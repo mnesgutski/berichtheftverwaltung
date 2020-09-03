@@ -103,6 +103,8 @@ class ReportBookController extends Controller
 	        $rbook->begin_date = ($request->begin_date !== null || $request->begin_date !== "") ? $request->begin_date : $rbook->begin_date;
 	        $rbook->end_date = ($request->end_date !== null || $request->end_date !== "") ? $request->end_date : $rbook->end_date;
 
+            $rBook->save();
+
 	        $data[$rBook->id] = [
                     'owner' => $rBook->owner,
                     'name' => $rBook->apprenticeship_name,

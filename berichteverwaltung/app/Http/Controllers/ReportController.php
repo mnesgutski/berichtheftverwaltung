@@ -98,6 +98,8 @@ class ReportController extends Controller
             $rep->company = $request->company;
             $rep->hours_targeted = $request->hours_targeted;
 
+            $rep->save();
+
             $data[$rep->id] = [
                     'type' => $rep->type,
                     'position' => $rep->postion,
