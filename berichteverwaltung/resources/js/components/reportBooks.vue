@@ -39,12 +39,6 @@ export default {
     border: 1px solid var(--c-main);
 }
 
-.lbl-ico{
-    font-size: 50px; 
-    color: var(--c-main);
-    height: 1em;
-}
-
 #btn-add-new-book:hover{transform: scale(1.05)}
 
 .report-book-container:hover{

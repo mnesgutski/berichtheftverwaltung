@@ -10,7 +10,7 @@
                 <div class="col">
                     <input type="text" v-model="username" name="username" id="inp-username">
                     <h4 class="m-b-lg">Benutzername</h4>
-                    <input type="password" v-model="password" name="password" id="inp-password">
+                    <input type="password" @click="loginCall" v-model="password" name="password" id="inp-password">
                     <h4 class="m-b-lg">Passwort</h4>
                 </div>
             </div>
@@ -74,7 +74,6 @@ input[type="text"], input[type="password"]{
 }
 
 button{
-    position: relative;
     background-color: transparent;
     padding: 5px;
     font-size: 35px;
