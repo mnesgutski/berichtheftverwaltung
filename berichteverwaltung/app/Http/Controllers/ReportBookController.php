@@ -128,7 +128,7 @@ class ReportBookController extends Controller
 			$rBook = report_books::where('id', '=', $request->reportBookId)
 				->where('owner','=', Auth::id())
 				->first();
-			$rbook->
+			$rbook->delete();
         }
 
         $response['error_message'] = 'Something went wrong';
