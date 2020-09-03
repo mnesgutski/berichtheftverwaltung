@@ -89,6 +89,7 @@ h1, h2, h3, h4, h5, h6{
 .d-flex{display: flex;}
 .jc-center{justify-content: center;}
 .jc-end{justify-content: flex-end;}
+.jc-space-around{justify-content: space-around;}
 .ai-center{align-items: center;}
 
 .f-center{
@@ -102,6 +103,10 @@ input[type="text"]{
     border: 0px solid black;
     border-bottom: 1px solid black;
 }
+
+.m-none{margin: 0;}
+.p-none{padding: 0;}
+.pm-none{margin: 0; padding: 0}
 
 .m-l-sm{margin-left: var(--pm-sm)}
 .m-l-md{margin-left: var(--pm-md)}
@@ -118,11 +123,56 @@ input[type="text"]{
 .m-b-lg{margin-bottom: var(--pm-lg)}
 .m-b-xl{margin-bottom: var(--pm-xl)}
 
+.m-t-sm{margin-top: var(--pm-sm)}
+.m-t-md{margin-top: var(--pm-md)}
+.m-t-lg{margin-top: var(--pm-lg)}
+.m-t-xl{margin-top: var(--pm-xl)}
 
-.m-none{margin: 0;}
-.p-none{padding: 0;}
+.m-h-sm{margin: 0px var(--pm-sm)}
+.m-h-md{margin: 0px var(--pm-md)}
+.m-h-lg{margin: 0px var(--pm-lg)}
+.m-h-xl{margin: 0px var(--pm-xl)}
+
+.m-sm{margin: var(--pm-sm)}
+.m-md{margin: var(--pm-md)}
+.m-lg{margin: var(--pm-lg)}
+.m-xl{margin: var(--pm-xl)}
+
+/* Padding */
+
+.p-l-sm{padding-left: var(--pm-sm)}
+.p-l-md{padding-left: var(--pm-md)}
+.p-l-lg{padding-left: var(--pm-lg)}
+.p-l-xl{padding-left: var(--pm-xl)}
+
+.p-r-sm{padding-right: var(--pm-sm)}
+.p-r-md{padding-right: var(--pm-md)}
+.p-r-lg{padding-right: var(--pm-lg)}
+.p-r-xl{padding-right: var(--pm-xl)}
+
+.p-b-sm{padding-bottom: var(--pm-sm)}
+.p-b-md{padding-bottom: var(--pm-md)}
+.p-b-lg{padding-bottom: var(--pm-lg)}
+.p-b-xl{padding-bottom: var(--pm-xl)}
+
+.p-t-sm{padding-top: var(--pm-sm)}
+.p-t-md{padding-top: var(--pm-md)}
+.p-t-lg{padding-top: var(--pm-lg)}
+.p-t-xl{padding-top: var(--pm-xl)}
+
+.p-h-sm{padding: 0px var(--pm-sm)}
+.p-h-md{padding: 0px var(--pm-md)}
+.p-h-lg{padding: 0px var(--pm-lg)}
+.p-h-xl{padding: 0px var(--pm-xl)}
+
+.p-sm{padding: var(--pm-sm)}
+.p-md{padding: var(--pm-md)}
+.p-lg{padding: var(--pm-lg)}
+.p-xl{padding: var(--pm-xl)}
 
 .b-b-thin{border-bottom: 1px solid var(--c-second);}
+
+.scroll{overflow-y: scroll;}
 
 .lbl-ico{
     font-size: 50px; 

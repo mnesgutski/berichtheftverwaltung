@@ -6,8 +6,13 @@
                 <div class="b-b-thin"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-auto">
+        <div class="row scroll">
+            <div class="col-auto pm-none m-md" v-for="item in reportBooks" :key="item.id">
+                <div class="report-book-container">
+                    {{item.begin_date}}
+                </div>
+             </div>
+             <div class="col-auto pm-none m-md">
                 <div @click="createNewReportBook" class="report-book-container">
                     <div id="btn-add-new-book" class="d-flex f-center fill-parent">
                         <i class="fas fa-plus lbl-ico"></i>

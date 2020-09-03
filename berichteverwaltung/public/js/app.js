@@ -1978,7 +1978,11 @@ __webpack_require__.r(__webpack_exports__);
         begin_date: this.begin_date,
         end_date: this.end_date
       }).then(function (response) {
-        alert(response);
+        if (response.data.error) {
+          alert(response.data.error_message);
+        } else {
+          console.log(response.data.data);
+        }
       }, function (error) {
         console.log(error);
       });
@@ -2066,6 +2070,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3345,7 +3354,7 @@ var render = function() {
   return _c("div", { staticClass: "fill-parent" }, [
     _c(
       "div",
-      { staticClass: "container-fluid fill-parent" },
+      { staticClass: "container-fluid pm-none m-h-lg fill-parent" },
       [_c("router-view")],
       1
     )
@@ -3564,7 +3573,15 @@ var render = function() {
             attrs: { type: "password", name: "password", id: "inp-password" },
             domProps: { value: _vm.password },
             on: {
-              click: _vm.loginCall,
+              keydown: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.loginCall($event)
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -3622,18 +3639,39 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-auto" }, [
-        _c(
-          "div",
-          {
-            staticClass: "report-book-container",
-            on: { click: _vm.createNewReportBook }
-          },
-          [_vm._m(1)]
-        )
-      ])
-    ])
+    _c(
+      "div",
+      { staticClass: "row scroll" },
+      [
+        _vm._l(_vm.reportBooks, function(item) {
+          return _c(
+            "div",
+            { key: item.id, staticClass: "col-auto pm-none m-md" },
+            [
+              _c("div", { staticClass: "report-book-container" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(item.begin_date) +
+                    "\n            "
+                )
+              ])
+            ]
+          )
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-auto pm-none m-md" }, [
+          _c(
+            "div",
+            {
+              staticClass: "report-book-container",
+              on: { click: _vm.createNewReportBook }
+            },
+            [_vm._m(1)]
+          )
+        ])
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [

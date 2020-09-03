@@ -24,6 +24,7 @@ class ReportBookController extends Controller
             $data = [];
             foreach($reportBooks as $reportBook) {
                 $data[$reportBook->id] = [
+                    'id' => $reportBook->id,
                     'owner' => $reportBook->owner,
                     'name' => $reportBook->apprenticeship_name,
                     'begin_date' => $reportBook->begin_date,

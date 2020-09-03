@@ -65,7 +65,11 @@ export default {
                 begin_date: this.begin_date,
                 end_date: this.end_date
             }).then((response) => {
-                alert(response);
+                if(response.data.error){
+                    alert(response.data.error_message);
+                }else{
+                    console.log(response.data.data);
+                }
             }, (error) => {
                     console.log(error);
             });
