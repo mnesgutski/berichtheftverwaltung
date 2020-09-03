@@ -8,15 +8,29 @@
         </div>
         <div class="row">
             <div class="col-auto">
-                <div class="report-book-container">
-                    <div id="btn-add-new-book" class="d-flex jc-center fill-parent">
-                        <i class="fa-plus lbl-ico"></i>
+                <div @click="create_new_report_book" class="report-book-container">
+                    <div id="btn-add-new-book" class="d-flex f-center fill-parent">
+                        <i class="fas fa-plus lbl-ico"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+<script>
+export default {
+    data: function(){
+        return{
+
+        }
+    },
+    methods: {
+        create_new_report_book(){
+            this.$router.push({name: 'createReportBook'});
+        }
+    }
+}
+</script>
 <style scoped>
 .report-book-container{
     display: block;
@@ -24,7 +38,16 @@
     width: var(--s-lg);
     border: 1px solid var(--c-main);
 }
-.b-b-thin{border-bottom: 1px solid var(--c-main);}
 
-.lbl-ico{font-size: 30px; color: var(--c-second)}
+.lbl-ico{
+    font-size: 50px; 
+    color: var(--c-main);
+    height: 1em;
+}
+
+#btn-add-new-book:hover{transform: scale(1.05)}
+
+.report-book-container:hover{
+    box-shadow: 0px 0px 1px black;
+}
 </style>
