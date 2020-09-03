@@ -1,18 +1,23 @@
 <template>
     <div>
-        <div class="row m-b-lg">
-            <div class="col-auto">
+        <div class="row m-none m-b-lg">
+            <!-- Header -->
+            <div class="col-auto pm-none">
                 <h1 class="m-r-lg">Berichtshefte</h1>
                 <div class="b-b-thin"></div>
             </div>
         </div>
-        <div class="row scroll">
-            <div class="col-auto pm-none m-md" v-for="item in reportBooks" :key="item.id">
-                <div class="report-book-container">
-                    {{item.begin_date}}
+        <div class="row m-none">
+            <!-- All Report Books -->
+            <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reportBooks" :key="item.id" @click="enterReportBook(item.id)">
+                <div class="report-book-container d-flex fd-column f-center p-md">
+                    <h2 class="lbl-light font-sm lbl-center wrap">{{item.name}}</h2>
+                    <div class="divider"></div>
+                    <h2 class="lbl-light font-sm lbl-center">{{item.begin_date}}/<br>{{item.end_date}}</h2>                                                              
                 </div>
              </div>
-             <div class="col-auto pm-none m-md">
+             <!-- Create Button -->
+             <div class="col-auto pm-none m-r-lg m-b-lg">
                 <div @click="createNewReportBook" class="report-book-container">
                     <div id="btn-add-new-book" class="d-flex f-center fill-parent">
                         <i class="fas fa-plus lbl-ico"></i>
@@ -45,19 +50,29 @@ export default {
     methods: {
         createNewReportBook(){
             this.$router.push({name: 'createReportBook'});
+        },
+        enterReportBook(id){
+            this.$router.push({name: 'reports', params: {id: id}});
         }
     }
 }
 </script>
 <style scoped>
 .report-book-container{
-    display: block;
     height: var(--s-lg);
     width: var(--s-lg);
-    border: 1px solid var(--c-main);
+    border: 1px solid var(--c-second);
 }
 
 .report-book-container:hover{
     transform: scale(1.02)
 }
+.divider{
+    height: 1px;
+    width: 100%;
+    background-color: var(--c-second);
+    margin: var(--pm-md) 0px;
+}
+
+.wrap{word-wrap: anywhere;}
 </style>
