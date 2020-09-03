@@ -9,7 +9,9 @@
         <div class="row">
             <div class="col-auto">
                 <div class="report-book-container">
-                    <div id="btn-add-new-book" class="d-flex jc-center fill-parent">+</div>
+                    <div id="btn-add-new-book" class="d-flex jc-center fill-parent">
+                        <i class="fa-plus lbl-ico"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -23,4 +25,6 @@
     border: 1px solid var(--c-main);
 }
 .b-b-thin{border-bottom: 1px solid var(--c-main);}
+
+.lbl-ico{font-size: 30px; color: var(--c-second)}
 </style>
