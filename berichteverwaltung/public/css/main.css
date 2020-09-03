@@ -56,6 +56,8 @@ h1, h2, h3, h4, h5, h6{
 .font-lg{font-size: var(--f-lg);}
 .font-xl{font-size: var(--f-xl);}
 
+.lbl-center{text-align: center;}
+
 .lbl-light{
     font-family: roboto-light;
     color: var(--c-main);
