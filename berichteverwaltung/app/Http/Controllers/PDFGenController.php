@@ -9,9 +9,11 @@ class PDFGenController extends Controller
 {
     //
 
-    public function download(){
-    	$pdf = PDF::loadView('pdf.report');
+    public function download()
+    {
+        //like regular view even with compact for carrying variables
+        $pdf = PDF::loadView('pdf.report');
 
-    	return $pdf->download('report.pdf');
+        return $pdf->download('report.pdf');
     }
 }

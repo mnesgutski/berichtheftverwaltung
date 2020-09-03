@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
+    //TODO: @MAIki https://laracasts.com/discuss/channels/laravel/how-to-give-user-login-option-in-laravel-socialite-azure
+
     /**
      * Logs user in if User exists. Creates User if User doesnt exist
      * @param Request $request

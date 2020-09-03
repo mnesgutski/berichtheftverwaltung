@@ -17,10 +17,10 @@ class ReportController extends Controller
             'data' => []
         ];
         if (Auth::check()) {
-            $rBook = report_books::where('id','=',$request->reportBookId)->first();
+            $rBook = report_books::where('id', '=', $request->reportBookId)->first();
             $reports = $rBook->reports;
             $data = [];
-            foreach($reports as $rep) {
+            foreach ($reports as $rep) {
                 $data[$rep->id] = [
                     'type' => $rep->type,
                     'position' => $rep->postion,
@@ -63,16 +63,16 @@ class ReportController extends Controller
             $rep->save();
 
             $data[$rep->id] = [
-                    'type' => $rep->type,
-                    'position' => $rep->postion,
-                    'begin_date' => $rep->begin_date,
-                    'end_date' => $rep->end_date,
-                    'department' => $rep->department,
-                    'company' => $rep->company,
-                    'hours_targeted' => $rep->hours_targeted,
-                    'created_at' => $rep->created_at,
-                    'updated_at' => $rep->updated_at,
-                ];
+                'type' => $rep->type,
+                'position' => $rep->postion,
+                'begin_date' => $rep->begin_date,
+                'end_date' => $rep->end_date,
+                'department' => $rep->department,
+                'company' => $rep->company,
+                'hours_targeted' => $rep->hours_targeted,
+                'created_at' => $rep->created_at,
+                'updated_at' => $rep->updated_at,
+            ];
 
             $response['error'] = false;
             $response['data'] = $data;
@@ -89,7 +89,7 @@ class ReportController extends Controller
             'data' => []
         ];
         if (Auth::check()) {
-            $rep = reports::where('id','=', $request->id)->first();
+            $rep = reports::where('id', '=', $request->id)->first();
             $rep->type = $request->type;
             $rep->position = $request->position;
             $rep->begin_date = $request->begin_date;
@@ -101,16 +101,16 @@ class ReportController extends Controller
             $rep->save();
 
             $data[$rep->id] = [
-                    'type' => $rep->type,
-                    'position' => $rep->postion,
-                    'begin_date' => $rep->begin_date,
-                    'end_date' => $rep->end_date,
-                    'department' => $rep->department,
-                    'company' => $rep->company,
-                    'hours_targeted' => $rep->hours_targeted,
-                    'created_at' => $rep->created_at,
-                    'updated_at' => $rep->updated_at,
-                ];
+                'type' => $rep->type,
+                'position' => $rep->postion,
+                'begin_date' => $rep->begin_date,
+                'end_date' => $rep->end_date,
+                'department' => $rep->department,
+                'company' => $rep->company,
+                'hours_targeted' => $rep->hours_targeted,
+                'created_at' => $rep->created_at,
+                'updated_at' => $rep->updated_at,
+            ];
 
             $response['error'] = false;
             $response['data'] = $data;
@@ -129,7 +129,7 @@ class ReportController extends Controller
             'data' => []
         ];
         if (Auth::check()) {
-            $rep = reports::where('id','=', $request->id)->first();
+            $rep = reports::where('id', '=', $request->id)->first();
             $rep->delete();
             $data['delete'] = true;
 

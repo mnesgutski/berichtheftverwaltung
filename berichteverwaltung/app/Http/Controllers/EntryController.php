@@ -19,9 +19,9 @@ class EntryController extends Controller
         ];
 
         if (Auth::check()) {
-            $rep = reports::where('id','=',$request->reportId)->first();
+            $rep = reports::where('id', '=', $request->reportId)->first();
             $data = [];
-            foreach($rep->entries as $entry){
+            foreach ($rep->entries as $entry) {
                 $data[$entry->id] = [
                     'position' => $entry->position,
                     'duration' => $entry->duration,
@@ -62,14 +62,14 @@ class EntryController extends Controller
             $ent->save();
 
             $data[$ent->id] = [
-                    'position' => $ent->position,
-                    'duration' => $ent->duration,
-                    'header' => $ent->header,
-                    'description' => $ent->description,
-                    'type' => $ent->type,
-                    'created_at' => $ent->created_at,
-                    'updated_at' => $ent->updated_at,
-                ];
+                'position' => $ent->position,
+                'duration' => $ent->duration,
+                'header' => $ent->header,
+                'description' => $ent->description,
+                'type' => $ent->type,
+                'created_at' => $ent->created_at,
+                'updated_at' => $ent->updated_at,
+            ];
 
             $response['error'] = false;
             $response['data'] = $data;
@@ -89,11 +89,11 @@ class EntryController extends Controller
         ];
 
         if (Auth::check()) {
-            $ent = entries::where('id','=',$request->entry_id)->first();
-            $ent->position = $request->position,
-            $ent->header = $request->duration,
-            $ent->header = $request->header,
-            $ent->description = $request->description,
+            $ent = entries::where('id', '=', $request->entry_id)->first();
+            $ent->position = $request->position;
+            $ent->header = $request->duration;
+            $ent->header = $request->header;
+            $ent->description = $request->description;
             $ent->type = $request->type;
 
             $ent->save();
@@ -106,7 +106,7 @@ class EntryController extends Controller
                 'type' => $ent->type,
                 'created_at' => $ent->created_at,
                 'updated_at' => $ent->updated_at,
-                ];
+            ];
 
             $response['error'] = false;
             $response['data'] = $data;
@@ -127,7 +127,7 @@ class EntryController extends Controller
 
         if (Auth::check()) {
 
-            $ent = entries::where('id','=',$request->entry_id)->first();
+            $ent = entries::where('id', '=', $request->entry_id)->first();
             $ent->delete();
 
             $response['error'] = false;
