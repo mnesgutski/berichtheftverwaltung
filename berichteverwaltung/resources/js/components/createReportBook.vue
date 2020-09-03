@@ -10,7 +10,7 @@
                 </div>
                 <!-- Cancel Button -->
                 <div class="col d-flex ai-center jc-end">
-                    <i class="fas fa-times lbl-ico"></i>
+                    <i class="fas fa-times lbl-ico" @click="cancelCreate"></i>
                 </div>
             </div>
             <!-- Create Form -->
@@ -25,18 +25,18 @@
                 <!-- Date Inputs -->
                 <div class="row m-b-xl">
                     <div class="col">
-                        <input type="date" v-model="start_date" id="inp-username">
+                        <input type="date" v-model="begin_date" id="inp-username">
                         <h2 class="lbl-light font-sm">Beginn</h2>
                     </div>
                     <div class="col">
-                        <input type="date" v-model="start_date" id="inp-username">
+                        <input type="date" v-model="end_date" id="inp-username">
                         <h2 class="lbl-light font-sm">Ende</h2>
                     </div>                    
                 </div> 
                 <!-- Submit Button -->
                 <div class="row m-b-xl">
                     <div class="col d-flex jc-end">
-                        <button class="font-md lbl-light btn-hov">Erstellen</button>
+                        <button @click="createReportBook" class="font-md lbl-light btn-hov">Erstellen</button>
                     </div>
                 </div>
                 <!-- <div class="offset-xl"></div> -->
@@ -46,15 +46,29 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
     data(){
         return{
-
+            apprenticeship_name: '',
+            begin_date: '',
+            end_date: ''
         }
     },
     methods: {
         cancelCreate: function(){
-            
+            this.$router.push({name: 'reportBooks'})
+        },
+        createReportBook: function(){
+            axios.post('/reportBooks/create', {
+                apprenticeship_name: this.apprenticeship_name,
+                begin_date: this.begin_date,
+                end_date: this.end_date
+            }).then((response) => {
+                alert(response);
+            }, (error) => {
+                    console.log(error);
+            });
         }
     }
 }
