@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 
 class ReportBookController extends Controller
 {
+
+    //@TODO: MAIK fix validation and make proper errors and catch exceptions
     public function get(Request $request)
     {
         $response = [
@@ -128,7 +130,10 @@ class ReportBookController extends Controller
 			$rBook = report_books::where('id', '=', $request->reportBookId)
 				->where('owner','=', Auth::id())
 				->first();
-			$rbook->
+			$rbook->delete();
+			$response['data']['delete'] = true;
+			$response['error'] = false;
+			return response()->json($response);
         }
 
         $response['error_message'] = 'Something went wrong';
