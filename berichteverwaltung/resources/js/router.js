@@ -3,7 +3,8 @@ import Router from 'vue-router';
 import App from './app.vue';
 import Login from './components/login.vue';
 import ReportBooks from './components/reportBooks.vue';
-import CreateReportBook from './components/CreateReportBook'
+import CreateReportBook from './components/CreateReportBook';
+import Reports from './components/reports';
 
 Vue.use(Router);
 
@@ -29,6 +30,13 @@ export default new Router({
 			path: '/createReportBook',
 			name: 'createReportBook',
 			components: {default: CreateReportBook},
+			props: {},
+			children: [],
+		},
+		{
+			path: '/reports',
+			name: 'reports',
+			components: {default: Reports},
 			props: {},
 			children: [],
 		}
