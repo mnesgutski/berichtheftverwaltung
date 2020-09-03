@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
      * ReportBook Routes
      */
     Route::get('/reportBooks', 'ViewController@index')->name('reportBooks.index');
+    Route::get('/createReportBook','ViewController@index')->name('reportBooks.createform')
+
     Route::post('/reportBooks/get', 'ReportBookController@get')->name('reportBooks.get');
     Route::post('/reportBooks/create', 'ReportBookController@create')->name('reportBooks.create');
     Route::post('/reportBooks/update', 'ReportBookController@update')->name('reportBooks.update');
