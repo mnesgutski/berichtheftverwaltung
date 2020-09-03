@@ -101,9 +101,9 @@ class ReportBookController extends Controller
             $rBook = report_books::where('id', '=', $request->reportBookId)
                 ->where('owner', '=', Auth::id())
                 ->first();
-            $rbook->apprenticeship_name = ($request->apprenticeship_name !== null || $request->apprenticeship_name !== "") ? $request->apprenticeship_name : $rbook->apprenticeship_name;
-            $rbook->begin_date = ($request->begin_date !== null || $request->begin_date !== "") ? $request->begin_date : $rbook->begin_date;
-            $rbook->end_date = ($request->end_date !== null || $request->end_date !== "") ? $request->end_date : $rbook->end_date;
+            $rBook->apprenticeship_name = ($request->apprenticeship_name !== null || $request->apprenticeship_name !== "") ? $request->apprenticeship_name : $rBook->apprenticeship_name;
+            $rBook->begin_date = ($request->begin_date !== null || $request->begin_date !== "") ? $request->begin_date : $rBook->begin_date;
+            $rBook->end_date = ($request->end_date !== null || $request->end_date !== "") ? $request->end_date : $rBook->end_date;
 
             $rBook->save();
 
