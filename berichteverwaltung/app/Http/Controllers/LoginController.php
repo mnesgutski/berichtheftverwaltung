@@ -21,6 +21,7 @@ class LoginController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);**/
+        //@TODO:MAIK Fix Validation
 
         $user = User::where('username', '=', $request->username)->first();
 
