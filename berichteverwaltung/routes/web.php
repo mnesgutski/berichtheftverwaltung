@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
      * Report Routes
      */
     Route::get('/reports', 'ViewController@index')->name('reports.index');
+    Route::get('/createReport', 'ViewController@index')->name('reports.createform');
+
     Route::post('/reports/get', 'ReportController@get')->name('reports.get');
     Route::post('/reports/create', 'ReportController@create')->name('reports.create');
     Route::post('/reports/update', 'ReportController@update')->name('reports.update');
@@ -48,6 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
      * Entry Routes
      */
     Route::get('/entries', 'ViewController@index')->name('entries.index');
+
     Route::post('/entries/get', 'EntryController@get')->name('entries.get');
     Route::post('/entries/create', 'EntryController@create')->name('entries.create');
     Route::post('/entries/update', 'EntryController@update')->name('entries.update');
