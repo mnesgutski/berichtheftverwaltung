@@ -9,6 +9,11 @@
     --s-md: 100px;
     --s-lg: 200px;
     --s-xl: 400px;
+    --s-xx: 700px;
+    --f-sm: 20px;
+    --f-md: 30px;
+    --f-lg: 40px;
+    --f-xl: 60px;
 }
 
 @font-face {        
@@ -46,8 +51,22 @@ h1, h2, h3, h4, h5, h6{
     color: var(--c-main);
 }
 
-.lbl-light{font-family: roboto-light}
-.lbl-thin{font-family: roboto-thin}
+.font-sm{font-size: var(--f-sm);}
+.font-md{font-size: var(--f-md);}
+.font-lg{font-size: var(--f-lg);}
+.font-xl{font-size: var(--f-xl);}
+
+.lbl-light{
+    font-family: roboto-light;
+    color: var(--c-main);
+}
+.lbl-thin{
+    font-family: roboto-thin;
+    color: var(--c-main);
+}
+
+.color-1{color: var(--c-main)}
+.color-2{color: var(--c-second)}
 
 .full-size{
     position: absolute;
@@ -60,6 +79,11 @@ h1, h2, h3, h4, h5, h6{
     height: 100%;
 }
 
+.w-rel-60{width: 60%;}
+.w-rel-70{width: 70%;}
+.w-rel-80{width: 80%;}
+.w-rel-90{width: 90%;}
+
 .back-trans{background-color: transparent;}
 
 .d-flex{display: flex;}
@@ -71,7 +95,7 @@ h1, h2, h3, h4, h5, h6{
     align-items: center;
     justify-content: center;
 }
-
+.f-nowrap{flex-wrap: nowrap;}
 .fd-column{flex-direction: column;}
 
 input[type="text"]{
@@ -99,3 +123,35 @@ input[type="text"]{
 .p-none{padding: 0;}
 
 .b-b-thin{border-bottom: 1px solid var(--c-second);}
+
+.lbl-ico{
+    font-size: 50px; 
+    color: var(--c-main);
+    height: 1em;
+}
+.btn-hov{
+    position: relative;
+}
+.btn-hov:active{transform: scale(0.98)}
+.btn-hov::after{
+    content: '';
+    width: 0px;
+    position: absolute;
+    height: 1px;
+    background-color: var(--c-main);
+    bottom: 0;
+    left: 0;
+    transition: width .15s ease;
+}
+.btn-hov:hover::after{width: 100%;}
+button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+/* Removes Focus Outlines in Firefox */
+button::-moz-focus-inner {
+    border: 0;
+  }
+
+input{color: var(--c-second)}
