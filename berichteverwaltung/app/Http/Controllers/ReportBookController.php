@@ -57,7 +57,10 @@ class ReportBookController extends Controller
         }
 
         if(Auth::check()){
-
+        	$reportBook = report_books::create([
+        		'owner' => Auth::id(),
+        		'apprenticeship_name' => () ? :''
+        	]);
         }
 
         $response['error_message'] = 'Authorization needed';

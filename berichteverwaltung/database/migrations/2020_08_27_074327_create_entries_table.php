@@ -16,10 +16,10 @@ class CreateEntriesTable extends Migration
         Schema::create('entries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('report_id');
-            $table->integer('position');
-            $table->double('duration');
-            $table->string('header');
-            $table->string('description');
+            $table->integer('position')->nullable();
+            $table->double('duration')->nullable();
+            $table->string('header')->nullable();
+            $table->string('description')->nullable();
             $table->enum('type',['school','company']);
             $table->timestamps();
         });

@@ -20,9 +20,9 @@ class CreateReportsTable extends Migration
             $table->integer('position');
             $table->date('begin_date');
             $table->date('end_date');
-            $table->string('company');
-            $table->string('department');
-            $table->double('hours_targeted');
+            $table->string('company')->nullable();
+            $table->string('department')->nullable();
+            $table->double('hours_targeted')->nullable();
             $table->timestamps();
         });
     }

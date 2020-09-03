@@ -17,10 +17,10 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        /** $validator = Validator::make($request->all(), [
             'username' => 'required',
-            'password' => 'required|min:6'
-        ]);
+            'password' => 'required'
+        ]);**/
 
         $user = User::where('username', '=', $request->username)->first();
 
@@ -36,10 +36,10 @@ class LoginController extends Controller
             ]
         ];
 
-        if ($validator->fails()) {
+        /**if ($validator->fails()) {
             $response['error_message'] = 'Username or Password incorrect. Password has to be at least 6 characters long.';
             return response()->json($response);
-        }
+        }**/
 
         if ($user !== null) {
             //if(Hash::check($request->password, $user->password))
