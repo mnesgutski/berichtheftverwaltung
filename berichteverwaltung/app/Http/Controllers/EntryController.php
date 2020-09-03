@@ -96,6 +96,8 @@ class EntryController extends Controller
             $ent->description = $request->description,
             $ent->type = $request->type;
 
+            $ent->save();
+
             $data[$ent->id] = [
                 'position' => $ent->position,
                 'duration' => $ent->duration,
