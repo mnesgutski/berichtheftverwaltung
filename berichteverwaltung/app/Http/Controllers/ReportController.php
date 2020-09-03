@@ -81,7 +81,7 @@ class ReportController extends Controller
 
     }
 
-    public function update()
+    public function update(Request $request)
     {
         $response = [
             'error' => true,
@@ -119,7 +119,7 @@ class ReportController extends Controller
         return response()->json($response);
     }
 
-    public function delete()
+    public function delete(Request $request)
     {
         $response = [
             'error' => true,
