@@ -51,8 +51,27 @@ class EntryController extends Controller
         ];
 
         if (Auth::check()) {
+            $ent = entries::create([
+                'report_id' => $request->report_id,
+                'position' => $request->position,
+                'duration' => $request->duration,
+                'header' => $request->header,
+                'description' => $request->description,
+                'type' => $request->type
+            ]);
+            $ent->save();
 
-         $response['error'] = false;
+            $data[$ent->id] = [
+                    'position' => $ent->position,
+                    'duration' => $ent->duration,
+                    'header' => $ent->header,
+                    'description' => $ent->description,
+                    'type' => $ent->type,
+                    'created_at' => $ent->created_at,
+                    'updated_at' => $ent->updated_at,
+                ];
+
+            $response['error'] = false;
             $response['data'] = $data;
             return response()->json($response);
         }
@@ -70,9 +89,23 @@ class EntryController extends Controller
         ];
 
         if (Auth::check()) {
-            
-            
-            
+            $ent = entries::where('id','=',$request->entry_id)->first();
+            $ent->position = $request->position,
+            $ent->header = $request->duration,
+            $ent->header = $request->header,
+            $ent->description = $request->description,
+            $ent->type = $request->type;
+
+            $data[$ent->id] = [
+                'position' => $ent->position,
+                'duration' => $ent->duration,
+                'header' => $ent->header,
+                'description' => $ent->description,
+                'type' => $ent->type,
+                'created_at' => $ent->created_at,
+                'updated_at' => $ent->updated_at,
+                ];
+
             $response['error'] = false;
             $response['data'] = $data;
             return response()->json($response);
@@ -92,8 +125,11 @@ class EntryController extends Controller
 
         if (Auth::check()) {
 
+            $ent = entries::where('id','=',$request->entry_id)->first();
+            $ent->delete();
+
             $response['error'] = false;
-            $response['data'] = $data;
+            $response['data'] = ['delete' => true];
             return response()->json($response);
         }
 
