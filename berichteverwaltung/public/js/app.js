@@ -1908,6 +1908,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1955,12 +1957,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      apprenticeship_name: '',
+      begin_date: '',
+      end_date: ''
+    };
   },
   methods: {
-    cancelCreate: function cancelCreate() {}
+    cancelCreate: function cancelCreate() {
+      this.$router.push({
+        name: 'reportBooks'
+      });
+    },
+    createReportBook: function createReportBook() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reportBooks/create', {
+        apprenticeship_name: this.apprenticeship_name,
+        begin_date: this.begin_date,
+        end_date: this.end_date
+      }).then(function (response) {
+        alert(response);
+      }, function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -2066,7 +2088,7 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   methods: {
-    create_new_report_book: function create_new_report_book() {
+    createNewReportBook: function createNewReportBook() {
       this.$router.push({
         name: 'createReportBook'
       });
@@ -2126,7 +2148,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    display: block;\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-main);\n}\n#btn-add-new-book[data-v-3437344a]:hover{transform: scale(1.05)}\n.report-book-container[data-v-3437344a]:hover{\r\n    box-shadow: 0px 0px 1px black;\n}\r\n", ""]);
+exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    display: block;\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-main);\n}\n.report-book-container[data-v-3437344a]:hover{\r\n    transform: scale(1.02)\n}\r\n", ""]);
 
 // exports
 
@@ -3335,7 +3357,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "fill-parent" }, [
     _c("div", { staticClass: "row fd-column fill-parent" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-auto row" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col d-flex ai-center jc-end" }, [
+          _c("i", {
+            staticClass: "fas fa-times lbl-ico",
+            on: { click: _vm.cancelCreate }
+          })
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -3379,18 +3410,18 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.start_date,
-                    expression: "start_date"
+                    value: _vm.begin_date,
+                    expression: "begin_date"
                   }
                 ],
                 attrs: { type: "date", id: "inp-username" },
-                domProps: { value: _vm.start_date },
+                domProps: { value: _vm.begin_date },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.start_date = $event.target.value
+                    _vm.begin_date = $event.target.value
                   }
                 }
               }),
@@ -3404,18 +3435,18 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.start_date,
-                    expression: "start_date"
+                    value: _vm.end_date,
+                    expression: "end_date"
                   }
                 ],
                 attrs: { type: "date", id: "inp-username" },
-                domProps: { value: _vm.start_date },
+                domProps: { value: _vm.end_date },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.start_date = $event.target.value
+                    _vm.end_date = $event.target.value
                   }
                 }
               }),
@@ -3424,7 +3455,18 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("div", { staticClass: "row m-b-xl" }, [
+            _c("div", { staticClass: "col d-flex jc-end" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "font-md lbl-light btn-hov",
+                  on: { click: _vm.createReportBook }
+                },
+                [_vm._v("Erstellen")]
+              )
+            ])
+          ])
         ]
       )
     ])
@@ -3435,28 +3477,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-auto row" }, [
-      _c("div", { staticClass: "col-auto" }, [
-        _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtsheft erstellen")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "b-b-thin" })
-      ]),
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtsheft erstellen")]),
       _vm._v(" "),
-      _c("div", { staticClass: "col d-flex ai-center jc-end" }, [
-        _c("i", { staticClass: "fas fa-times lbl-ico" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row m-b-xl" }, [
-      _c("div", { staticClass: "col d-flex jc-end" }, [
-        _c("button", { staticClass: "font-md lbl-light btn-hov" }, [
-          _vm._v("Erstellen")
-        ])
-      ])
+      _c("div", { staticClass: "b-b-thin" })
     ])
   }
 ]
@@ -3586,7 +3610,7 @@ var render = function() {
           "div",
           {
             staticClass: "report-book-container",
-            on: { click: _vm.create_new_report_book }
+            on: { click: _vm.createNewReportBook }
           },
           [_vm._m(1)]
         )

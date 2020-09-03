@@ -8,7 +8,7 @@
         </div>
         <div class="row">
             <div class="col-auto">
-                <div @click="create_new_report_book" class="report-book-container">
+                <div @click="createNewReportBook" class="report-book-container">
                     <div id="btn-add-new-book" class="d-flex f-center fill-parent">
                         <i class="fas fa-plus lbl-ico"></i>
                     </div>
@@ -25,7 +25,7 @@ export default {
         }
     },
     methods: {
-        create_new_report_book(){
+        createNewReportBook(){
             this.$router.push({name: 'createReportBook'});
         }
     }
@@ -39,9 +39,7 @@ export default {
     border: 1px solid var(--c-main);
 }
 
-#btn-add-new-book:hover{transform: scale(1.05)}
-
 .report-book-container:hover{
-    box-shadow: 0px 0px 1px black;
+    transform: scale(1.02)
 }
 </style>
