@@ -64,7 +64,7 @@ export default {
 
 input[type="text"], input[type="password"]{
     width: 100%;
-    font-size: 35px;
+    font-size: 25px;
     font-family: roboto-light;
     border: none;
     border-radius: 0;

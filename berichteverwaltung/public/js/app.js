@@ -1978,7 +1978,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\r\n    width: 100%;\r\n    font-size: 35px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\nbutton[data-v-172b28a4]{\r\n    position: relative;\r\n    background-color: transparent;\r\n    padding: 5px;\r\n    font-size: 35px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    outline: none;\r\n    transition: transform .1s ease;\n}\nbutton[data-v-172b28a4]:hover{transform: scale(1.02)}\nbuttOn[data-v-172b28a4]:active{transform: scale(1)}\n.force-center[data-v-172b28a4]{\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%);\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\r\n    width: 100%;\r\n    font-size: 25px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\nbutton[data-v-172b28a4]{\r\n    position: relative;\r\n    background-color: transparent;\r\n    padding: 5px;\r\n    font-size: 35px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    outline: none;\r\n    transition: transform .1s ease;\n}\nbutton[data-v-172b28a4]:hover{transform: scale(1.02)}\nbuttOn[data-v-172b28a4]:active{transform: scale(1)}\n.force-center[data-v-172b28a4]{\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%);\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -1997,7 +1997,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    display: block;\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-main);\n}\n.b-b-thin[data-v-3437344a]{border-bottom: 1px solid var(--c-main);}\r\n", ""]);
+exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    display: block;\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-main);\n}\n.b-b-thin[data-v-3437344a]{border-bottom: 1px solid var(--c-main);}\n.lbl-ico[data-v-3437344a]{font-size: 30px; color: var(--c-second)}\r\n", ""]);
 
 // exports
 
@@ -3289,7 +3289,7 @@ var staticRenderFns = [
                 staticClass: "d-flex jc-center fill-parent",
                 attrs: { id: "btn-add-new-book" }
               },
-              [_vm._v("+")]
+              [_c("i", { staticClass: "fa-plus lbl-ico" })]
             )
           ])
         ])
