@@ -1966,6 +1966,49 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reportBooks.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reportBooks.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+  methods: {
+    create_new_report_book: function create_new_report_book() {
+      this.$router.push({
+        name: 'createReportBook'
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/login.vue?vue&type=style&index=0&id=172b28a4&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/login.vue?vue&type=style&index=0&id=172b28a4&scoped=true&lang=css& ***!
@@ -1997,7 +2040,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    display: block;\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-main);\n}\n.b-b-thin[data-v-3437344a]{border-bottom: 1px solid var(--c-main);}\n.lbl-ico[data-v-3437344a]{font-size: 30px; color: var(--c-second)}\r\n", ""]);
+exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    display: block;\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-main);\n}\n.lbl-ico[data-v-3437344a]{\r\n    font-size: 50px; \r\n    color: var(--c-main);\r\n    height: 1em;\n}\n#btn-add-new-book[data-v-3437344a]:hover{transform: scale(1.05)}\n.report-book-container[data-v-3437344a]:hover{\r\n    box-shadow: 0px 0px 1px black;\n}\r\n", ""]);
 
 // exports
 
@@ -3154,6 +3197,47 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateReportBook.vue?vue&type=template&id=04ca7a44&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CreateReportBook.vue?vue&type=template&id=04ca7a44& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "row m-b-lg" }, [
+        _c("div", { staticClass: "col-auto" }, [
+          _c("h1", { staticClass: "m-r-lg" }, [
+            _vm._v("Berichtsheft erstellen")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "b-b-thin" })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/login.vue?vue&type=template&id=172b28a4&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/login.vue?vue&type=template&id=172b28a4&scoped=true& ***!
@@ -3264,37 +3348,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-auto" }, [
+        _c(
+          "div",
+          {
+            staticClass: "report-book-container",
+            on: { click: _vm.create_new_report_book }
+          },
+          [_vm._m(1)]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row m-b-lg" }, [
-        _c("div", { staticClass: "col-auto" }, [
-          _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtshefte")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "b-b-thin" })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-auto" }, [
-          _c("div", { staticClass: "report-book-container" }, [
-            _c(
-              "div",
-              {
-                staticClass: "d-flex jc-center fill-parent",
-                attrs: { id: "btn-add-new-book" }
-              },
-              [_c("i", { staticClass: "fa-plus lbl-ico" })]
-            )
-          ])
-        ])
+    return _c("div", { staticClass: "row m-b-lg" }, [
+      _c("div", { staticClass: "col-auto" }, [
+        _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtshefte")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "b-b-thin" })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "d-flex f-center fill-parent",
+        attrs: { id: "btn-add-new-book" }
+      },
+      [_c("i", { staticClass: "fas fa-plus lbl-ico" })]
+    )
   }
 ]
 render._withStripped = true
@@ -18596,6 +18691,59 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/CreateReportBook.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/CreateReportBook.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateReportBook_vue_vue_type_template_id_04ca7a44___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateReportBook.vue?vue&type=template&id=04ca7a44& */ "./resources/js/components/CreateReportBook.vue?vue&type=template&id=04ca7a44&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _CreateReportBook_vue_vue_type_template_id_04ca7a44___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateReportBook_vue_vue_type_template_id_04ca7a44___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CreateReportBook.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CreateReportBook.vue?vue&type=template&id=04ca7a44&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/CreateReportBook.vue?vue&type=template&id=04ca7a44& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReportBook_vue_vue_type_template_id_04ca7a44___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateReportBook.vue?vue&type=template&id=04ca7a44& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateReportBook.vue?vue&type=template&id=04ca7a44&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReportBook_vue_vue_type_template_id_04ca7a44___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReportBook_vue_vue_type_template_id_04ca7a44___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/login.vue":
 /*!*******************************************!*\
   !*** ./resources/js/components/login.vue ***!
@@ -18693,17 +18841,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reportBooks_vue_vue_type_template_id_3437344a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reportBooks.vue?vue&type=template&id=3437344a&scoped=true& */ "./resources/js/components/reportBooks.vue?vue&type=template&id=3437344a&scoped=true&");
-/* harmony import */ var _reportBooks_vue_vue_type_style_index_0_id_3437344a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reportBooks.vue?vue&type=style&index=0&id=3437344a&scoped=true&lang=css& */ "./resources/js/components/reportBooks.vue?vue&type=style&index=0&id=3437344a&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _reportBooks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reportBooks.vue?vue&type=script&lang=js& */ "./resources/js/components/reportBooks.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _reportBooks_vue_vue_type_style_index_0_id_3437344a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reportBooks.vue?vue&type=style&index=0&id=3437344a&scoped=true&lang=css& */ "./resources/js/components/reportBooks.vue?vue&type=style&index=0&id=3437344a&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _reportBooks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _reportBooks_vue_vue_type_template_id_3437344a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _reportBooks_vue_vue_type_template_id_3437344a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -18717,6 +18867,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/reportBooks.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reportBooks.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/reportBooks.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_reportBooks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./reportBooks.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reportBooks.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_reportBooks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -18769,6 +18933,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.vue */ "./resources/js/app.vue");
 /* harmony import */ var _components_login_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login.vue */ "./resources/js/components/login.vue");
 /* harmony import */ var _components_reportBooks_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/reportBooks.vue */ "./resources/js/components/reportBooks.vue");
+/* harmony import */ var _components_CreateReportBook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/CreateReportBook */ "./resources/js/components/CreateReportBook.vue");
+
 
 
 
@@ -18790,6 +18956,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'reportBooks',
     components: {
       "default": _components_reportBooks_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    },
+    props: {},
+    children: []
+  }, {
+    path: '/createReportBook',
+    name: 'createReportBook',
+    components: {
+      "default": _components_CreateReportBook__WEBPACK_IMPORTED_MODULE_6__["default"]
     },
     props: {},
     children: []

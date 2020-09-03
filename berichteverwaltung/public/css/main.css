@@ -60,10 +60,17 @@ h1, h2, h3, h4, h5, h6{
     height: 100%;
 }
 
+.back-trans{background-color: transparent;}
+
 .d-flex{display: flex;}
 .jc-center{justify-content: center;}
 .jc-end{justify-content: flex-end;}
 .ai-center{align-items: center;}
+
+.f-center{
+    align-items: center;
+    justify-content: center;
+}
 
 .fd-column{flex-direction: column;}
 
@@ -90,3 +97,5 @@ input[type="text"]{
 
 .m-none{margin: 0;}
 .p-none{padding: 0;}
+
+.b-b-thin{border-bottom: 1px solid var(--c-second);}

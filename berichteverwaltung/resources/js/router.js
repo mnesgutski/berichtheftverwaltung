@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import App from './app.vue';
 import Login from './components/login.vue';
 import ReportBooks from './components/reportBooks.vue';
+import CreateReportBook from './components/CreateReportBook'
 
 Vue.use(Router);
 
@@ -23,7 +24,15 @@ export default new Router({
 			components: {default: ReportBooks},
 			props: {},
 			children: [],
+		},
+		{
+			path: '/createReportBook',
+			name: 'createReportBook',
+			components: {default: CreateReportBook},
+			props: {},
+			children: [],
 		}
+		
 	],
 
 });
