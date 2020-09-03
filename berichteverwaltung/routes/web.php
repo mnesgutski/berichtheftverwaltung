@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ViewController@index')->name('home');
+Route::get('/', 'ViewController@index')->name('home')->middleware("auth");
 //Route::get('/login', 'ViewController@index')->name('login')->middleware('guest');
 Route::get('/login', 'ViewController@index')->name('login');
 

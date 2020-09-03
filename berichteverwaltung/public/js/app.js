@@ -2096,10 +2096,10 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reportBooks/get').then(function (response) {
-      if (response.error) {
-        alert(response.error_message);
+      if (response.data.error) {
+        alert(response.data.error_message);
       } else {
-        _this.reportBooks = response.data;
+        _this.reportBooks = response.data.data;
       }
     }, function (error) {
       console.log(error);

@@ -28,10 +28,10 @@ export default {
     mounted(){
         axios.post('/reportBooks/get')
             .then((response) => {
-                if (response.error) {
-                    alert(response.error_message);
+                if (response.data.error) {
+                    alert(response.data.error_message);
                 }else{
-                    this.reportBooks = response.data;
+                    this.reportBooks = response.data.data;
                 }
             }, (error) => {
                 console.log(error);
