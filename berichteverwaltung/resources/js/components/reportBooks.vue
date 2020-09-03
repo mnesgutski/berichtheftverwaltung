@@ -18,11 +18,24 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
     data: function(){
         return{
-
+            reportBooks: []
         }
+    },
+    mounted(){
+        axios.post('/reportBooks/get')
+            .then((response) => {
+                if (response.error) {
+                    alert(response.error_message);
+                }else{
+                    this.reportBooks = response.data;
+                }
+            }, (error) => {
+                console.log(error);
+            });
     },
     methods: {
         createNewReportBook(){
