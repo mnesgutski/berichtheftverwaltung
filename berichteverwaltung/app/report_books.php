@@ -21,6 +21,6 @@ class report_books extends Model
    	}
 
    	public function reports(){
-   		return $this->hasMany('App\reports');
+   		return $this->hasMany('App\reports', 'report_book_id');
    	}
 }

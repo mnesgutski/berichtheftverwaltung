@@ -16,6 +16,6 @@ class entries extends Model
    ];
 
    public function report(){
-    return $this->belongsTo('App\reports');
+    return $this->belongsTo('App\reports', 'report_id');
    }
 }
