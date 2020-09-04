@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 /**
  *    Test Routes
+ *    Michel: Hoffentlich sieht das hier niemand
  **/
 Route::get('/test', 'TestController@index');
 Route::get('/testapi', 'TestController@loginTest');

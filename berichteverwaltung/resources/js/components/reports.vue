@@ -17,7 +17,7 @@
         <div class="row m-none">
             <!-- All Reports -->
             <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reports" :key="item.id">
-                <div class="report-container d-flex fd-column f-center p-md" @click="enterReport($route.params.report_book_id, item.id)">
+                <div class="report-container d-flex fd-column f-center p-md" @click="enterReport(item)">
                     <h2 class="lbl-light font-sm lbl-center wrap">{{reportTypes[item.type]}}</h2>
                     <div class="divider"></div>
                     <h2 class="lbl-light font-sm lbl-center">{{item.begin_date}} -<br>{{item.end_date}}</h2>                                                              
@@ -44,7 +44,7 @@ export default {
         }
     },
     mounted(){
-        this.report_book_id = this.$route.params.report_book_id;
+        console.log(this.$route.params.report_book_id);
         axios.post('/reports/get', {reportBookId: this.$route.params.report_book_id})
             .then((response)=>{
                 console.log(response);
@@ -57,8 +57,8 @@ export default {
         createReport(){
             this.$router.push({name: "createReport", params: {report_book_id: this.$route.params.report_book_id}});
         },
-        enterReport(p_report_book_id, p_report_id){
-            this.$router.push({name: 'entries', params: {report_book_id: p_report_book_id, report_id: p_report_id}});
+        enterReport(report){
+            this.$router.push({name: 'entries', params: {report: report}});
         }
     }
 }

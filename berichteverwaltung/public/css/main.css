@@ -93,13 +93,20 @@ h1, h2, h3, h4, h5, h6{
 .jc-end{justify-content: flex-end;}
 .jc-space-around{justify-content: space-around;}
 .ai-center{align-items: center;}
-
 .f-center{
     align-items: center;
     justify-content: center;
 }
 .f-nowrap{flex-wrap: nowrap;}
 .fd-column{flex-direction: column;}
+
+.box-auto {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+}
 
 input[type="text"]{
     border: 0px solid black;

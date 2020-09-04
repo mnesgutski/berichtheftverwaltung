@@ -2133,14 +2133,53 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      entries: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (this.$route.params.report !== undefined) {
+      this.$router.push({
+        name: 'reportBooks'
+      });
+      return;
+    }
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/entries/get', {
+      reportId: this.$route.params.report.id
+    }).then(function (response) {
+      _this.entries = response.data.data;
+    }, function (error) {
+      console.log(error);
+    });
   }
 });
 
@@ -2354,7 +2393,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.report_book_id = this.$route.params.report_book_id;
+    console.log(this.$route.params.report_book_id);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reports/get', {
       reportBookId: this.$route.params.report_book_id
     }).then(function (response) {
@@ -2373,12 +2412,11 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    enterReport: function enterReport(p_report_book_id, p_report_id) {
+    enterReport: function enterReport(report) {
       this.$router.push({
         name: 'entries',
         params: {
-          report_book_id: p_report_book_id,
-          report_id: p_report_id
+          report: report
         }
       });
     }
@@ -3714,7 +3752,7 @@ var render = function() {
   return _c("div", { staticClass: "fill-parent" }, [
     _c(
       "div",
-      { staticClass: "container-fluid pm-none m-h-lg fill-parent" },
+      { staticClass: "container-fluid pm-none p-h-lg fill-parent" },
       [_c("router-view")],
       1
     )
@@ -4172,15 +4210,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "d-flex b-b-thin" }, [
+      _vm.$route.params.report.position
+        ? _c("div", { staticClass: "box-auto" }, [
+            _c("h2", [
+              _vm._v("Nummer: " + _vm._s(this.$route.params.report.position))
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "box-auto" }, [
+        _vm._v(
+          "\n            Vom " +
+            _vm._s(this.$route.params.report.begin_date) +
+            " bis zum " +
+            _vm._s(this.$routes.params.report.end_date) +
+            "\n        "
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("this is a single report wiht all its entries")])
+    return _c("div", { staticClass: "d-flex red" }, [
+      _c("div", { staticClass: "box-auto pm-none" }, [
+        _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Bericht")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "b-b-thin" })
+      ])
     ])
   }
 ]
@@ -4452,10 +4516,7 @@ var render = function() {
                     "report-container d-flex fd-column f-center p-md",
                   on: {
                     click: function($event) {
-                      return _vm.enterReport(
-                        _vm.$route.params.report_book_id,
-                        item.id
-                      )
+                      return _vm.enterReport(item)
                     }
                   }
                 },
