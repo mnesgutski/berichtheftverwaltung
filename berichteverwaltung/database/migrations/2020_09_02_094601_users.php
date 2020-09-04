@@ -15,8 +15,10 @@ class Users extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('email')->nullable();
+            $table->string('azure_id')->nullable();
             $table->string('username')->default(null);
-            $table->string('password')->default(null);
+            $table->string('password')->default(null)->nullable();
             $table->timestamps();
         });
     }

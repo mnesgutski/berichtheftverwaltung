@@ -9,9 +9,9 @@
 
 </head>
 <body>
-<form action="{{route('test.login')}}" method="post">
+<form action="login/microsoft" method="get">
     @CSRF
-    <input type="text" name="username" id="username"><br>
+    <input type="text" name="email" id="email"><br>
     <input type="password" name="password" id="password"><br>
     <button type="submit">Submit</button>
 </form>
