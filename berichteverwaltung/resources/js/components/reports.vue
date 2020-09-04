@@ -2,20 +2,25 @@
     <div>
         <div class="row m-none m-b-lg">
             <!-- Header -->
-            <div class="col-auto pm-none">
-                <h1 class="m-r-lg">Berichte</h1>
-                <div class="b-b-thin"></div>
-                <!-- Cancel Button -->
-                <i class="fas fa-times lbl-ico" @click="$router.push({name: 'reportBooks'})"></i>
+            <div class="col-auto row">
+                <!-- Title -->
+                <div class="col-auto">
+                    <h1 class="m-r-lg">Berichte</h1>
+                    <div class="b-b-thin"></div>
+                </div>
+                <!-- Back Button -->
+                <div class="col d-flex ai-center jc-end">
+                    <i class="fas fa-times lbl-ico" @click="$router.push({name: 'reportBooks'})"></i>
+                </div>
             </div>
         </div>
         <div class="row m-none">
             <!-- All Reports -->
             <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reports" :key="item.id">
-                <div class="report-container d-flex fd-column f-center p-md">
-                    <h2 class="lbl-light font-sm lbl-center wrap">{{item.name}}</h2>
+                <div class="report-container d-flex fd-column f-center p-md" @click="enterReport($route.params.report_book_id, item.id)">
+                    <h2 class="lbl-light font-sm lbl-center wrap">{{reportTypes[item.type]}}</h2>
                     <div class="divider"></div>
-                    <h2 class="lbl-light font-sm lbl-center">{{item.begin_date}}/<br>{{item.end_date}}</h2>                                                              
+                    <h2 class="lbl-light font-sm lbl-center">{{item.begin_date}} -<br>{{item.end_date}}</h2>                                                              
                 </div>
              </div>
              <!-- Create Button -->
@@ -34,13 +39,13 @@ import axios from 'axios';
 export default {
     data: function(){
         return{
-            report_book_id: '',
-            reports: []
+            reports: [],
+            reportTypes: { daily: "Tagesbericht", weekly: "Wochenbericht", monthly: "Monatsbericht"}
         }
     },
     mounted(){
         this.report_book_id = this.$route.params.report_book_id;
-        axios.post('/reports/get', {reportBookId: this.$route.params.id})
+        axios.post('/reports/get', {reportBookId: this.$route.params.report_book_id})
             .then((response)=>{
                 console.log(response);
                 this.reports = response.data.data;
@@ -50,7 +55,10 @@ export default {
     },
     methods: {
         createReport(){
-            this.$router.push({name: "createReport", params: {report_book_id: this.report_book_id}});
+            this.$router.push({name: "createReport", params: {report_book_id: this.$route.params.report_book_id}});
+        },
+        enterReport(p_report_book_id, p_report_id){
+            this.$router.push({name: 'entries', params: {report_book_id: p_report_book_id, report_id: p_report_id}});
         }
     }
 }
@@ -64,5 +72,11 @@ export default {
 
 .report-container:hover{
     transform: scale(1.02)
+}
+.divider{
+    height: 1px;
+    width: 100%;
+    background-color: var(--c-second);
+    margin: var(--pm-md) 0px;
 }
 </style>
