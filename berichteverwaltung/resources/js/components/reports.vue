@@ -18,7 +18,7 @@
              </div>
              <!-- Create Button -->
              <div class="col-auto pm-none m-r-lg m-b-lg">
-                <div class="report-container">
+                <div class="report-container" @click="createReport">
                     <div id="btn-add-new-book" class="d-flex f-center fill-parent">
                         <i class="fas fa-plus lbl-ico"></i>
                     </div>
@@ -44,6 +44,11 @@ export default {
             }, (error) => {
                 console.log(error);
             });
+    },
+    methods: {
+        createReport(){
+            this.$router.push({name: "createReport", params: {report_book_id: this.report_book_id}});
+        }
     }
 }
 </script>
