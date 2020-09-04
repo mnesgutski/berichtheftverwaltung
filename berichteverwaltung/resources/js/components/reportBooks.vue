@@ -13,7 +13,7 @@
                 <div class="report-book-container d-flex fd-column f-center p-md">
                     <h2 class="lbl-light font-sm lbl-center wrap">{{item.name}}</h2>
                     <div class="divider"></div>
-                    <h2 class="lbl-light font-sm lbl-center">{{item.begin_date}}/<br>{{item.end_date}}</h2>                                                              
+                    <h2 class="lbl-light font-sm lbl-center">{{item.begin_date}} -<br>{{item.end_date}}</h2>                                                              
                 </div>
              </div>
              <!-- Create Button -->
@@ -52,7 +52,7 @@ export default {
             this.$router.push({name: 'createReportBook'});
         },
         enterReportBook(id){
-            this.$router.push({name: 'reports', params: {id: id}});
+            this.$router.push({name: 'reports', params: {report_book_id: id}});
         }
     }
 }
