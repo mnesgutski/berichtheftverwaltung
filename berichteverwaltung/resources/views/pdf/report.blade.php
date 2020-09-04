@@ -22,12 +22,15 @@
             <b>{{$type}}</b>
         </td>
         <td>
-            
-            <p style="text-decoration: underline;">{{$entry->header}}</p>
-            <p>{{$entry->description}}</p>
+            @foreach($entries as $entry)
+            <p style="text-decoration: underline;">{{$entry['header']}}</p>
+            <p>{{$entry['description']}}</p>
+            @endforeach
         </td>
         <td>
-            {{$entry}}
+            @foreach($entries as $entry)
+            {{$entry['duration']}}
+            @endforeach
         </td>
         <hr>
     </tr>
