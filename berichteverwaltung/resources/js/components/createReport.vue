@@ -5,7 +5,7 @@
             <div class="col-auto row">
                 <!-- Title -->
                 <div class="col-auto">
-                    <h1 class="m-r-lg">Berichtsheft erstellen</h1>
+                    <h1 class="m-r-lg">Bericht erstellen</h1>
                     <div class="b-b-thin"></div>
                 </div>
                 <!-- Cancel Button -->
@@ -91,7 +91,7 @@ export default {
     },
     methods: {
         cancelCreate: function(){
-            this.$router.push({name: 'reportBooks'})
+            this.$router.push({name: 'reports'})
         },
         createReport: function(){
             axios.post('/reports/create', {
@@ -100,6 +100,7 @@ export default {
                 position: this.report_position,
                 begin_date: this.report_begin_date,
                 end_date: this.report_end_date,
+                hours_targeted: this.report_hours,
                 department: this.report_department,
                 company: this.report_company
             }).then((response) => {

@@ -5,6 +5,8 @@
             <div class="col-auto pm-none">
                 <h1 class="m-r-lg">Berichte</h1>
                 <div class="b-b-thin"></div>
+                <!-- Cancel Button -->
+                <i class="fas fa-times lbl-ico" @click="$router.push({name: 'reportBooks'})"></i>
             </div>
         </div>
         <div class="row m-none">
@@ -37,10 +39,11 @@ export default {
         }
     },
     mounted(){
+        this.report_book_id = this.$route.params.report_book_id;
         axios.post('/reports/get', {reportBookId: this.$route.params.id})
             .then((response)=>{
                 console.log(response);
-                reports = response.data.data;
+                this.reports = response.data.data;
             }, (error) => {
                 console.log(error);
             });

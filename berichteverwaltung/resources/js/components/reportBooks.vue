@@ -52,7 +52,7 @@ export default {
             this.$router.push({name: 'createReportBook'});
         },
         enterReportBook(id){
-            this.$router.push({name: 'reports', params: {id: id}});
+            this.$router.push({name: 'reports', params: {report_book_id: id}});
         }
     }
 }

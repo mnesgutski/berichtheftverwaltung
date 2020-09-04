@@ -2096,7 +2096,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     cancelCreate: function cancelCreate() {
       this.$router.push({
-        name: 'reportBooks'
+        name: 'reports'
       });
     },
     createReport: function createReport() {
@@ -2106,6 +2106,7 @@ __webpack_require__.r(__webpack_exports__);
         position: this.report_position,
         begin_date: this.report_begin_date,
         end_date: this.report_end_date,
+        hours_targeted: this.report_hours,
         department: this.report_department,
         company: this.report_company
       }).then(function (response) {
@@ -2260,7 +2261,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push({
         name: 'reports',
         params: {
-          id: id
+          report_book_id: id
         }
       });
     }
@@ -2309,6 +2310,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2318,11 +2321,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
+    this.report_book_id = this.$route.params.report_book_id;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reports/get', {
       reportBookId: this.$route.params.id
     }).then(function (response) {
       console.log(response);
-      reports = response.data.data;
+      _this.reports = response.data.data;
     }, function (error) {
       console.log(error);
     });
@@ -4099,7 +4105,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-auto" }, [
-      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtsheft erstellen")]),
+      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Bericht erstellen")]),
       _vm._v(" "),
       _c("div", { staticClass: "b-b-thin" })
     ])
@@ -4340,7 +4346,22 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("div", { staticClass: "row m-none m-b-lg" }, [
+      _c("div", { staticClass: "col-auto pm-none" }, [
+        _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichte")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "b-b-thin" }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fas fa-times lbl-ico",
+          on: {
+            click: function($event) {
+              return _vm.$router.push({ name: "reportBooks" })
+            }
+          }
+        })
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -4383,7 +4404,7 @@ var render = function() {
               staticClass: "report-container",
               on: { click: _vm.createReport }
             },
-            [_vm._m(1)]
+            [_vm._m(0)]
           )
         ])
       ],
@@ -4392,18 +4413,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row m-none m-b-lg" }, [
-      _c("div", { staticClass: "col-auto pm-none" }, [
-        _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichte")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "b-b-thin" })
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
