@@ -23,6 +23,7 @@ class ReportController extends Controller
                 $data = [];
                 foreach ($reports as $rep) {
                     $data[$rep->id] = [
+                        'id' => $rep->id,
                         'type' => $rep->type,
                         'position' => $rep->postion,
                         'begin_date' => $rep->begin_date,

@@ -5,26 +5,29 @@
     <title>Report</title>
 </head>
 <body>
+
+<h1>Ausbildungsbericht von {{$user->username}}</h1>
 <table class="table table-bordered">
     <thead>
     <tr>
-        <td><b>Show Name</b></td>
-        <td><b>Series</b></td>
-        <td><b>Lead Actor</b></td>
+        <td><b>Typ</b></td>
+        <td><b>Inhalt</b></td>
     </tr>
     </thead>
     <tbody>
+        @foreach($report as $type => $entries)
     <tr>
         <td>
-            supershowaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            <b>{{$type}}</b>
         </td>
         <td>
-            bigbong
+            
+            <p style="text-decoration: underline;">{{$entry->header}}</p>
+            <p>{{$entry->description}}</p>
         </td>
-        <td>
-            me
-        </td>
+        <hr>
     </tr>
+        @endforeach
     </tbody>
 </table>
 </body>
