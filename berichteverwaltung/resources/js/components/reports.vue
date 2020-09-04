@@ -43,6 +43,11 @@ export default {
             reportTypes: { daily: "Tagesbericht", weekly: "Wochenbericht", monthly: "Monatsbericht"}
         }
     },
+    created(){
+        if(this.$route.params.report_book_id === undefined){
+            this.$router.push({name: 'reportBooks'});
+        }
+    },
     mounted(){
         console.log(this.$route.params.report_book_id);
         axios.post('/reports/get', {reportBookId: this.$route.params.report_book_id})

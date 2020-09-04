@@ -82,21 +82,17 @@ export default {
             report_type: '',
             report_hours: 0,
             report_company: '',
-            report_department: '',
-            report_book_id: ''
+            report_department: ''
         }
-    },
-    mounted(){
-        this.report_book_id = this.$route.params.report_book_id;
     },
     methods: {
         cancelCreate: function(){
-            this.$router.push({name: 'reports'})
+            this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
         },
         createReport: function(){
             axios.post('/reports/create', {
                 type: this.report_type,
-                report_book_id: this.report_book_id,
+                report_book_id: this.$route.params.report_book_id,
                 position: this.report_position,
                 begin_date: this.report_begin_date,
                 end_date: this.report_end_date,

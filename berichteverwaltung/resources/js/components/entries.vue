@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Header -->
-        <div class="d-flex red">
+        <div class="d-flex m-b-lg">
             <!-- Header -->
             <div class="box-auto pm-none">
                 <h1 class="m-r-lg">Bericht</h1>
@@ -9,35 +9,50 @@
             </div>
         </div>
         <!-- Report Header -->
-        <div class="d-flex b-b-thin">
-            <div class="box-auto" v-if="$route.params.report.position">
-                <h2>Nummer: {{this.$route.params.report.position}}</h2>
+        <div class="d-flex">
+            <div class="box-auto b-b-thin" v-if="report.position">
+                <h2 class="font-md">Nummer: {{this.report.position}}</h2>
             </div>
             <div class="box-auto">
-                Vom {{this.$route.params.report.begin_date}} bis zum {{this.$routes.params.report.end_date}}
+                <h2 class="font-md">
+                    Vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}
+                </h2>
             </div>
         </div>
+        <entry header="test" description="test2"></entry>
+        <i class="fas fa-plus lbl-ico" @click="addEntry"></i>
     </div>
 </template>
 <script>
 import axios from 'axios';
+import entry from './entry.vue';
 export default {
     data(){
         return{
-            entries: []
+            entries: [],
+            report: {}
         }
     },
+    components:{
+        entry
+    },
     mounted(){
-        if(this.$route.params.report !==undefined){
+        if(this.$route.params.report === undefined){
             this.$router.push({name: 'reportBooks'});
             return;
         }
+        this.report = this.$route.params.report;
         axios.post('/entries/get', {reportId: this.$route.params.report.id})
             .then((response) => {
                 this.entries = response.data.data;
             }, (error) => {
                 console.log(error);
             });
+    },
+    methods:{
+        fetchEntries(){
+
+        }
     }
 }
 </script>
