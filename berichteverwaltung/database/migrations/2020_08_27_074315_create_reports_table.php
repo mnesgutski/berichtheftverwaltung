@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
             $table->id();
             $table->foreignId('report_book_id');
             $table->enum('type',['daily','weekly','monthly']);
-            $table->integer('position');
+            $table->integer('position')->default(1);
             $table->date('begin_date');
             $table->date('end_date');
             $table->string('company')->nullable();
