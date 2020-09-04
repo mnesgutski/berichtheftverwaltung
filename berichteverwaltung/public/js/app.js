@@ -2160,6 +2160,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2182,6 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
       return;
     }
 
+    console.log(this.$route.params.report);
     this.report = this.$route.params.report;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/entries/get', {
       reportId: this.$route.params.report.id
@@ -2192,7 +2197,8 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    fetchEntries: function fetchEntries() {}
+    fetchEntries: function fetchEntries() {},
+    addEntry: function addEntry() {}
   }
 });
 
@@ -4290,11 +4296,15 @@ var render = function() {
                 _vm._s(
                   new Date(this.report.begin_date).toLocaleDateString("de")
                 ) +
-                " bis zum " +
+                " \n                bis zum " +
                 _vm._s(
                   new Date(this.report.end_date).toLocaleDateString("de")
                 ) +
-                "\n            "
+                "\n                | " +
+                _vm._s(this.report.company) +
+                " \n                | " +
+                _vm._s(this.report.department) +
+                "\n\n            "
             )
           ])
         ])

@@ -15,7 +15,11 @@
             </div>
             <div class="box-auto">
                 <h2 class="font-md">
-                    Vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}
+                    Vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} 
+                    bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}
+                    | {{this.report.company}} 
+                    | {{this.report.department}}
+
                 </h2>
             </div>
         </div>
@@ -41,6 +45,7 @@ export default {
             this.$router.push({name: 'reportBooks'});
             return;
         }
+        console.log(this.$route.params.report);
         this.report = this.$route.params.report;
         axios.post('/entries/get', {reportId: this.$route.params.report.id})
             .then((response) => {
@@ -51,6 +56,9 @@ export default {
     },
     methods:{
         fetchEntries(){
+
+        },
+        addEntry(){
 
         }
     }
