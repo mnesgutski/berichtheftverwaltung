@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex fd-column">
             <div class="d-flex">
-                <div class="box" v-bind:class="{'b-b-thin' : description != ''}">
+                <div class="box-auto" v-bind:class="{'b-b-thin' : description != ''}">
                      <h2 class="font-md lbl-light">{{header}}</h2>
                 </div>               
             </div>

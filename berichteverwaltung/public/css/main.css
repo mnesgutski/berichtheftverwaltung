@@ -81,10 +81,19 @@ h1, h2, h3, h4, h5, h6{
     height: 100%;
 }
 
+.fill-h{width: 100%;}
+.fill-v{height: 100%;}
+
 .w-rel-60{width: 60%;}
 .w-rel-70{width: 70%;}
 .w-rel-80{width: 80%;}
 .w-rel-90{width: 90%;}
+
+.w-sm{width: var(--s-sm)}
+.w-md{width: var(--s-md)}
+.w-lg{width: var(--s-lg)}
+.w-xl{width: var(--s-xl)}
+.w-xx{width: var(--s-xx)}
 
 .back-trans{background-color: transparent;}
 
@@ -108,6 +117,11 @@ h1, h2, h3, h4, h5, h6{
     flex-grow: 1;
     max-width: 100%;
 }
+
+.prop-2{flex-grow: 2;}
+.prop-3{flex-grow: 3;}
+.prop-4{flex-grow: 4;}
+.prop-5{flex-grow: 5;}
 
 .box-auto {
     -webkit-box-flex: 0;

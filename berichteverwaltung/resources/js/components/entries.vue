@@ -1,4 +1,5 @@
 <template>
+<!-- @Todo: Michel : Wenn End und Begin date gleich, Anders rendern -->
     <div>
         <!-- Header -->
         <div class="d-flex m-b-lg">
@@ -11,10 +12,10 @@
         <!-- Report Header -->
         <div class="d-flex">
             <div class="box-auto b-b-thin" v-if="report.position">
-                <h2 class="font-md">Nummer: {{this.report.position}}</h2>
+                <h2 class="font-md lbl-light">Nummer: {{this.report.position}}</h2>
             </div>
             <div class="box-auto">
-                <h2 class="font-md">
+                <h2 class="font-md lbl-light">
                     Vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} 
                     bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}
                     | {{this.report.company}} 
@@ -23,22 +24,28 @@
                 </h2>
             </div>
         </div>
-        <entry header="test" description="test2"></entry>
+        <div v-for="item in entries" :key="item.id">
+            <entry :header="item.header" :description="item.description"></entry>
+        </div>
+        <create-entry :report_id="this.report.id"></create-entry>
         <i class="fas fa-plus lbl-ico" @click="addEntry"></i>
     </div>
 </template>
 <script>
 import axios from 'axios';
 import entry from './entry.vue';
+import createEntry from './createEntry.vue';
 export default {
     data(){
         return{
             entries: [],
-            report: {}
+            report: {},
+            mountReady: true
         }
     },
     components:{
-        entry
+        entry,
+        createEntry
     },
     mounted(){
         if(this.$route.params.report === undefined){
