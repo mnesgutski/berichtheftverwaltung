@@ -12,6 +12,7 @@
     <tr>
         <td><b>Typ</b></td>
         <td><b>Inhalt</b></td>
+        <td><b>Zeit</b></td>
     </tr>
     </thead>
     <tbody>
@@ -24,6 +25,9 @@
             
             <p style="text-decoration: underline;">{{$entry->header}}</p>
             <p>{{$entry->description}}</p>
+        </td>
+        <td>
+            {{$entry}}
         </td>
         <hr>
     </tr>

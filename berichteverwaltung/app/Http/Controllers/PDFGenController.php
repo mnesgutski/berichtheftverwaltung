@@ -22,13 +22,11 @@ class PDFGenController extends Controller
     	dump($report->entries);
     	$data = [];
     	foreach($report->entries as $entry){
-    		$data['type'] = [
-    			$entry->type = [
+    		$data[$entry->type][$entry->id] = [
     				'duration' => $entry->duration,
     				'header' => $entry->header,
     				'description' => $entry->description,
-    			]
-    		];
+    			];
     	}
     	$report = $data;
     	dd($report);
