@@ -21,21 +21,24 @@ class EntryController extends Controller
         if (Auth::check()) {
             $rep = reports::where('id', '=', $request->reportId)->first();
             $data = [];
-            foreach ($rep->entries as $entry) {
-                $data[$entry->id] = [
-                    'position' => $entry->position,
-                    'duration' => $entry->duration,
-                    'header' => $entry->header,
-                    'description' => $entry->description,
-                    'type' => $entry->type,
-                    'created_at' => $entry->created_at,
-                    'updated_at' => $entry->updated_at,
-                ];
-            }
+            if($rep !== null){
+                foreach ($rep->entries as $entry) {
+                    $data[$entry->id] = [
+                        'id' => $entry->id,
+                        'position' => $entry->position,
+                        'duration' => $entry->duration,
+                        'header' => $entry->header,
+                        'description' => $entry->description,
+                        'type' => $entry->type,
+                        'created_at' => $entry->created_at,
+                        'updated_at' => $entry->updated_at,
+                    ];
+                }
 
-            $response['error'] = false;
-            $response['data'] = $data;
-            return response()->json($response);
+                $response['error'] = false;
+                $response['data'] = $data;
+                return response()->json($response);
+            }
         }
 
         $response['error_message'] = 'Something went wrong';
