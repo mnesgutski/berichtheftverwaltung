@@ -2254,6 +2254,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -4568,63 +4572,68 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "d-flex" }, [
-        _vm.report.position
-          ? _c("div", { staticClass: "box-auto b-b-thin" }, [
-              _c("h2", { staticClass: "font-md lbl-light" }, [
-                _vm._v("Nummer: " + _vm._s(this.report.position))
+  return _c("div", { staticClass: "fill-parent red" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _c("div", { staticClass: "d-flex" }, [
+          _vm.report.position
+            ? _c("div", { staticClass: "box-auto b-b-thin" }, [
+                _c("h2", { staticClass: "font-md lbl-light" }, [
+                  _vm._v("Nummer: " + _vm._s(this.report.position))
+                ])
               ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "box-auto" }, [
+            _c("h2", { staticClass: "font-md lbl-light" }, [
+              _vm._v(
+                "\r\n                        Vom " +
+                  _vm._s(
+                    new Date(this.report.begin_date).toLocaleDateString("de")
+                  ) +
+                  " \r\n                        bis zum " +
+                  _vm._s(
+                    new Date(this.report.end_date).toLocaleDateString("de")
+                  ) +
+                  "\r\n                        | " +
+                  _vm._s(this.report.company) +
+                  " \r\n                        | " +
+                  _vm._s(this.report.department) +
+                  "\r\n    \r\n                    "
+              )
             ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "box-auto" }, [
-          _c("h2", { staticClass: "font-md lbl-light" }, [
-            _vm._v(
-              "\r\n                    Vom " +
-                _vm._s(
-                  new Date(this.report.begin_date).toLocaleDateString("de")
-                ) +
-                " \r\n                    bis zum " +
-                _vm._s(
-                  new Date(this.report.end_date).toLocaleDateString("de")
-                ) +
-                "\r\n                    | " +
-                _vm._s(this.report.company) +
-                " \r\n                    | " +
-                _vm._s(this.report.department) +
-                "\r\n\r\n                "
-            )
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.entries, function(item) {
-        return _c(
-          "div",
-          { key: item.id },
-          [
-            _c("entry", {
-              attrs: { header: item.header, description: item.description }
-            })
-          ],
-          1
-        )
-      }),
-      _vm._v(" "),
-      _c("create-entry", { attrs: { report_id: this.report.id } }),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fas fa-plus lbl-ico",
-        on: { click: _vm.addEntry }
-      })
-    ],
-    2
-  )
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.entries, function(item) {
+          return _c(
+            "div",
+            { key: item.id },
+            [
+              _c("entry", {
+                attrs: { header: item.header, description: item.description }
+              })
+            ],
+            1
+          )
+        }),
+        _vm._v(" "),
+        _c("create-entry", {
+          staticClass: "w-xx",
+          attrs: { report_id: this.report.id }
+        }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fas fa-plus lbl-ico",
+          on: { click: _vm.addEntry }
+        })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = [
   function() {

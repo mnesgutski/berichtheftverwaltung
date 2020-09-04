@@ -1,6 +1,6 @@
 <template>
 <!-- @Todo: Michel : Wenn End und Begin date gleich, Anders rendern -->
-    <div>
+    <div class="fill-parent red">
         <!-- Header -->
         <div class="d-flex m-b-lg">
             <!-- Header -->
@@ -9,26 +9,30 @@
                 <div class="b-b-thin"></div>
             </div>
         </div>
-        <!-- Report Header -->
-        <div class="d-flex">
-            <div class="box-auto b-b-thin" v-if="report.position">
-                <h2 class="font-md lbl-light">Nummer: {{this.report.position}}</h2>
+        <div>
+            <!-- Report Header -->
+            <div class="d-flex">
+                <div class="box-auto b-b-thin" v-if="report.position">
+                    <h2 class="font-md lbl-light">Nummer: {{this.report.position}}</h2>
+                </div>
+                <div class="box-auto">
+                    <h2 class="font-md lbl-light">
+                        Vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} 
+                        bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}
+                        | {{this.report.company}} 
+                        | {{this.report.department}}
+    
+                    </h2>
+                </div>
             </div>
-            <div class="box-auto">
-                <h2 class="font-md lbl-light">
-                    Vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} 
-                    bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}
-                    | {{this.report.company}} 
-                    | {{this.report.department}}
-
-                </h2>
+            <!-- Actual Entries -->
+            <div v-for="item in entries" :key="item.id">
+                <entry :header="item.header" :description="item.description"></entry>
             </div>
+            <!-- Add Entry Form -->
+            <create-entry class="w-xx" :report_id="this.report.id"></create-entry>
+            <i class="fas fa-plus lbl-ico" @click="addEntry"></i>
         </div>
-        <div v-for="item in entries" :key="item.id">
-            <entry :header="item.header" :description="item.description"></entry>
-        </div>
-        <create-entry :report_id="this.report.id"></create-entry>
-        <i class="fas fa-plus lbl-ico" @click="addEntry"></i>
     </div>
 </template>
 <script>
