@@ -14,24 +14,21 @@ class PDFGenController extends Controller
     public function download(Request $request)
     {
         //like regular view even with compact for carrying variables
+        // comment the find(1) lines when done testing to use proper reports and entries
 
     	//$report = reports::find($request->report_id);
     	$report = reports::find(1);
     	//$user = User::find(Auth::id());
     	$user = User::find(1);
-    	dump($report->entries);
     	$data = [];
     	foreach($report->entries as $entry){
-    		$data['type'] = [
-    			$entry->type = [
+    		$data[$entry->type][$entry->id] = [
     				'duration' => $entry->duration,
     				'header' => $entry->header,
     				'description' => $entry->description,
-    			]
-    		];
+    			];
     	}
     	$report = $data;
-    	dd($report);
 
         $pdf = PDF::loadView('pdf.report', compact('user','report'));
 

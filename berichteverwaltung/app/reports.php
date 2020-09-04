@@ -13,7 +13,7 @@ class reports extends Model
      * @var array
      */  
    protected $fillable = [
-   		'report_book_id','type','begin_date', 'end_date','company','department','hours_targeted'
+   		'report_book_id','type','begin_date', 'end_date','company','department','hours_targeted', 'position'
    ];
 
    public function report(){
