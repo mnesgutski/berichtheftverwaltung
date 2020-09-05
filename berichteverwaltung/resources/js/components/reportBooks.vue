@@ -1,12 +1,16 @@
 <template>
     <div>
-        <div class="row m-none m-b-lg">
-            <!-- Header -->
-            <div class="col-auto pm-none">
+        <!-- Header -->
+        <div class="d-flex m-b-lg">
+            <div class="box-auto">
                 <h1 class="m-r-lg">Berichtshefte</h1>
                 <div class="b-b-thin"></div>
             </div>
-        </div>
+            <div class="box d-flex jc-end ai-center">
+                <i class="nav-i material-icons font-xl color-1"
+                >keyboard_arrow_left</i>
+            </div>
+        </div>        
         <div class="row m-none">
             <!-- All Report Books -->
             <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reportBooks" :key="item.id" @click="enterReportBook(item.id)">
@@ -20,7 +24,7 @@
              <div class="col-auto pm-none m-r-lg m-b-lg">
                 <div @click="createNewReportBook" class="report-book-container">
                     <div id="btn-add-new-book" class="d-flex f-center fill-parent">
-                        <i class="fas fa-plus lbl-ico"></i>
+                        <i class="material-icons font-lg color-1">add</i>
                     </div>
                 </div>
             </div>

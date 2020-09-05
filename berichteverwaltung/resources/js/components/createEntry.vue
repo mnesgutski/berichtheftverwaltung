@@ -8,19 +8,29 @@
             </div>
             <!-- Type Input -->
             <div class="box prop-3 m-r-md">
-                <input type="text" class="font-md" v-model="entry_type" id="inp-entry-type">
+                <select v-model="entry_type" class="font-md lbl-light color-2">
+                    <option value="school">schulisch</option>
+                    <option value="company">betrieblich</option>
+                </select>
                 <h2 class="lbl-light font-sm">Art</h2>
             </div>
             <!-- Duration Input -->
             <div class="box m-r-md">
-                <input class="font-md" type="text" v-model="entry_duration" id="inp-entry-duration">
+                <input 
+                class="font-md" 
+                type="number" 
+                step="0.25"
+                min="0"
+                v-model="entry_duration" id="inp-entry-duration">
                 <h2 class="lbl-light font-sm">Stunden</h2>
             </div>
         </div>     
         <!-- Description Input -->
         <div class="d-flex m-b-md">
             <div class="box m-r-md">
-                <input type="text" class="fill-h font-sm" v-model="entry_description" id="inp-entry-description">
+                <input 
+                @keydown.enter="createEntry()"
+                type="text" class="fill-h font-sm" v-model="entry_description" id="inp-entry-description">
                 <h2 class="lbl-light font-sm">Beschreibung</h2>
             </div>
         </div> 
@@ -49,7 +59,7 @@ export default {
         return{
             entry_header: '',
             entry_description: '',
-            entry_type: '',
+            entry_type: 'company',
             entry_duration: '',            
         }
     },
@@ -64,6 +74,7 @@ export default {
                 type: this.entry_type
             }).then((response) =>{
                 console.log(response.data);
+                this.$emit('entryAdded');
             }, (error) => {
                 console.log(error);
             });
@@ -72,7 +83,7 @@ export default {
 }
 </script>
 <style scoped>
-input[type="text"]{
+input[type="text"], input[type="number"], select{
     font-family: roboto-light;
     border: none;
     border-radius: 0;
@@ -80,6 +91,12 @@ input[type="text"]{
     outline: none;
     color: var(--c-second);
     width: 100%;
+    height: 1em;
+}
+
+select:focus{
+    background-color: var(--c-second);
+    color: var(--c-main);
 }
 
 input[type="date"]{

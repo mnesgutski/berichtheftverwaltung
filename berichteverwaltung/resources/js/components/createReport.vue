@@ -1,18 +1,18 @@
 <template>
-    <div class="fill-parent">
-        <div class="row fd-column fill-parent">
-            <!-- Head Bar -->
-            <div class="col-auto row">
-                <!-- Title -->
-                <div class="col-auto">
-                    <h1 class="m-r-lg">Bericht erstellen</h1>
-                    <div class="b-b-thin"></div>
-                </div>
-                <!-- Cancel Button -->
-                <div class="col d-flex ai-center jc-end">
-                    <i class="fas fa-times lbl-ico" @click="cancelCreate"></i>
-                </div>
+    <div class="fill-parent d-flex fd-column">
+        <!-- Header -->
+        <div class="box-auto d-flex m-b-lg">
+            <div class="box-auto">
+                <h1 class="m-r-lg">Bericht erstellen</h1>
+                <div class="b-b-thin"></div>
             </div>
+            <div class="box d-flex jc-end ai-center">
+                <i class="nav-i material-icons font-xl color-1"
+                @click="cancelCreate"
+                >close</i>
+            </div>
+        </div> 
+        <div class=" box row fd-column fill-parent">
             <!-- Create Form -->
             <div class="col container d-flex jc-center fd-column form-container">  
                 <!-- Apprenticeship Input -->
