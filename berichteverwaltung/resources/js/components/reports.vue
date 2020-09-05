@@ -58,10 +58,16 @@ export default {
     },
     methods: {
         createReport(){
-            this.$router.push({name: "createReport", params: {report_book_id: this.$route.params.report_book_id}});
+            this.$router.push({name: "createReport", 
+                params: {report_book_id: this.$route.params.report_book_id}});
         },
         enterReport(report){
-            this.$router.push({name: 'entries', params: {report: report}});
+            this.$router.push(
+                {name: 'entries', params: 
+                    {
+                        report: report,
+                        report_book_id: this.$route.params.report_book_id
+                    }});
         },
         navBack(){
             this.$router.push({name: 'reportBooks'});

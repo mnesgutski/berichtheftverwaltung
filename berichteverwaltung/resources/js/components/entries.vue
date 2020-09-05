@@ -79,8 +79,7 @@ export default {
 
         },
         navBack(){
-            alert(this.report.report_book_id);
-            this.$router.push({name: 'reports', params: {report_book_id: this.report.report_book_id}})
+            this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
         }
     }
 }

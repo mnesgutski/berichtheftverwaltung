@@ -2354,11 +2354,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     addEntry: function addEntry() {},
     navBack: function navBack() {
-      alert(this.report.report_book_id);
       this.$router.push({
         name: 'reports',
         params: {
-          report_book_id: this.report.report_book_id
+          report_book_id: this.$route.params.report_book_id
         }
       });
     }
@@ -2649,7 +2648,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push({
         name: 'entries',
         params: {
-          report: report
+          report: report,
+          report_book_id: this.$route.params.report_book_id
         }
       });
     },
