@@ -8,6 +8,9 @@
                 <div class="b-b-thin"></div>
             </div>
             <div class="box d-flex jc-end ai-center">
+                <i class="nav-i material-icons font-md color-1"
+                @click="downloadPDF()"
+                >arrow_downward</i>
                 <i class="nav-i material-icons font-xl color-1"
                 @click="navBack()"
                 >keyboard_arrow_left</i>
@@ -92,6 +95,9 @@ export default {
         },
         navBack(){
             this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
+        },
+        downloadPDF(){
+            
         }
     }
 }

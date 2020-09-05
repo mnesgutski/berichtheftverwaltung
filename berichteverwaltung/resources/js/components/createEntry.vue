@@ -3,7 +3,7 @@
         <div class="d-flex m-b-lg ">
             <!-- Header Input -->
             <div class="box prop-5 m-r-md">
-                <input type="text" class="font-sm" v-model="entry_header" id="inp-entry-header">
+                <input ref="inp_header" type="text" class="font-sm" v-model="entry_header" id="inp-entry-header">
                 <h2 class="lbl-light font-sm">Kurzbeschreibung</h2>
             </div>
             <!-- Type Input -->
@@ -42,6 +42,9 @@
                 class="btn-hov font-sm color-1 lbl-light">
                 Abbrechen</button>
             </div> 
+            <div class="box-auto m-h-md color-1 no-select">
+                |
+            </div>
             <div class="box-auto">
                 <button 
                 @click="createEntry()"
@@ -68,6 +71,9 @@ export default {
             entry_type: 'company',
             entry_duration: '',            
         }
+    },
+    mounted(){
+        this.$refs.inp_header.focus();
     },
     methods: {
         createEntry(){

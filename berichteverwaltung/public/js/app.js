@@ -1992,6 +1992,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'create-entry',
@@ -2008,6 +2011,9 @@ __webpack_require__.r(__webpack_exports__);
       entry_type: 'company',
       entry_duration: ''
     };
+  },
+  mounted: function mounted() {
+    this.$refs.inp_header.focus();
   },
   methods: {
     createEntry: function createEntry() {
@@ -2336,6 +2342,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2383,7 +2392,8 @@ __webpack_require__.r(__webpack_exports__);
           report_book_id: this.$route.params.report_book_id
         }
       });
-    }
+    },
+    downloadPDF: function downloadPDF() {}
   }
 });
 
@@ -4150,6 +4160,7 @@ var render = function() {
               expression: "entry_header"
             }
           ],
+          ref: "inp_header",
           staticClass: "font-sm",
           attrs: { type: "text", id: "inp-entry-header" },
           domProps: { value: _vm.entry_header },
@@ -4292,6 +4303,10 @@ var render = function() {
           },
           [_vm._v("\n            Abbrechen")]
         )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "box-auto m-h-md color-1 no-select" }, [
+        _vm._v("\n            |\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "box-auto" }, [
@@ -4787,6 +4802,19 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
+        _c(
+          "i",
+          {
+            staticClass: "nav-i material-icons font-md color-1",
+            on: {
+              click: function($event) {
+                return _vm.downloadPDF()
+              }
+            }
+          },
+          [_vm._v("arrow_downward")]
+        ),
+        _vm._v(" "),
         _c(
           "i",
           {
