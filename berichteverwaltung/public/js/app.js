@@ -2594,7 +2594,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     logout: function logout() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/logout').then(function (response) {}, function (error) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/logout').then(function (response) {}, function (error) {
         console.log(error);
       });
     }
@@ -5136,20 +5136,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "d-flex m-b-lg" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
-        _c(
-          "i",
-          {
-            staticClass: "nav-i material-icons font-xl color-1",
-            on: { click: _vm.logout }
-          },
-          [_vm._v("keyboard_arrow_left")]
-        )
-      ])
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c(
       "div",
@@ -5185,13 +5172,13 @@ var render = function() {
                   _vm._v(" "),
                   _c("h2", { staticClass: "lbl-light font-sm lbl-center" }, [
                     _vm._v(
-                      "\n                    " +
+                      "\n                        " +
                         _vm._s(
                           new Date(item.begin_date).toLocaleDateString("de", {
                             dateStyle: "medium"
                           })
                         ) +
-                        " -\n                    "
+                        " -\n                        "
                     ),
                     _c("br"),
                     _vm._v(
@@ -5199,7 +5186,7 @@ var render = function() {
                         new Date(item.end_date).toLocaleDateString("de", {
                           dateStyle: "medium"
                         })
-                      ) + "\n                "
+                      ) + "\n                    "
                     )
                   ])
                 ]
@@ -5228,10 +5215,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-auto" }, [
-      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtshefte")]),
+    return _c("div", { staticClass: "d-flex m-b-lg" }, [
+      _c("div", { staticClass: "box-auto" }, [
+        _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtshefte")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "b-b-thin" })
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "b-b-thin" })
+      _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
+        _c("a", { attrs: { href: "/logout" } }, [
+          _c("i", { staticClass: "nav-i material-icons font-xl color-1" }, [
+            _vm._v("keyboard_arrow_left")
+          ])
+        ])
+      ])
     ])
   },
   function() {
@@ -21504,8 +21501,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

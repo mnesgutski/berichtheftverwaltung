@@ -7,9 +7,9 @@
                 <div class="b-b-thin"></div>
             </div>
             <div class="box d-flex jc-end ai-center">
-                <i class="nav-i material-icons font-xl color-1"
-                @click="logout"
-                >keyboard_arrow_left</i>
+                <a href="/logout"><i class="nav-i material-icons font-xl color-1">keyboard_arrow_left</i></a>
+<!--                @click="logout"-->
+
             </div>
         </div>        
         <div class="row m-none">
@@ -63,7 +63,7 @@ export default {
             this.$router.push({name: 'reports', params: {report_book_id: id}});
         },
         logout(){
-            axios.post('/logout')
+            axios.get('/logout')
                 .then((response)=>{
                     
                 }, (error) =>{
