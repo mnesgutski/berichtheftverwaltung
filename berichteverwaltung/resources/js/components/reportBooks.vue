@@ -63,7 +63,12 @@ export default {
             this.$router.push({name: 'reports', params: {report_book_id: id}});
         },
         logout(){
-
+            axios.post('/logout')
+                .then((response)=>{
+                    
+                }, (error) =>{
+                    console.log(error);
+                });
         }
     }
 }

@@ -2593,7 +2593,11 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    logout: function logout() {}
+    logout: function logout() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/logout').then(function (response) {}, function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
