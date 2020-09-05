@@ -89,6 +89,9 @@ class LoginController extends Controller
         return response()->json($response);
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     public function logout()
     {
         $response = [
