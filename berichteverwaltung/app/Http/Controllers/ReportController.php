@@ -137,6 +137,11 @@ class ReportController extends Controller
         ];
         if (Auth::check()) {
             $rep = reports::where('id', '=', $request->id)->first();
+            if($rep->entries !== null){
+                foreach($rep->entries as $entry){
+                    $entry->delete();
+                }
+            }
             $rep->delete();
             $data['delete'] = true;
 

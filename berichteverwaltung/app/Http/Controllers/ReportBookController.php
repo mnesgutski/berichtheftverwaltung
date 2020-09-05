@@ -135,6 +135,16 @@ class ReportBookController extends Controller
             $rBook = report_books::where('id', '=', $request->reportBookId)
                 ->where('owner', '=', Auth::id())
                 ->first();
+            if ($rBook->reports !== null) {
+                foreach ($rBook->reports as $report) {
+                    if ($report->entries !== null) {
+                        foreach ($report->entries as $entry) {
+                            $entry->delete();
+                        }
+                    }
+                    $report->delete();
+                }
+            }
             $rBook->delete();
             $response['data']['delete'] = true;
             $response['error'] = false;
