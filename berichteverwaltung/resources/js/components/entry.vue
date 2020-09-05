@@ -3,7 +3,7 @@
         <div class="d-flex fd-column">
             <div class="d-flex">
                 <div class="box-auto" v-bind:class="{'b-b-thin' : description != ''}">
-                     <h2 class="font-md lbl-light">{{header}}</h2>
+                     <h2 class="font-sm">{{header}}</h2>
                 </div>               
             </div>
             <div class="box" v-if="description != ''">
