@@ -8,6 +8,7 @@
             </div>
             <div class="box d-flex jc-end ai-center">
                 <i class="nav-i material-icons font-xl color-1"
+                @click="logout"
                 >keyboard_arrow_left</i>
             </div>
         </div>        
@@ -17,7 +18,10 @@
                 <div class="report-book-container d-flex fd-column f-center p-md">
                     <h2 class="lbl-light font-sm lbl-center wrap">{{item.name}}</h2>
                     <div class="divider"></div>
-                    <h2 class="lbl-light font-sm lbl-center">{{item.begin_date}} -<br>{{item.end_date}}</h2>                                                              
+                    <h2 class="lbl-light font-sm lbl-center">
+                        {{new Date(item.begin_date).toLocaleDateString('de',{dateStyle: 'medium'})}} -
+                        <br>{{new Date(item.end_date).toLocaleDateString('de',{dateStyle: 'medium'})}}
+                    </h2>                                                              
                 </div>
              </div>
              <!-- Create Button -->
@@ -57,6 +61,9 @@ export default {
         },
         enterReportBook(id){
             this.$router.push({name: 'reports', params: {report_book_id: id}});
+        },
+        logout(){
+
         }
     }
 }

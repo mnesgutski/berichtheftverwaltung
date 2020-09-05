@@ -26,6 +26,9 @@ window.Vue = require('vue');
 import App from './app.vue';
 import router from './router';
 
+// Variables
+Vue.prototype.$user = {};
+// Init Vue App
 const app = new Vue({
     el: '#app',
     router: router,
@@ -33,3 +36,4 @@ const app = new Vue({
         App
     }
 });
+

@@ -18,7 +18,10 @@
                 <div class="report-container d-flex fd-column f-center p-md" @click="enterReport(item)">
                     <h2 class="lbl-light font-sm lbl-center wrap">{{reportTypes[item.type]}}</h2>
                     <div class="divider"></div>
-                    <h2 class="lbl-light font-sm lbl-center">{{item.begin_date}} -<br>{{item.end_date}}</h2>                                                              
+                    <h2 class="lbl-light font-sm lbl-center">
+                        {{new Date(item.begin_date).toLocaleDateString('de',{dateStyle: 'medium'})}} -
+                        <br>{{new Date(item.end_date).toLocaleDateString('de',{dateStyle: 'medium'})}}
+                    </h2>                                                              
                 </div>
              </div>
              <!-- Create Button -->

@@ -19,15 +19,16 @@
         <div class="d-flex jc-center fill-v">
             <div class="w-xx">
                 <!-- Report Header -->
-                <div class="d-flex b-b-thin m-b-lg">
+                <div class="d-flex m-b-lg">
                     <div class="box-auto b-b-thin" v-if="report.position">
                         <h2 class="font-md lbl-light">Nummer: {{this.report.position}}</h2>
                     </div>
                     <div class="box-auto">
                         <h2 class="font-md lbl-light">
-                            Bericht vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} 
-                            bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}    
+                            Bericht vom {{new Date(this.report.begin_date).toLocaleDateString("de",{dateStyle: 'medium'})}} 
+                            bis zum {{new Date(this.report.end_date).toLocaleDateString("de",{dateStyle: 'medium'})}}    
                         </h2>
+                        <div class="b-b-thin"></div>
                         <h3 class="font-sm lbl-light">
                             Auszubildender: Vorname Nachname,
                             Abteilung: {{this.report.department}},

@@ -2345,6 +2345,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2496,6 +2497,8 @@ __webpack_require__.r(__webpack_exports__);
         username: this.username,
         passwort: this.password
       }).then(function (response) {
+        console.log(response.data);
+
         _this.$router.push({
           name: 'reportBooks'
         });
@@ -2519,6 +2522,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
 //
 //
 //
@@ -2585,7 +2592,8 @@ __webpack_require__.r(__webpack_exports__);
           report_book_id: id
         }
       });
-    }
+    },
+    logout: function logout() {}
   }
 });
 
@@ -2602,6 +2610,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
 //
 //
 //
@@ -4835,7 +4846,7 @@ var render = function() {
         "div",
         { staticClass: "w-xx" },
         [
-          _c("div", { staticClass: "d-flex b-b-thin m-b-lg" }, [
+          _c("div", { staticClass: "d-flex m-b-lg" }, [
             _vm.report.position
               ? _c("div", { staticClass: "box-auto b-b-thin" }, [
                   _c("h2", { staticClass: "font-md lbl-light" }, [
@@ -4849,15 +4860,22 @@ var render = function() {
                 _vm._v(
                   "\r\n                            Bericht vom " +
                     _vm._s(
-                      new Date(this.report.begin_date).toLocaleDateString("de")
+                      new Date(this.report.begin_date).toLocaleDateString(
+                        "de",
+                        { dateStyle: "medium" }
+                      )
                     ) +
                     " \r\n                            bis zum " +
                     _vm._s(
-                      new Date(this.report.end_date).toLocaleDateString("de")
+                      new Date(this.report.end_date).toLocaleDateString("de", {
+                        dateStyle: "medium"
+                      })
                     ) +
                     "    \r\n                        "
                 )
               ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "b-b-thin" }),
               _vm._v(" "),
               _c("h3", { staticClass: "font-sm lbl-light" }, [
                 _vm._v(
@@ -5114,7 +5132,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("div", { staticClass: "d-flex m-b-lg" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
+        _c(
+          "i",
+          {
+            staticClass: "nav-i material-icons font-xl color-1",
+            on: { click: _vm.logout }
+          },
+          [_vm._v("keyboard_arrow_left")]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -5149,9 +5180,23 @@ var render = function() {
                   _c("div", { staticClass: "divider" }),
                   _vm._v(" "),
                   _c("h2", { staticClass: "lbl-light font-sm lbl-center" }, [
-                    _vm._v(_vm._s(item.begin_date) + " -"),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(
+                          new Date(item.begin_date).toLocaleDateString("de", {
+                            dateStyle: "medium"
+                          })
+                        ) +
+                        " -\n                    "
+                    ),
                     _c("br"),
-                    _vm._v(_vm._s(item.end_date))
+                    _vm._v(
+                      _vm._s(
+                        new Date(item.end_date).toLocaleDateString("de", {
+                          dateStyle: "medium"
+                        })
+                      ) + "\n                "
+                    )
                   ])
                 ]
               )
@@ -5179,18 +5224,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex m-b-lg" }, [
-      _c("div", { staticClass: "box-auto" }, [
-        _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtshefte")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "b-b-thin" })
-      ]),
+    return _c("div", { staticClass: "box-auto" }, [
+      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtshefte")]),
       _vm._v(" "),
-      _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
-        _c("i", { staticClass: "nav-i material-icons font-xl color-1" }, [
-          _vm._v("keyboard_arrow_left")
-        ])
-      ])
+      _c("div", { staticClass: "b-b-thin" })
     ])
   },
   function() {
@@ -5282,9 +5319,23 @@ var render = function() {
                   _c("div", { staticClass: "divider" }),
                   _vm._v(" "),
                   _c("h2", { staticClass: "lbl-light font-sm lbl-center" }, [
-                    _vm._v(_vm._s(item.begin_date) + " -"),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(
+                          new Date(item.begin_date).toLocaleDateString("de", {
+                            dateStyle: "medium"
+                          })
+                        ) +
+                        " -\n                    "
+                    ),
                     _c("br"),
-                    _vm._v(_vm._s(item.end_date))
+                    _vm._v(
+                      _vm._s(
+                        new Date(item.end_date).toLocaleDateString("de", {
+                          dateStyle: "medium"
+                        })
+                      ) + "\n                "
+                    )
                   ])
                 ]
               )
@@ -20571,6 +20622,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 
 
+ // Variables
+
+Vue.prototype.$user = {}; // Init Vue App
 
 var app = new Vue({
   el: '#app',
@@ -21446,8 +21500,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
