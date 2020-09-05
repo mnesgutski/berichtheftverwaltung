@@ -2,6 +2,8 @@
     --c-main: rgb(3, 199, 3);
     --c-second: #393939;
     --c-third: rgb(95, 216, 95);
+    --c-edit: rgb(61, 134, 218);
+    --c-contrast: white;
     --pm-sm: 5px;
     --pm-md: 10px;
     --pm-lg: 20px;
@@ -83,10 +85,22 @@ h1, h2, h3, h4, h5, h6{
 .color-1{color: var(--c-main)}
 .color-2{color: var(--c-second)}
 
+.pos-rel{position: relative;}
+.pos-abs{position: absolute;}
+
+.center-in-window{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .full-size{
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0%;
+    left: 0%;
 }
 
 .fill-parent{

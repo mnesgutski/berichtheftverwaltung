@@ -55,7 +55,7 @@
                 <!-- Company Input -->
                 <div class="row m-b-xl">
                     <div class="col">
-                        <input type="text" v-model="report_company" id="inp-rep-company">
+                        <input @keydown.enter="createReport" type="text" v-model="report_company" id="inp-rep-company">
                         <h2 class="lbl-light font-sm">Unternehmen</h2>
                     </div>               
                 </div> 
@@ -104,10 +104,19 @@ export default {
                     alert(response.data.error_message);
                 }else{
                     console.log(response.data.data);
+                    this.enterReport(response.data.data);
                 }
             }, (error) => {
                     console.log(error);
             });
+        },
+        enterReport(report){
+            this.$router.push(
+                {name: 'entries', params: 
+                    {
+                        report: report,
+                        report_book_id: this.$route.params.report_book_id
+                    }});
         }
     }
 }

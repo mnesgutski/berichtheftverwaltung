@@ -51,4 +51,24 @@ export default {
 .item-hov:hover i, 
 .item-hov:hover h2, 
 .item-hov:hover h3{color: var(--c-second)}
+
+i.material-icons{
+    color: var(--c-main);
+    transition: color .1s ease;
+}
+i.material-icons:hover{color: var(--c-second)}
+
+.edit-item{transition: background-color .1s ease;}
+
+.edit-item h1,
+.edit-item h2,
+.edit-item h3,
+.edit-item i{transition: color .1s ease;}
+
+.edit-item-active{background-color: var(--c-edit);}
+
+.edit-item-active h1,
+.edit-item-active h2,
+.edit-item-active h3,
+.edit-item-active i{color: var(--c-contrast);}
 </style>
