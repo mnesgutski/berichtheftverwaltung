@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Header -->
-        <div class="d-flex m-b-lg">
+        <div class="d-flex">
             <div class="box-auto">
                 <h1 class="m-r-lg">Berichte</h1>
                 <div class="b-b-thin"></div>
@@ -16,7 +16,10 @@
                 @click="navBack()"
                 >keyboard_arrow_left</i>
             </div>
-        </div>       
+        </div> 
+        <div class="m-b-lg">
+            <h2 class="font-md lbl-light">{{$route.params.apprenticeship}}</h2>
+        </div>      
         <div class="row m-none">
             <!-- All Reports -->
             <transition-group class="d-flex" name="list">

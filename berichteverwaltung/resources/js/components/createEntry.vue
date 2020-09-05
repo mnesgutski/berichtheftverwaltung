@@ -3,7 +3,10 @@
         <div class="d-flex m-b-lg ">
             <!-- Header Input -->
             <div class="box prop-5 m-r-md">
-                <input ref="inp_header" type="text" class="font-sm" v-model="entry_header" id="inp-entry-header">
+                <input 
+                ref="inp_header" 
+                @keydown.enter="createEntry()"
+                type="text" class="font-sm" v-model="entry_header" id="inp-entry-header">
                 <h2 class="lbl-light font-sm">Kurzbeschreibung</h2>
             </div>
             <!-- Type Input -->
@@ -63,6 +66,9 @@ export default {
         report_id: {
             default: 0, 
             type: Number
+        },
+        entry:{
+            type: Object
         }
     },
     data(){
@@ -75,16 +81,23 @@ export default {
     },
     mounted(){
         this.$refs.inp_header.focus();
+        if(this.entry !== null ){
+            this.entry_header = this.entry.header;
+            this.entry_description = this.entry.description;
+            this.entry_type = this.entry.type;
+            this.entry_duration = this.entry.duration;
+        }
     },
     methods: {
         createEntry(){
-            axios.post('entries/create', {
+            axios.post(entry == null ? 'entries/create' : 'entries/update', {
                 report_id: this.report_id,
                 position: 1,
                 duration: this.entry_duration,
                 header: this.entry_header,
                 description: this.entry_description,
-                type: this.entry_type
+                type: this.entry_type,
+                entry_id: this.entry_id
             }).then((response) =>{
                 console.log(response.data);
                 this.$emit('entryAdded');

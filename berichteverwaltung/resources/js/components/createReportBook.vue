@@ -96,14 +96,18 @@ export default {
                     alert(response.data.error_message);
                 }else{
                     console.log(response.data.data);
-                    this.enterReportBook(response.data.data.id);
+                    this.enterReportBook(response.data.data.id, response.data.data.name);
                 }
             }, (error) => {
                     console.log(error);
             });
         },
-        enterReportBook(id){
-            this.$router.push({name: 'reports', params: {report_book_id: id}});
+        enterReportBook(id, apprenticeship){
+            this.$router.push({name: 'reports', 
+            params: {
+                report_book_id: id,
+                apprenticeship: apprenticeship
+                }});
         }
     }
 }

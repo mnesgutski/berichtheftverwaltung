@@ -40,16 +40,22 @@
                     <!-- Actual Entries -->
                     <transition-group name="list">
                         <div v-for="item in entries" :key="item.id">
-                            <entry class="m-b-md" :header="item.header" :description="item.description"></entry>
+                            <entry @updated="fetchEntries()" 
+                            class="m-b-md" 
+                            :entry="item"
+                            :report_id="$route.params.report.id" 
+                            :header="item.header" 
+                            :description="item.description"></entry>
                         </div>
                     </transition-group>
                     <!-- Add Entry Form -->
                     <transition name="fade">
                         <create-entry 
                         v-if="showForm" 
+                        :entry="null"
                         @entryAdded="fetchEntries()"
                         @cancel="showForm = false"
-                        :report_id="this.report.id">
+                        :report_id="report.id">
                         </create-entry>
                     
                         <!-- Add Entry Button -->

@@ -1998,6 +1998,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'create-entry',
@@ -2005,6 +2008,9 @@ __webpack_require__.r(__webpack_exports__);
     report_id: {
       "default": 0,
       type: Number
+    },
+    entry: {
+      type: Object
     }
   },
   data: function data() {
@@ -2017,18 +2023,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.$refs.inp_header.focus();
+
+    if (this.entry !== null) {
+      this.entry_header = this.entry.header;
+      this.entry_description = this.entry.description;
+      this.entry_type = this.entry.type;
+      this.entry_duration = this.entry.duration;
+    }
   },
   methods: {
     createEntry: function createEntry() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('entries/create', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(entry == null ? 'entries/create' : 'entries/update', {
         report_id: this.report_id,
         position: 1,
         duration: this.entry_duration,
         header: this.entry_header,
         description: this.entry_description,
-        type: this.entry_type
+        type: this.entry_type,
+        entry_id: this.entry_id
       }).then(function (response) {
         console.log(response.data);
 
@@ -2339,17 +2353,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } else {
           console.log(response.data.data);
 
-          _this.enterReportBook(response.data.data.id);
+          _this.enterReportBook(response.data.data.id, response.data.data.name);
         }
       }, function (error) {
         console.log(error);
       });
     }
-  }, "enterReportBook", function enterReportBook(id) {
+  }, "enterReportBook", function enterReportBook(id, apprenticeship) {
     this.$router.push({
       name: 'reports',
       params: {
-        report_book_id: id
+        report_book_id: id,
+        apprenticeship: apprenticeship
       }
     });
   })
@@ -2484,6 +2499,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2547,6 +2568,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _createEntry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createEntry */ "./resources/js/components/createEntry.vue");
 //
 //
 //
@@ -2562,8 +2584,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Entry',
+  components: {
+    createEntry: _createEntry__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      edit: false
+    };
+  },
   props: {
     header: {
       "default": '',
@@ -2572,6 +2613,12 @@ __webpack_require__.r(__webpack_exports__);
     description: {
       "default": '',
       type: String
+    },
+    report_id: {
+      type: Number
+    },
+    entry: {
+      type: Object
     }
   }
 });
@@ -2751,10 +2798,19 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     enterReportBook: function enterReportBook(id) {
+      var apprenticeship = '';
+
+      for (var ele in this.reportBooks) {
+        if (ele == id) {
+          apprenticeship = this.reportBooks[ele].name;
+        }
+      }
+
       this.$router.push({
         name: 'reports',
         params: {
-          report_book_id: id
+          report_book_id: id,
+          apprenticeship: apprenticeship
         }
       });
     },
@@ -2828,6 +2884,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _editConfirm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editConfirm.vue */ "./resources/js/components/editConfirm.vue");
+//
+//
+//
 //
 //
 //
@@ -3142,7 +3201,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#entry[data-v-3e51d837]{\r\n    background-color: transparent;\r\n    transition: background-color .07s ease;\n}\n#entry[data-v-3e51d837]:hover{\r\n    background-color: var(--c-third);\n}\n#entry:hover h2[data-v-3e51d837],#entry:hover h3[data-v-3e51d837]{color: var(--c-second)}\r\n", ""]);
+exports.push([module.i, "\n#entry[data-v-3e51d837]{\r\n    background-color: transparent;\r\n    transition: background-color .07s ease;\n}\n#entry[data-v-3e51d837]:hover{\r\n    background-color: var(--c-third);\n}\n#entry:hover h2[data-v-3e51d837],#entry:hover h3[data-v-3e51d837]{color: var(--c-second)}\n.fade-enter-active[data-v-3e51d837], .fade-leave-active[data-v-3e51d837] {\r\n  transition: opacity .3s;\n}\n.fade-enter[data-v-3e51d837], .fade-leave-to[data-v-3e51d837] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -3161,7 +3220,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\r\n    width: 100%;\r\n    font-size: 25px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\nbutton[data-v-172b28a4]{\r\n    background-color: transparent;\r\n    padding: 5px;\r\n    font-size: 35px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    outline: none;\r\n    transition: transform .1s ease;\n}\nbutton[data-v-172b28a4]:hover{transform: scale(1.02)}\nbuttOn[data-v-172b28a4]:active{transform: scale(1)}\n.force-center[data-v-172b28a4]{\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%);\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\r\n    width: 100%;\r\n    font-size: 25px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\nbutton[data-v-172b28a4]{\r\n    background-color: transparent;\r\n    padding: 5px;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    outline: none;\n}\n.force-center[data-v-172b28a4]{\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%);\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -4674,6 +4733,15 @@ var render = function() {
           attrs: { type: "text", id: "inp-entry-header" },
           domProps: { value: _vm.entry_header },
           on: {
+            keydown: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.createEntry()
+            },
             input: function($event) {
               if ($event.target.composing) {
                 return
@@ -5492,8 +5560,15 @@ var render = function() {
                     _c("entry", {
                       staticClass: "m-b-md",
                       attrs: {
+                        entry: item,
+                        report_id: _vm.$route.params.report.id,
                         header: item.header,
                         description: item.description
+                      },
+                      on: {
+                        updated: function($event) {
+                          return _vm.fetchEntries()
+                        }
                       }
                     })
                   ],
@@ -5509,7 +5584,7 @@ var render = function() {
               [
                 _vm.showForm
                   ? _c("create-entry", {
-                      attrs: { report_id: this.report.id },
+                      attrs: { entry: null, report_id: _vm.report.id },
                       on: {
                         entryAdded: function($event) {
                           return _vm.fetchEntries()
@@ -5590,30 +5665,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "entry" } }, [
-    _c("div", { staticClass: "d-flex fd-column b-thin p-md" }, [
-      _c("div", { staticClass: "d-flex" }, [
-        _c(
-          "div",
-          {
-            staticClass: "box-auto",
-            class: {
-              "b-b-thin": _vm.description != "" && _vm.description != null
-            }
-          },
-          [_c("h2", { staticClass: "font-sm" }, [_vm._v(_vm._s(_vm.header))])]
-        )
-      ]),
-      _vm._v(" "),
-      _vm.description != "" && _vm.description != null
-        ? _c("div", { staticClass: "box" }, [
-            _c("h3", { staticClass: "font-sm lbl-light" }, [
-              _vm._v(_vm._s(_vm.description))
-            ])
-          ])
-        : _vm._e()
-    ])
-  ])
+  return _c(
+    "div",
+    [
+      _c(
+        "transition",
+        { attrs: { name: "fade", mode: "out-in" } },
+        [
+          !_vm.edit
+            ? _c(
+                "div",
+                {
+                  key: "id_entry",
+                  attrs: { id: "entry" },
+                  on: {
+                    click: function($event) {
+                      _vm.edit = true
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "d-flex fd-column b-thin p-md" }, [
+                    _c("div", { staticClass: "d-flex" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "box-auto",
+                          class: {
+                            "b-b-thin":
+                              _vm.description != "" && _vm.description != null
+                          }
+                        },
+                        [
+                          _c("h2", { staticClass: "font-sm" }, [
+                            _vm._v(_vm._s(_vm.header))
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm.description != "" && _vm.description != null
+                      ? _c("div", { staticClass: "box" }, [
+                          _c("h3", { staticClass: "font-sm lbl-light" }, [
+                            _vm._v(_vm._s(_vm.description))
+                          ])
+                        ])
+                      : _vm._e()
+                  ])
+                ]
+              )
+            : _c("create-entry", {
+                key: "id_create_entry",
+                attrs: { report_id: _vm.report_id, entry: _vm.entry },
+                on: {
+                  entryAdded: function($event) {
+                    return _vm.$emit("updated")
+                  },
+                  cancel: function($event) {
+                    _vm.edit = false
+                  }
+                }
+              })
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -5703,7 +5821,11 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col d-flex jc-end" }, [
-          _c("button", { on: { click: _vm.loginCall } }, [_vm._v("Login")])
+          _c(
+            "button",
+            { staticClass: "btn-hov", on: { click: _vm.loginCall } },
+            [_vm._v("Login")]
+          )
         ])
       ])
     ])
@@ -5931,7 +6053,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "d-flex m-b-lg" }, [
+      _c("div", { staticClass: "d-flex" }, [
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
@@ -5960,6 +6082,12 @@ var render = function() {
             },
             [_vm._v("keyboard_arrow_left")]
           )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "m-b-lg" }, [
+        _c("h2", { staticClass: "font-md lbl-light" }, [
+          _vm._v(_vm._s(_vm.$route.params.apprenticeship))
         ])
       ]),
       _vm._v(" "),

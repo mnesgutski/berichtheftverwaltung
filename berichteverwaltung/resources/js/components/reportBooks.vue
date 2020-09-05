@@ -85,7 +85,17 @@ export default {
             this.$router.push({name: 'createReportBook'});
         },
         enterReportBook(id){
-            this.$router.push({name: 'reports', params: {report_book_id: id}});
+            var apprenticeship = '';
+            for(var ele in this.reportBooks){
+                if(ele == id){
+                    apprenticeship = this.reportBooks[ele].name;
+                }
+            }
+            this.$router.push({name: 'reports', 
+            params: {
+                report_book_id: id,
+                apprenticeship: apprenticeship
+            }});
         },
         logout(){
             axios.get('/logout')

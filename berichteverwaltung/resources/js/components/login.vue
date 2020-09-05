@@ -16,7 +16,7 @@
             </div>
             <div class="row">
                 <div class="col d-flex jc-end">
-                    <button @click="loginCall">Login</button>
+                    <button class="btn-hov" @click="loginCall">Login</button>
                 </div>
                 
             </div>
@@ -81,14 +81,11 @@ input[type="text"], input[type="password"]{
 button{
     background-color: transparent;
     padding: 5px;
-    font-size: 35px;
+    font-size: 30px;
     font-family: roboto-light;
     border: none;
     outline: none;
-    transition: transform .1s ease;
 }
-button:hover{transform: scale(1.02)}
-buttOn:active{transform: scale(1)}
 .force-center{
     position: absolute;
     top: 50%;
