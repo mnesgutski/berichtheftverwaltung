@@ -16,14 +16,14 @@
                 >keyboard_arrow_left</i>
             </div>
         </div>       
-        <div class="d-flex jc-center fill-v">
-            <div class="w-xx">
+        <div class="d-flex jc-center">
+            <div class="w-xx b-thin p-md">
                 <!-- Report Header -->
-                <div class="d-flex m-b-lg">
+                <div class="d-flex box m-b-lg">
                     <div class="box-auto b-b-thin" v-if="report.position">
                         <h2 class="font-md lbl-light">Nummer: {{this.report.position}}</h2>
                     </div>
-                    <div class="box-auto">
+                    <div class="box">
                         <h2 class="font-md lbl-light">
                             Bericht vom {{new Date(this.report.begin_date).toLocaleDateString("de",{dateStyle: 'medium'})}} 
                             bis zum {{new Date(this.report.end_date).toLocaleDateString("de",{dateStyle: 'medium'})}}    
@@ -45,13 +45,15 @@
                 v-if="showForm" 
                 @entryAdded="fetchEntries()"
                 @cancel="showForm = false"
-                class="w-xx" :report_id="this.report.id"></create-entry>
+                :report_id="this.report.id">
+                </create-entry>
+                <!-- Add Entry Button -->
                 <div 
-                    class="d-flex border" 
+                    class="d-flex entry" 
                     @click="showForm = true"
-                    v-if="!showForm"
+                    v-if="!showForm"        
                     >
-                    <div class="box d-flex f-center">
+                    <div class="box d-flex f-center border">
                         <i class="material-icons font-lg color-1">add</i>
                     </div>
                 </div>
@@ -105,4 +107,15 @@ export default {
 </script>
 <style scoped>
 .border{border: 1px solid black}
+.entry{
+    background-color: transparent;
+    transition: transform .1s ease;
+    transition: background-color .07s ease;
+}
+
+.entry:hover{
+    background-color: var(--c-third);
+    transform: scale(1.02);
+}
+.entry:hover h2,#entry:hover h3{color: var(--c-second)}
 </style>

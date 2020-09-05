@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="d-flex fd-column b-thin">
+    <div id="entry">
+        <div class="d-flex fd-column b-thin p-md">
             <div class="d-flex">
                 <div class="box-auto" v-bind:class="{'b-b-thin' : description != ''}">
                      <h2 class="font-sm">{{header}}</h2>
@@ -27,3 +27,16 @@ export default {
     }
 }
 </script>
+<style scoped>
+#entry{
+    background-color: transparent;
+    transition: transform .1s ease;
+    transition: background-color .07s ease;
+}
+
+#entry:hover{
+    background-color: var(--c-third);
+    transform: scale(1.02);
+}
+#entry:hover h2,#entry:hover h3{color: var(--c-second)}
+</style>

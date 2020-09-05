@@ -1,6 +1,7 @@
 :root{
     --c-main: rgb(3, 199, 3);
     --c-second: #393939;
+    --c-third: rgb(95, 216, 95);
     --pm-sm: 5px;
     --pm-md: 10px;
     --pm-lg: 20px;
@@ -215,7 +216,7 @@ input[type="text"]{
 .p-xl{padding: var(--pm-xl)}
 
 .b-b-thin{border-bottom: 1px solid var(--c-second);}
-.b-thin{border-bottom: 1px solid var(--c-second);}
+.b-thin{border: 1px solid var(--c-second);}
 
 .scroll{overflow-y: scroll;}
 
