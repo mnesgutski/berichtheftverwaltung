@@ -5,7 +5,7 @@
                 <!-- Header -->
                 <div class="d-flex m-b-lg">
                     <div class="box-auto">
-                        <h1 class="m-r-lg">Berichtsheft erstellen</h1>
+                        <h1 class="m-r-lg">{{header}}</h1>
                         <div class="b-b-thin"></div>
                     </div>
                     <div class="box d-flex jc-end ai-center">
@@ -40,7 +40,7 @@
                         <!-- Submit Button -->
                         <div class="row m-b-xl">
                             <div class="col d-flex jc-end">
-                                <button @click="createReportBook" class="font-md lbl-light btn-hov">Erstellen</button>
+                                <button @click="createReportBook" class="font-md lbl-light btn-hov">{{button_text}}</button>
                             </div>
                         </div>
                         <!-- <div class="offset-xl"></div> -->
@@ -58,27 +58,52 @@ export default {
         return{
             apprenticeship_name: '',
             begin_date: '',
-            end_date: ''
+            end_date: '',
+            edit: false,
+            report_book_id: '', //Kritisch: hier könnte jemand Hefte Bearbeiten, die Ihm nicht gehören.
+            header: 'Berichtsheft erstellen',
+            button_text: 'Erstellen'
+        }
+    },
+    created(){
+        if(this.$route.params.edit !== undefined){
+            this.edit = this.$route.params.edit;
+        }
+        if(this.edit){
+            this.begin_date = this.$route.params.book.begin_date;
+            this.end_date = this.$route.params.book.end_date;
+            this.apprenticeship_name = this.$route.params.book.name;
+            this.report_book_id = this.$route.params.book.id;
+            this.header = 'Berichtsheft bearbeiten',
+            this.button_text = 'Speichern'
         }
     },
     methods: {
         cancelCreate: function(){
             this.$router.push({name: 'reportBooks'})
         },
+        enterReportBook(id){
+            this.$router.push({name: 'reports', params: {report_book_id: id}});
+        },
         createReportBook: function(){
-            axios.post('/reportBooks/create', {
+            axios.post(this.edit ? '/reportBooks/update' : '/reportBooks/create', {
                 apprenticeship_name: this.apprenticeship_name,
                 begin_date: this.begin_date,
-                end_date: this.end_date
+                end_date: this.end_date,
+                reportBookId: this.report_book_id
             }).then((response) => {
                 if(response.data.error){
                     alert(response.data.error_message);
                 }else{
                     console.log(response.data.data);
+                    this.enterReportBook(response.data.data.id);
                 }
             }, (error) => {
                     console.log(error);
             });
+        },
+        enterReportBook(id){
+            this.$router.push({name: 'reports', params: {report_book_id: id}});
         }
     }
 }

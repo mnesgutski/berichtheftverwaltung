@@ -3,7 +3,7 @@
         <!-- Header -->
         <div class="box-auto d-flex m-b-lg">
             <div class="box-auto">
-                <h1 class="m-r-lg">Bericht erstellen</h1>
+                <h1 class="m-r-lg">{{header}}</h1>
                 <div class="b-b-thin"></div>
             </div>
             <div class="box d-flex jc-end ai-center">
@@ -30,7 +30,7 @@
                         <h2 class="lbl-light font-sm">Art</h2>
                     </div>
                     <div class="col">
-                        <input type="text" v-model="report_hours" id="inp-rep-hours">
+                        <input step="0,5" min="0" type="number" v-model="report_hours" id="inp-rep-hours">
                         <h2 class="lbl-light font-sm">Zielstunden</h2>
                     </div>
                 </div> 
@@ -62,7 +62,7 @@
                 <!-- Submit Button -->
                 <div class="row m-b-xl">
                     <div class="col d-flex jc-end">
-                        <button @click="createReport" class="font-md lbl-light btn-hov">Erstellen</button>
+                        <button @click="createReport()" class="font-md lbl-light btn-hov">{{button_text}}</button>
                     </div>
                 </div>
                 <!-- <div class="offset-xl"></div> -->
@@ -79,10 +79,34 @@ export default {
             report_position: '',
             report_begin_date: '',
             report_end_date: '',
-            report_type: '',
+            report_type: 'weekly',
             report_hours: 0,
             report_company: '',
-            report_department: ''
+            report_department: '',
+            edit: false,
+            report_id: '', //Kritisch: hier könnte jemand Berichte Bearbeiten, die Ihm nicht gehören.
+            header: 'Bericht erstellen',
+            button_text: 'Erstellen'
+        }
+    },
+    created(){
+        if (this.$route.params.report_book_id === undefined) {
+            this.$router.push({name: 'reportBooks'});
+        }
+        if(this.$route.params.edit !== undefined){
+            this.edit = this.$route.params.edit;
+        }
+        if(this.edit){
+            this.report_position = this.$route.params.report.position;
+            this.report_begin_date = this.$route.params.report.begin_date;
+            this.report_end_date = this.$route.params.report.end_date;
+            this.report_type = this.$route.params.report.type;
+            this.report_hours = this.$route.params.report.hours_targeted;
+            this.report_company = this.$route.params.report.company;
+            this.report_department = this.$route.params.report.department;
+            this.report_id = this.$route.params.report.id;
+            this.header = 'Bericht bearbeiten',
+            this.button_text = 'Speichern'
         }
     },
     methods: {
@@ -90,15 +114,16 @@ export default {
             this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
         },
         createReport: function(){
-            axios.post('/reports/create', {
+            axios.post(this.edit ? '/reports/update' : '/reports/create', {
                 type: this.report_type,
                 report_book_id: this.$route.params.report_book_id,
-                position: this.report_position,
+                position: this.report_position == null ? 1 : this.report_position,
                 begin_date: this.report_begin_date,
                 end_date: this.report_end_date,
                 hours_targeted: this.report_hours,
                 department: this.report_department,
-                company: this.report_company
+                company: this.report_company,
+                id: this.report_id,
             }).then((response) => {
                 if(response.data.error){
                     alert(response.data.error_message);
@@ -126,7 +151,7 @@ export default {
     height: 200px;
     width: 0px;
 }
-input[type="text"], select{
+input[type="text"],input[type="number"], select{
     width: 100%;
     font-size: 30px;
     font-family: roboto-light;
@@ -137,6 +162,7 @@ input[type="text"], select{
     color: var(--c-second);
 }
 select{-moz-appearance:none;}
+select:focus{background-color: var(--c-edit)}
 option{font-family: roboto-light; font-size: var(--f-md);}
 input[type="date"]{
     width: 100%;

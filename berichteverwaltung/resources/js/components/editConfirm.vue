@@ -4,11 +4,11 @@
         <div class="center-in-window w-xl p-lg">
             <div class="fill-parent d-flex fd-column jc-center">
                 <div class="b-thin m-b-md menu-item box d-flex jc-center"
-                @click="$emit('edit', report_id)">
+                @click="$emit('edit', item_id)">
                     <h2 class="font-md no-select lbl-light p-md">Bearbeiten</h2>
                 </div>
                 <div class="b-thin m-b-md menu-item box d-flex jc-center"
-                @click="$emit('delete', report_id)">
+                @click="$emit('delete', item_id)">
                     <h2 class="font-md no-select lbl-light p-md">Löschen</h2>
                 </div>
                 <div class="b-thin menu-item box d-flex jc-center"
@@ -28,7 +28,7 @@ export default {
         }
     },
     props: {
-        report_id: {
+        item_id: {
             type: Number
         }
     }

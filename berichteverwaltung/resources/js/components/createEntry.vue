@@ -21,7 +21,8 @@
                 type="number" 
                 step="0.25"
                 min="0"
-                v-model="entry_duration" id="inp-entry-duration">
+                v-model="entry_duration" id="inp-entry-duration"
+                @keydown.enter="createEntry()">
                 <h2 class="lbl-light font-sm">Stunden</h2>
             </div>
         </div>     

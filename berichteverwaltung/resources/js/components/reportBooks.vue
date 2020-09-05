@@ -7,16 +7,21 @@
                 <div class="b-b-thin"></div>
             </div>
             <div class="box d-flex jc-end ai-center">
-                <a href="/logout"><i class="nav-i material-icons font-xl color-1">keyboard_arrow_left</i></a>
-<!--                @click="logout"-->
-
+                <!-- Edit Button -->
+                <i class="nav-i material-icons font-lg color-1"
+                @click="editMode = !editMode"
+                >edit</i>
+                <!-- Logout Button -->
+                <i onclick="window.location.href = '/logout';"
+                class="nav-i material-icons font-xl color-1">
+                keyboard_arrow_left</i>
             </div>
         </div>        
         <div class="row m-none">
             <!-- All Report Books -->
-            <transition-group name="list">
-                <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reportBooks" :key="item.id" @click="enterReportBook(item.id)">
-                    <div class="item-hov report-book-container d-flex fd-column f-center p-md">
+            <transition-group class="d-flex" name="list">
+                <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reportBooks" :key="item.id" @click="clickOnReportBook(item)">
+                    <div :class="{'edit-item-active':editMode}" class="edit-item item-hov report-book-container d-flex fd-column f-center p-md">
                         <h2 class="lbl-light font-sm lbl-center wrap">{{item.name}}</h2>
                         <div class="divider"></div>
                         <h2 class="lbl-light font-sm lbl-center">
@@ -36,29 +41,46 @@
                 </div>
             </div>
         </div>
+        <edit-confirm 
+        v-if="showEditConfirm" 
+        :item_id="editingReportBookId" 
+        @cancel="cancelEdit"
+        @delete="deleteReportBook"
+        @edit="enterEditor"
+        class="pos-abs"></edit-confirm>
     </div>
 </template>
 <script>
 import axios from 'axios'
+import editConfirm from './editConfirm.vue'
 export default {
     data: function(){
         return{
-            reportBooks: []
+            reportBooks: [],
+            editMode: false,
+            showEditConfirm: false,
+            editingReportBookId: null
         }
     },
+    components: {
+        editConfirm
+    },
     mounted(){
-        axios.post('/reportBooks/get')
-            .then((response) => {
-                if (response.data.error) {
-                    alert(response.data.error_message);
-                }else{
-                    this.reportBooks = response.data.data;
-                }
-            }, (error) => {
-                console.log(error);
-            });
+        this.fetchReportBooks();
     },
     methods: {
+        fetchReportBooks(){
+            axios.post('/reportBooks/get')
+                .then((response) => {
+                    if (response.data.error) {
+                        alert(response.data.error_message);
+                    }else{
+                        this.reportBooks = response.data.data;
+                    }
+                }, (error) => {
+                    console.log(error);
+                });
+        },
         createNewReportBook(){
             this.$router.push({name: 'createReportBook'});
         },
@@ -72,6 +94,46 @@ export default {
                 }, (error) =>{
                     console.log(error);
                 });
+        },
+        clickOnReportBook(item){
+            if(this.editMode){
+                this.editingReportBookId = item.id;
+                this.showEditConfirm = true;
+            }else{
+                this.enterReportBook(item.id)
+            }
+        },
+        enterEditor(){
+            var loc_book = {};
+            for(var ele in this.reportBooks){
+                if(ele == this.editingReportBookId){
+                    loc_book = this.reportBooks[ele];
+                }
+            }
+            console.log(loc_book);
+            this.$router.push({name: 'createReportBook',
+                params: {
+                    edit: true,
+                    report_book_id: this.editingReportBookId,
+                    book: loc_book
+                }
+            })  
+        },
+        deleteReportBook(p_report_book_id){
+            axios.post('/reportBooks/delete', {
+                reportBookId: p_report_book_id
+            }).then((response) => {
+                console.log(response);
+                this.showEditConfirm = false;
+                this.editingReportId = null;
+                this.fetchReportBooks();
+            }, (error) => {
+                console.log(error);
+            })
+        },
+        cancelEdit(){
+            this.showEditConfirm = false;
+            this.editingReportBookId = null;
         }
     }
 }

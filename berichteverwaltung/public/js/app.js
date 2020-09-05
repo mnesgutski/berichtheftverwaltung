@@ -1997,6 +1997,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'create-entry',
@@ -2135,11 +2136,39 @@ __webpack_require__.r(__webpack_exports__);
       report_position: '',
       report_begin_date: '',
       report_end_date: '',
-      report_type: '',
+      report_type: 'weekly',
       report_hours: 0,
       report_company: '',
-      report_department: ''
+      report_department: '',
+      edit: false,
+      report_id: '',
+      //Kritisch: hier könnte jemand Berichte Bearbeiten, die Ihm nicht gehören.
+      header: 'Bericht erstellen',
+      button_text: 'Erstellen'
     };
+  },
+  created: function created() {
+    if (this.$route.params.report_book_id === undefined) {
+      this.$router.push({
+        name: 'reportBooks'
+      });
+    }
+
+    if (this.$route.params.edit !== undefined) {
+      this.edit = this.$route.params.edit;
+    }
+
+    if (this.edit) {
+      this.report_position = this.$route.params.report.position;
+      this.report_begin_date = this.$route.params.report.begin_date;
+      this.report_end_date = this.$route.params.report.end_date;
+      this.report_type = this.$route.params.report.type;
+      this.report_hours = this.$route.params.report.hours_targeted;
+      this.report_company = this.$route.params.report.company;
+      this.report_department = this.$route.params.report.department;
+      this.report_id = this.$route.params.report.id;
+      this.header = 'Bericht bearbeiten', this.button_text = 'Speichern';
+    }
   },
   methods: {
     cancelCreate: function cancelCreate() {
@@ -2153,15 +2182,16 @@ __webpack_require__.r(__webpack_exports__);
     createReport: function createReport() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reports/create', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.edit ? '/reports/update' : '/reports/create', {
         type: this.report_type,
         report_book_id: this.$route.params.report_book_id,
-        position: this.report_position,
+        position: this.report_position == null ? 1 : this.report_position,
         begin_date: this.report_begin_date,
         end_date: this.report_end_date,
         hours_targeted: this.report_hours,
         department: this.report_department,
-        company: this.report_company
+        company: this.report_company,
+        id: this.report_id
       }).then(function (response) {
         if (response.data.error) {
           alert(response.data.error_message);
@@ -2199,6 +2229,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2258,31 +2290,69 @@ __webpack_require__.r(__webpack_exports__);
     return {
       apprenticeship_name: '',
       begin_date: '',
-      end_date: ''
+      end_date: '',
+      edit: false,
+      report_book_id: '',
+      //Kritisch: hier könnte jemand Hefte Bearbeiten, die Ihm nicht gehören.
+      header: 'Berichtsheft erstellen',
+      button_text: 'Erstellen'
     };
   },
-  methods: {
+  created: function created() {
+    if (this.$route.params.edit !== undefined) {
+      this.edit = this.$route.params.edit;
+    }
+
+    if (this.edit) {
+      this.begin_date = this.$route.params.book.begin_date;
+      this.end_date = this.$route.params.book.end_date;
+      this.apprenticeship_name = this.$route.params.book.name;
+      this.report_book_id = this.$route.params.book.id;
+      this.header = 'Berichtsheft bearbeiten', this.button_text = 'Speichern';
+    }
+  },
+  methods: _defineProperty({
     cancelCreate: function cancelCreate() {
       this.$router.push({
         name: 'reportBooks'
       });
     },
+    enterReportBook: function enterReportBook(id) {
+      this.$router.push({
+        name: 'reports',
+        params: {
+          report_book_id: id
+        }
+      });
+    },
     createReportBook: function createReportBook() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reportBooks/create', {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.edit ? '/reportBooks/update' : '/reportBooks/create', {
         apprenticeship_name: this.apprenticeship_name,
         begin_date: this.begin_date,
-        end_date: this.end_date
+        end_date: this.end_date,
+        reportBookId: this.report_book_id
       }).then(function (response) {
         if (response.data.error) {
           alert(response.data.error_message);
         } else {
           console.log(response.data.data);
+
+          _this.enterReportBook(response.data.data.id);
         }
       }, function (error) {
         console.log(error);
       });
     }
-  }
+  }, "enterReportBook", function enterReportBook(id) {
+    this.$router.push({
+      name: 'reports',
+      params: {
+        report_book_id: id
+      }
+    });
+  })
 });
 
 /***/ }),
@@ -2323,7 +2393,7 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   props: {
-    report_id: {
+    item_id: {
       type: Number
     }
   }
@@ -2491,6 +2561,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Entry',
   props: {
@@ -2590,6 +2661,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _editConfirm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editConfirm.vue */ "./resources/js/components/editConfirm.vue");
 //
 //
 //
@@ -2630,27 +2702,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      reportBooks: []
+      reportBooks: [],
+      editMode: false,
+      showEditConfirm: false,
+      editingReportBookId: null
     };
   },
+  components: {
+    editConfirm: _editConfirm_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   mounted: function mounted() {
-    var _this = this;
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reportBooks/get').then(function (response) {
-      if (response.data.error) {
-        alert(response.data.error_message);
-      } else {
-        _this.reportBooks = response.data.data;
-      }
-    }, function (error) {
-      console.log(error);
-    });
+    this.fetchReportBooks();
   },
   methods: {
+    fetchReportBooks: function fetchReportBooks() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reportBooks/get').then(function (response) {
+        if (response.data.error) {
+          alert(response.data.error_message);
+        } else {
+          _this.reportBooks = response.data.data;
+        }
+      }, function (error) {
+        console.log(error);
+      });
+    },
     createNewReportBook: function createNewReportBook() {
       this.$router.push({
         name: 'createReportBook'
@@ -2670,6 +2764,52 @@ __webpack_require__.r(__webpack_exports__);
       }, function (error) {
         console.log(error);
       });
+    },
+    clickOnReportBook: function clickOnReportBook(item) {
+      if (this.editMode) {
+        this.editingReportBookId = item.id;
+        this.showEditConfirm = true;
+      } else {
+        this.enterReportBook(item.id);
+      }
+    },
+    enterEditor: function enterEditor() {
+      var loc_book = {};
+
+      for (var ele in this.reportBooks) {
+        if (ele == this.editingReportBookId) {
+          loc_book = this.reportBooks[ele];
+        }
+      }
+
+      console.log(loc_book);
+      this.$router.push({
+        name: 'createReportBook',
+        params: {
+          edit: true,
+          report_book_id: this.editingReportBookId,
+          book: loc_book
+        }
+      });
+    },
+    deleteReportBook: function deleteReportBook(p_report_book_id) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/reportBooks/delete', {
+        reportBookId: p_report_book_id
+      }).then(function (response) {
+        console.log(response);
+        _this2.showEditConfirm = false;
+        _this2.editingReportId = null;
+
+        _this2.fetchReportBooks();
+      }, function (error) {
+        console.log(error);
+      });
+    },
+    cancelEdit: function cancelEdit() {
+      this.showEditConfirm = false;
+      this.editingReportBookId = null;
     }
   }
 });
@@ -2688,6 +2828,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _editConfirm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editConfirm.vue */ "./resources/js/components/editConfirm.vue");
+//
 //
 //
 //
@@ -2813,6 +2954,25 @@ __webpack_require__.r(__webpack_exports__);
         this.enterReport(item);
       }
     },
+    enterEditor: function enterEditor() {
+      var loc_rep = {};
+
+      for (var ele in this.reports) {
+        if (ele == this.editingReportId) {
+          loc_rep = this.reports[ele];
+        }
+      }
+
+      console.log(loc_rep);
+      this.$router.push({
+        name: 'createReport',
+        params: {
+          edit: true,
+          report_book_id: this.$route.params.report_book_id,
+          report: loc_rep
+        }
+      });
+    },
     cancelEdit: function cancelEdit() {
       this.showEditConfirm = false;
       this.editingReportId = null;
@@ -2906,7 +3066,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.offset-xl[data-v-7cf53d1b]{\r\n    height: 200px;\r\n    width: 0px;\n}\ninput[type=\"text\"][data-v-7cf53d1b], select[data-v-7cf53d1b]{\r\n    width: 100%;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\nselect[data-v-7cf53d1b]{-moz-appearance:none;}\noption[data-v-7cf53d1b]{font-family: roboto-light; font-size: var(--f-md);}\ninput[type=\"date\"][data-v-7cf53d1b]{\r\n    width: 100%;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\n.form-container[data-v-7cf53d1b]{width: var(--s-xx)}\r\n", ""]);
+exports.push([module.i, "\n.offset-xl[data-v-7cf53d1b]{\r\n    height: 200px;\r\n    width: 0px;\n}\ninput[type=\"text\"][data-v-7cf53d1b],input[type=\"number\"][data-v-7cf53d1b], select[data-v-7cf53d1b]{\r\n    width: 100%;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\nselect[data-v-7cf53d1b]{-moz-appearance:none;}\nselect[data-v-7cf53d1b]:focus{background-color: var(--c-edit)}\noption[data-v-7cf53d1b]{font-family: roboto-light; font-size: var(--f-md);}\ninput[type=\"date\"][data-v-7cf53d1b]{\r\n    width: 100%;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\n.form-container[data-v-7cf53d1b]{width: var(--s-xx)}\r\n", ""]);
 
 // exports
 
@@ -4588,6 +4748,15 @@ var render = function() {
           },
           domProps: { value: _vm.entry_duration },
           on: {
+            keydown: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.createEntry()
+            },
             input: function($event) {
               if ($event.target.composing) {
                 return
@@ -4699,7 +4868,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "fill-parent d-flex fd-column" }, [
     _c("div", { staticClass: "box-auto d-flex m-b-lg" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "box-auto" }, [
+        _c("h1", { staticClass: "m-r-lg" }, [_vm._v(_vm._s(_vm.header))]),
+        _vm._v(" "),
+        _c("div", { staticClass: "b-b-thin" })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
         _c(
@@ -4803,7 +4976,12 @@ var render = function() {
                     expression: "report_hours"
                   }
                 ],
-                attrs: { type: "text", id: "inp-rep-hours" },
+                attrs: {
+                  step: "0,5",
+                  min: "0",
+                  type: "number",
+                  id: "inp-rep-hours"
+                },
                 domProps: { value: _vm.report_hours },
                 on: {
                   input: function($event) {
@@ -4946,9 +5124,13 @@ var render = function() {
                 "button",
                 {
                   staticClass: "font-md lbl-light btn-hov",
-                  on: { click: _vm.createReport }
+                  on: {
+                    click: function($event) {
+                      return _vm.createReport()
+                    }
+                  }
                 },
-                [_vm._v("Erstellen")]
+                [_vm._v(_vm._s(_vm.button_text))]
               )
             ])
           ])
@@ -4957,18 +5139,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-auto" }, [
-      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Bericht erstellen")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "b-b-thin" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -4994,7 +5165,11 @@ var render = function() {
     _c("div", { staticClass: "d-flex fd-column fill-v" }, [
       _c("div", { staticClass: "box-auto" }, [
         _c("div", { staticClass: "d-flex m-b-lg" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "box-auto" }, [
+            _c("h1", { staticClass: "m-r-lg" }, [_vm._v(_vm._s(_vm.header))]),
+            _vm._v(" "),
+            _c("div", { staticClass: "b-b-thin" })
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
             _c(
@@ -5111,7 +5286,7 @@ var render = function() {
                       staticClass: "font-md lbl-light btn-hov",
                       on: { click: _vm.createReportBook }
                     },
-                    [_vm._v("Erstellen")]
+                    [_vm._v(_vm._s(_vm.button_text))]
                   )
                 ])
               ])
@@ -5122,18 +5297,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-auto" }, [
-      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtsheft erstellen")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "b-b-thin" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -5166,7 +5330,7 @@ var render = function() {
             staticClass: "b-thin m-b-md menu-item box d-flex jc-center",
             on: {
               click: function($event) {
-                return _vm.$emit("edit", _vm.report_id)
+                return _vm.$emit("edit", _vm.item_id)
               }
             }
           },
@@ -5183,7 +5347,7 @@ var render = function() {
             staticClass: "b-thin m-b-md menu-item box d-flex jc-center",
             on: {
               click: function($event) {
-                return _vm.$emit("delete", _vm.report_id)
+                return _vm.$emit("delete", _vm.item_id)
               }
             }
           },
@@ -5433,13 +5597,15 @@ var render = function() {
           "div",
           {
             staticClass: "box-auto",
-            class: { "b-b-thin": _vm.description != "" }
+            class: {
+              "b-b-thin": _vm.description != "" && _vm.description != null
+            }
           },
           [_c("h2", { staticClass: "font-sm" }, [_vm._v(_vm._s(_vm.header))])]
         )
       ]),
       _vm._v(" "),
-      _vm.description != ""
+      _vm.description != "" && _vm.description != null
         ? _c("div", { staticClass: "box" }, [
             _c("h3", { staticClass: "font-sm lbl-light" }, [
               _vm._v(_vm._s(_vm.description))
@@ -5576,109 +5742,151 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row m-none" },
-      [
-        _c(
-          "transition-group",
-          { attrs: { name: "list" } },
-          _vm._l(_vm.reportBooks, function(item) {
-            return _c(
-              "div",
-              {
-                key: item.id,
-                staticClass: "col-auto pm-none m-r-lg m-b-lg",
-                on: {
-                  click: function($event) {
-                    return _vm.enterReportBook(item.id)
-                  }
-                }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "item-hov report-book-container d-flex fd-column f-center p-md"
-                  },
-                  [
-                    _c(
-                      "h2",
-                      { staticClass: "lbl-light font-sm lbl-center wrap" },
-                      [_vm._v(_vm._s(item.name))]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "divider" }),
-                    _vm._v(" "),
-                    _c("h2", { staticClass: "lbl-light font-sm lbl-center" }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(
-                            new Date(item.begin_date).toLocaleDateString("de", {
-                              dateStyle: "medium"
-                            })
-                          ) +
-                          " -\n                            "
-                      ),
-                      _c("br"),
-                      _vm._v(
-                        _vm._s(
-                          new Date(item.end_date).toLocaleDateString("de", {
-                            dateStyle: "medium"
-                          })
-                        ) + "\n                        "
-                      )
-                    ])
-                  ]
-                )
-              ]
-            )
-          }),
-          0
-        ),
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "d-flex m-b-lg" }, [
+        _vm._m(0),
         _vm._v(" "),
-        _c(
-          "div",
-          { key: "add_button", staticClass: "col-auto pm-none m-r-lg m-b-lg" },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "report-book-container item-hov",
-                on: { click: _vm.createNewReportBook }
-              },
-              [_vm._m(1)]
-            )
-          ]
-        )
-      ],
-      1
-    )
-  ])
+        _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
+          _c(
+            "i",
+            {
+              staticClass: "nav-i material-icons font-lg color-1",
+              on: {
+                click: function($event) {
+                  _vm.editMode = !_vm.editMode
+                }
+              }
+            },
+            [_vm._v("edit")]
+          ),
+          _vm._v(" "),
+          _c(
+            "i",
+            {
+              staticClass: "nav-i material-icons font-xl color-1",
+              attrs: { onclick: "window.location.href = '/logout';" }
+            },
+            [_vm._v("\n            keyboard_arrow_left")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row m-none" },
+        [
+          _c(
+            "transition-group",
+            { staticClass: "d-flex", attrs: { name: "list" } },
+            _vm._l(_vm.reportBooks, function(item) {
+              return _c(
+                "div",
+                {
+                  key: item.id,
+                  staticClass: "col-auto pm-none m-r-lg m-b-lg",
+                  on: {
+                    click: function($event) {
+                      return _vm.clickOnReportBook(item)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "edit-item item-hov report-book-container d-flex fd-column f-center p-md",
+                      class: { "edit-item-active": _vm.editMode }
+                    },
+                    [
+                      _c(
+                        "h2",
+                        { staticClass: "lbl-light font-sm lbl-center wrap" },
+                        [_vm._v(_vm._s(item.name))]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "divider" }),
+                      _vm._v(" "),
+                      _c(
+                        "h2",
+                        { staticClass: "lbl-light font-sm lbl-center" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(
+                                new Date(
+                                  item.begin_date
+                                ).toLocaleDateString("de", {
+                                  dateStyle: "medium"
+                                })
+                              ) +
+                              " -\n                        "
+                          ),
+                          _c("br"),
+                          _vm._v(
+                            _vm._s(
+                              new Date(item.end_date).toLocaleDateString("de", {
+                                dateStyle: "medium"
+                              })
+                            ) + "\n                    "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              key: "add_button",
+              staticClass: "col-auto pm-none m-r-lg m-b-lg"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "report-book-container item-hov",
+                  on: { click: _vm.createNewReportBook }
+                },
+                [_vm._m(1)]
+              )
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm.showEditConfirm
+        ? _c("edit-confirm", {
+            staticClass: "pos-abs",
+            attrs: { item_id: _vm.editingReportBookId },
+            on: {
+              cancel: _vm.cancelEdit,
+              delete: _vm.deleteReportBook,
+              edit: _vm.enterEditor
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex m-b-lg" }, [
-      _c("div", { staticClass: "box-auto" }, [
-        _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtshefte")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "b-b-thin" })
-      ]),
+    return _c("div", { staticClass: "box-auto" }, [
+      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichtshefte")]),
       _vm._v(" "),
-      _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
-        _c("a", { attrs: { href: "/logout" } }, [
-          _c("i", { staticClass: "nav-i material-icons font-xl color-1" }, [
-            _vm._v("keyboard_arrow_left")
-          ])
-        ])
-      ])
+      _c("div", { staticClass: "b-b-thin" })
     ])
   },
   function() {
@@ -5761,7 +5969,7 @@ var render = function() {
         [
           _c(
             "transition-group",
-            { attrs: { name: "list" } },
+            { staticClass: "d-flex", attrs: { name: "list" } },
             _vm._l(_vm.reports, function(item) {
               return _c(
                 "div",
@@ -5840,8 +6048,12 @@ var render = function() {
       _vm.showEditConfirm
         ? _c("edit-confirm", {
             staticClass: "pos-abs",
-            attrs: { report_id: _vm.editingReportId },
-            on: { cancel: _vm.cancelEdit, delete: _vm.deleteReport }
+            attrs: { item_id: _vm.editingReportId },
+            on: {
+              cancel: _vm.cancelEdit,
+              delete: _vm.deleteReport,
+              edit: _vm.enterEditor
+            }
           })
         : _vm._e()
     ],

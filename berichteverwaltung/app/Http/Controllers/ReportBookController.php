@@ -72,7 +72,8 @@ class ReportBookController extends Controller
 
             $reportBook->save();
 
-            $data[$reportBook->id] = [
+            $data = [
+                'id' => $reportBook->id,
                 'owner' => $reportBook->owner,
                 'name' => $reportBook->apprenticeship_name,
                 'begin_date' => $reportBook->begin_date,
@@ -107,7 +108,8 @@ class ReportBookController extends Controller
 
             $rBook->save();
 
-            $data[$rBook->id] = [
+            $data = [
+                'id' => $rBook->id,
                 'owner' => $rBook->owner,
                 'name' => $rBook->apprenticeship_name,
                 'begin_date' => $rBook->begin_date,

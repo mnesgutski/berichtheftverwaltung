@@ -19,7 +19,7 @@
         </div>       
         <div class="row m-none">
             <!-- All Reports -->
-            <transition-group name="list">
+            <transition-group class="d-flex" name="list">
                 <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reports" :key="item.id">
                     <div class="edit-item item-hov report-container d-flex fd-column f-center p-md" 
                     :class="{'edit-item-active':editMode}"
@@ -45,9 +45,10 @@
         </div>
         <edit-confirm 
         v-if="showEditConfirm" 
-        :report_id="editingReportId" 
+        :item_id="editingReportId" 
         @cancel="cancelEdit"
         @delete="deleteReport"
+        @edit="enterEditor"
         class="pos-abs"></edit-confirm>
     </div>
 </template>
@@ -108,6 +109,22 @@ export default {
             else{
                 this.enterReport(item);
             }            
+        },
+        enterEditor(){
+            var loc_rep = {};
+            for(var ele in this.reports){
+                if(ele == this.editingReportId){
+                    loc_rep = this.reports[ele];
+                }
+            }
+            console.log(loc_rep);
+            this.$router.push({name: 'createReport',
+                params: {
+                    edit: true,
+                    report_book_id: this.$route.params.report_book_id,
+                    report: loc_rep
+                }
+            })
         },
         cancelEdit(){
             this.showEditConfirm = false;

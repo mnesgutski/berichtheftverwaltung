@@ -2,11 +2,12 @@
     <div id="entry">
         <div class="d-flex fd-column b-thin p-md">
             <div class="d-flex">
-                <div class="box-auto" v-bind:class="{'b-b-thin' : description != ''}">
+                <div class="box-auto" 
+                v-bind:class="{'b-b-thin' : ((description != '')&&(description != null))}">
                      <h2 class="font-sm">{{header}}</h2>
                 </div>               
             </div>
-            <div class="box" v-if="description != ''">
+            <div class="box" v-if="((description != '')&&(description != null))">
                 <h3 class="font-sm lbl-light">{{description}}</h3>
             </div>            
         </div>

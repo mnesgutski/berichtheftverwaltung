@@ -69,7 +69,8 @@ class ReportController extends Controller
             ]);
             $rep->save();
 
-            $data[$rep->id] = [
+            $data = [
+                'id' => $rep->id,
                 'type' => $rep->type,
                 'position' => $rep->postion,
                 'begin_date' => $rep->begin_date,
@@ -107,7 +108,8 @@ class ReportController extends Controller
 
             $rep->save();
 
-            $data[$rep->id] = [
+            $data = [
+                'id' => $rep->id,
                 'type' => $rep->type,
                 'position' => $rep->postion,
                 'begin_date' => $rep->begin_date,
