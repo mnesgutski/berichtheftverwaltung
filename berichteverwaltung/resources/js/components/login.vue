@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" v-model="username" name="username" id="inp-username">
+                    <input type="text" ref="inp_username" v-model="username" name="username" id="inp-username">
                     <h4 class="m-b-lg">Benutzername</h4>
                     <input type="password" @keydown.enter="loginCall" v-model="password" name="password" id="inp-password">
                     <h4 class="m-b-lg">Passwort</h4>
@@ -34,6 +34,9 @@ export default {
             username: '',
             password: ''
         }
+    },
+    mounted(){
+        this.$refs.inp_username.focus();
     },
     methods:{
         loginCall(){

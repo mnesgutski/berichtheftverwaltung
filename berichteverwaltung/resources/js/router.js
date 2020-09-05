@@ -27,6 +27,7 @@ export default new Router({
 			components: {default: ReportBooks},
 			props: {},
 			children: [],
+			meta: {header_name: 'Berichtshefte'}
 		},
 		{
 			path: '/createReportBook',
@@ -34,6 +35,7 @@ export default new Router({
 			components: {default: CreateReportBook},
 			props: {},
 			children: [],
+			meta: {header_name: 'Berichtsheft erstellen'}
 		},
 		{
 			path: '/reports',
@@ -41,6 +43,7 @@ export default new Router({
 			components: {default: Reports},
 			props: {},
 			children: [],
+			meta: {header_name: 'Berichte'}
 		},
 		{
 			path: '/createReport',
@@ -48,6 +51,7 @@ export default new Router({
 			components: {default: CreateReport},
 			props: {},
 			children: [],
+			meta: {header_name: 'Bericht erstellen'}
 		},
 		{
 			path: '/entries',
@@ -55,6 +59,7 @@ export default new Router({
 			components: {default: Entries},
 			props: {},
 			children: [],
+			meta: {header_name: 'Einträge'}
 		}
 
 	],

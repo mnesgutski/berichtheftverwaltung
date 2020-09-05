@@ -1,45 +1,51 @@
 <template>
     <div class="fill-parent">
-        <div class="row fd-column fill-parent">
-            <!-- Head Bar -->
-            <div class="col-auto row">
-                <!-- Title -->
-                <div class="col-auto">
-                    <h1 class="m-r-lg">Berichtsheft erstellen</h1>
-                    <div class="b-b-thin"></div>
-                </div>
-                <!-- Cancel Button -->
-                <div class="col d-flex ai-center jc-end">
-                    <i class="fas fa-times lbl-ico" @click="cancelCreate"></i>
-                </div>
+        <div class="d-flex fd-column fill-v">
+            <div class="box-auto">
+                <!-- Header -->
+                <div class="d-flex m-b-lg">
+                    <div class="box-auto">
+                        <h1 class="m-r-lg">Berichtsheft erstellen</h1>
+                        <div class="b-b-thin"></div>
+                    </div>
+                    <div class="box d-flex jc-end ai-center">
+                        <i class="nav-i material-icons font-xl color-1"
+                        @click="cancelCreate"
+                        >close</i>
+                    </div>
+                </div> 
             </div>
-            <!-- Create Form -->
-            <div class="col container d-flex jc-center fd-column form-container">  
-                <!-- Apprenticeship Input -->
-                <div class="row m-b-xl">
-                    <div class="col">
-                        <input type="text" v-model="apprenticeship_name" id="inp-username">
-                        <h2 class="lbl-light font-sm">Ausbildungsberuf</h2>
-                    </div>
-                </div> 
-                <!-- Date Inputs -->
-                <div class="row m-b-xl">
-                    <div class="col">
-                        <input type="date" v-model="begin_date" id="inp-username">
-                        <h2 class="lbl-light font-sm">Beginn</h2>
-                    </div>
-                    <div class="col">
-                        <input type="date" v-model="end_date" id="inp-username">
-                        <h2 class="lbl-light font-sm">Ende</h2>
-                    </div>                    
-                </div> 
-                <!-- Submit Button -->
-                <div class="row m-b-xl">
-                    <div class="col d-flex jc-end">
-                        <button @click="createReportBook" class="font-md lbl-light btn-hov">Erstellen</button>
+            <div class="box">
+                <div class="row fd-column fill-v">
+                    <!-- Create Form -->
+                    <div class="col container d-flex jc-center fd-column form-container">  
+                        <!-- Apprenticeship Input -->
+                        <div class="row m-b-xl">
+                            <div class="col">
+                                <input type="text" v-model="apprenticeship_name" id="inp-username">
+                                <h2 class="lbl-light font-sm">Ausbildungsberuf</h2>
+                            </div>
+                        </div> 
+                        <!-- Date Inputs -->
+                        <div class="row m-b-xl">
+                            <div class="col">
+                                <input type="date" v-model="begin_date" id="inp-username">
+                                <h2 class="lbl-light font-sm">Beginn</h2>
+                            </div>
+                            <div class="col">
+                                <input type="date" v-model="end_date" id="inp-username">
+                                <h2 class="lbl-light font-sm">Ende</h2>
+                            </div>                    
+                        </div> 
+                        <!-- Submit Button -->
+                        <div class="row m-b-xl">
+                            <div class="col d-flex jc-end">
+                                <button @click="createReportBook" class="font-md lbl-light btn-hov">Erstellen</button>
+                            </div>
+                        </div>
+                        <!-- <div class="offset-xl"></div> -->
                     </div>
                 </div>
-                <!-- <div class="offset-xl"></div> -->
             </div>
         </div>
         

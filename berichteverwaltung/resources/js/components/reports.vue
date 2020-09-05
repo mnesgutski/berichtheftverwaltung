@@ -1,19 +1,17 @@
 <template>
     <div>
-        <div class="row m-none m-b-lg">
-            <!-- Header -->
-            <div class="col-auto row">
-                <!-- Title -->
-                <div class="col-auto">
-                    <h1 class="m-r-lg">Berichte</h1>
-                    <div class="b-b-thin"></div>
-                </div>
-                <!-- Back Button -->
-                <div class="col d-flex ai-center jc-end">
-                    <i class="fas fa-times lbl-ico" @click="$router.push({name: 'reportBooks'})"></i>
-                </div>
+        <!-- Header -->
+        <div class="d-flex m-b-lg">
+            <div class="box-auto">
+                <h1 class="m-r-lg">Berichte</h1>
+                <div class="b-b-thin"></div>
             </div>
-        </div>
+            <div class="box d-flex jc-end ai-center">
+                <i class="nav-i material-icons font-xl color-1"
+                @click="navBack()"
+                >keyboard_arrow_left</i>
+            </div>
+        </div>       
         <div class="row m-none">
             <!-- All Reports -->
             <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reports" :key="item.id">
@@ -27,7 +25,7 @@
              <div class="col-auto pm-none m-r-lg m-b-lg">
                 <div class="report-container" @click="createReport">
                     <div id="btn-add-new-book" class="d-flex f-center fill-parent">
-                        <i class="fas fa-plus lbl-ico"></i>
+                        <i class="material-icons font-lg color-1">add</i>
                     </div>
                 </div>
             </div>
@@ -60,10 +58,19 @@ export default {
     },
     methods: {
         createReport(){
-            this.$router.push({name: "createReport", params: {report_book_id: this.$route.params.report_book_id}});
+            this.$router.push({name: "createReport", 
+                params: {report_book_id: this.$route.params.report_book_id}});
         },
         enterReport(report){
-            this.$router.push({name: 'entries', params: {report: report}});
+            this.$router.push(
+                {name: 'entries', params: 
+                    {
+                        report: report,
+                        report_book_id: this.$route.params.report_book_id
+                    }});
+        },
+        navBack(){
+            this.$router.push({name: 'reportBooks'});
         }
     }
 }
