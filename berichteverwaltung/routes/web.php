@@ -22,8 +22,8 @@ Route::get('/', 'ViewController@index')->name('home')->middleware("auth");
 Route::get('/login', 'ViewController@index')->name('login')->middleware('guest');
 //Route::get('/login', 'ViewController@index')->name('login');
 
-Route::post('/login', 'LoginController@login')->name('login.post');
-
+Route::post('/login', 'LoginController@login')->name('login.post')->middleware('guest');
+Route::post('/logout', 'LoginController@login')->name('logout.post')->middleware('auth');
 
 /**
  * Route Group for all the routes that require the user to be authorized
