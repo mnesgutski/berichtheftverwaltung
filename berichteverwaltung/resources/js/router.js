@@ -3,10 +3,10 @@ import Router from 'vue-router';
 import App from './app.vue';
 import Login from './components/login.vue';
 import ReportBooks from './components/reportBooks.vue';
-import CreateReportBook from './components/CreateReportBook';
-import Reports from './components/reports';
-import CreateReport from './components/createReport';
-import Entries from './components/entries';
+import CreateReportBook from './components/createReportBook.vue';
+import Reports from './components/reports.vue';
+import CreateReport from './components/createReport.vue';
+import Entries from './components/entries.vue';
 
 Vue.use(Router);
 
@@ -56,7 +56,7 @@ export default new Router({
 			props: {},
 			children: [],
 		}
-		
+
 	],
 
 });
