@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/reports/update', 'ReportController@update')->name('reports.update');
     Route::post('/reports/delete', 'ReportController@delete')->name('reports.delete');
 
+    Route::get('/download/reportpdf', 'PDFGenController@download')->name('reports.pdf');
+
     /**
      * Entry Routes
      */
