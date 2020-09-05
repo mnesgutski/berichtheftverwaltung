@@ -2572,6 +2572,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2759,7 +2760,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.list-item {\r\n  display: inline-block;\r\n  margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\r\n  transition: all .3s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\r\n  transform: translateY(30px);\n}\r\n", ""]);
+exports.push([module.i, "\n.list-item {\r\n  display: inline-block;\r\n  margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\r\n  transition: all .3s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\r\n  transform: translateY(30px);\n}\n.item-hov{\r\n    background-color: transparent;\r\n    transition: background-color .1s ease;\n}\n.item-hov:hover{\r\n    background-color: var(--c-third);\n}\n.item-hov:hover i, \r\n.item-hov:hover h2, \r\n.item-hov:hover h3{color: var(--c-second)}\r\n", ""]);
 
 // exports
 
@@ -2892,7 +2893,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-second);\n}\n.report-book-container[data-v-3437344a]:hover{\r\n    transform: scale(1.02)\n}\n.divider[data-v-3437344a]{\r\n    height: 1px;\r\n    width: 100%;\r\n    background-color: var(--c-second);\r\n    margin: var(--pm-md) 0px;\n}\n.wrap[data-v-3437344a]{word-wrap: anywhere;}\r\n", ""]);
+exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-second);\n}\n.divider[data-v-3437344a]{\r\n    height: 1px;\r\n    width: 100%;\r\n    background-color: var(--c-second);\r\n    margin: var(--pm-md) 0px;\n}\n.wrap[data-v-3437344a]{word-wrap: anywhere;}\r\n", ""]);
 
 // exports
 
@@ -2911,7 +2912,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.report-container[data-v-666cdbc4]{\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-second);\n}\n.report-container[data-v-666cdbc4]:hover{\r\n    transform: scale(1.02)\n}\n.divider[data-v-666cdbc4]{\r\n    height: 1px;\r\n    width: 100%;\r\n    background-color: var(--c-second);\r\n    margin: var(--pm-md) 0px;\n}\r\n", ""]);
+exports.push([module.i, "\n.report-container[data-v-666cdbc4]{\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-second);\n}\n.divider[data-v-666cdbc4]{\r\n    height: 1px;\r\n    width: 100%;\r\n    background-color: var(--c-second);\r\n    margin: var(--pm-md) 0px;\n}\r\n", ""]);
 
 // exports
 
@@ -5355,7 +5356,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "report-book-container d-flex fd-column f-center p-md"
+                      "item-hov report-book-container d-flex fd-column f-center p-md"
                   },
                   [
                     _c(
@@ -5400,7 +5401,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "report-book-container",
+                staticClass: "report-book-container item-hov",
                 on: { click: _vm.createNewReportBook }
               },
               [_vm._m(1)]
@@ -5508,7 +5509,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "report-container d-flex fd-column f-center p-md",
+                      "item-hov report-container d-flex fd-column f-center p-md",
                     on: {
                       click: function($event) {
                         return _vm.enterReport(item)
@@ -5555,7 +5556,7 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "report-container",
+              staticClass: "item-hov report-container",
               on: { click: _vm.createReport }
             },
             [_vm._m(1)]

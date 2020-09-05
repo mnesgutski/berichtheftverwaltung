@@ -16,7 +16,7 @@
             <!-- All Reports -->
             <transition-group name="list">
                 <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reports" :key="item.id">
-                    <div class="report-container d-flex fd-column f-center p-md" @click="enterReport(item)">
+                    <div class="item-hov report-container d-flex fd-column f-center p-md" @click="enterReport(item)">
                         <h2 class="lbl-light font-sm lbl-center wrap">{{reportTypes[item.type]}}</h2>
                         <div class="divider"></div>
                         <h2 class="lbl-light font-sm lbl-center">
@@ -28,7 +28,7 @@
             </transition-group>
              <!-- Create Button -->
              <div class="col-auto pm-none m-r-lg m-b-lg">
-                <div class="report-container" @click="createReport">
+                <div class="item-hov report-container" @click="createReport">
                     <div id="btn-add-new-book" class="d-flex f-center fill-parent">
                         <i class="material-icons font-lg color-1">add</i>
                     </div>
@@ -87,9 +87,6 @@ export default {
     border: 1px solid var(--c-second);
 }
 
-.report-container:hover{
-    transform: scale(1.02)
-}
 .divider{
     height: 1px;
     width: 100%;

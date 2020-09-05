@@ -40,4 +40,15 @@ export default {
   opacity: 0;
   transform: translateY(30px);
 }
+.item-hov{
+    background-color: transparent;
+    transition: background-color .1s ease;
+}
+
+.item-hov:hover{
+    background-color: var(--c-third);
+}
+.item-hov:hover i, 
+.item-hov:hover h2, 
+.item-hov:hover h3{color: var(--c-second)}
 </style>
