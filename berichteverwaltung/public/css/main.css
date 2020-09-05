@@ -215,6 +215,7 @@ input[type="text"]{
 .p-xl{padding: var(--pm-xl)}
 
 .b-b-thin{border-bottom: 1px solid var(--c-second);}
+.b-thin{border-bottom: 1px solid var(--c-second);}
 
 .scroll{overflow-y: scroll;}
 

@@ -2594,7 +2594,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     logout: function logout() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/logout').then(function (response) {}, function (error) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/logout').then(function (response) {
+        console.log(response);
+      }, function (error) {
         console.log(error);
       });
     }
@@ -4986,7 +4988,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "d-flex fd-column" }, [
+    _c("div", { staticClass: "d-flex fd-column b-thin" }, [
       _c("div", { staticClass: "d-flex" }, [
         _c(
           "div",

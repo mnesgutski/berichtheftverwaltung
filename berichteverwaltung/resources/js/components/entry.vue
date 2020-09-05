@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="d-flex fd-column">
+        <div class="d-flex fd-column b-thin">
             <div class="d-flex">
                 <div class="box-auto" v-bind:class="{'b-b-thin' : description != ''}">
                      <h2 class="font-sm">{{header}}</h2>

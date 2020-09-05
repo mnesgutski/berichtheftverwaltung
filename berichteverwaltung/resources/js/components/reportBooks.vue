@@ -65,7 +65,7 @@ export default {
         logout(){
             axios.post('/logout')
                 .then((response)=>{
-                    
+                    console.log(response);
                 }, (error) =>{
                     console.log(error);
                 });
