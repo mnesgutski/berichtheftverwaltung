@@ -14,16 +14,18 @@
         </div>       
         <div class="row m-none">
             <!-- All Reports -->
-            <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reports" :key="item.id">
-                <div class="report-container d-flex fd-column f-center p-md" @click="enterReport(item)">
-                    <h2 class="lbl-light font-sm lbl-center wrap">{{reportTypes[item.type]}}</h2>
-                    <div class="divider"></div>
-                    <h2 class="lbl-light font-sm lbl-center">
-                        {{new Date(item.begin_date).toLocaleDateString('de',{dateStyle: 'medium'})}} -
-                        <br>{{new Date(item.end_date).toLocaleDateString('de',{dateStyle: 'medium'})}}
-                    </h2>                                                              
-                </div>
-             </div>
+            <transition-group name="list">
+                <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reports" :key="item.id">
+                    <div class="report-container d-flex fd-column f-center p-md" @click="enterReport(item)">
+                        <h2 class="lbl-light font-sm lbl-center wrap">{{reportTypes[item.type]}}</h2>
+                        <div class="divider"></div>
+                        <h2 class="lbl-light font-sm lbl-center">
+                            {{new Date(item.begin_date).toLocaleDateString('de',{dateStyle: 'medium'})}} -
+                            <br>{{new Date(item.end_date).toLocaleDateString('de',{dateStyle: 'medium'})}}
+                        </h2>                                                              
+                    </div>
+                 </div>
+            </transition-group>
              <!-- Create Button -->
              <div class="col-auto pm-none m-r-lg m-b-lg">
                 <div class="report-container" @click="createReport">

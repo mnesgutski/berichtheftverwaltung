@@ -1,8 +1,8 @@
 <template>
 <!-- @Todo: Michel : Wenn End und Begin date gleich, Anders rendern -->
-    <div class="fill-parent">
+    <div class="fill-parent d-flex fd-column">
         <!-- Header -->
-        <div class="d-flex m-b-lg">
+        <div class="box-auto d-flex m-b-lg">
             <div class="box-auto">
                 <h1 class="m-r-lg">Bericht</h1>
                 <div class="b-b-thin"></div>
@@ -16,10 +16,10 @@
                 >keyboard_arrow_left</i>
             </div>
         </div>       
-        <div class="d-flex jc-center">
-            <div class="w-xx b-thin p-md">
+        <div class="box d-flex jc-center">
+            <div class="w-xx b-thin p-md d-flex fd-column">
                 <!-- Report Header -->
-                <div class="d-flex box m-b-lg">
+                <div class="d-flex box-auto m-b-lg">
                     <div class="box-auto b-b-thin" v-if="report.position">
                         <h2 class="font-md lbl-light">Nummer: {{this.report.position}}</h2>
                     </div>
@@ -36,26 +36,33 @@
                         </h3>
                     </div>
                 </div>
-                <!-- Actual Entries -->
-                <div v-for="item in entries" :key="item.id">
-                    <entry class="m-b-md" :header="item.header" :description="item.description"></entry>
-                </div>
-                <!-- Add Entry Form -->
-                <create-entry 
-                v-if="showForm" 
-                @entryAdded="fetchEntries()"
-                @cancel="showForm = false"
-                :report_id="this.report.id">
-                </create-entry>
-                <!-- Add Entry Button -->
-                <div 
-                    class="d-flex entry" 
-                    @click="showForm = true"
-                    v-if="!showForm"        
-                    >
-                    <div class="box d-flex f-center border">
-                        <i class="material-icons font-lg color-1">add</i>
-                    </div>
+                <div class="box of-y-auto hide-scrollbar">
+                    <!-- Actual Entries -->
+                    <transition-group name="list">
+                        <div v-for="item in entries" :key="item.id">
+                            <entry class="m-b-md" :header="item.header" :description="item.description"></entry>
+                        </div>
+                    </transition-group>
+                    <!-- Add Entry Form -->
+                    <transition name="fade">
+                        <create-entry 
+                        v-if="showForm" 
+                        @entryAdded="fetchEntries()"
+                        @cancel="showForm = false"
+                        :report_id="this.report.id">
+                        </create-entry>
+                    
+                        <!-- Add Entry Button -->
+                        <div 
+                            class="entry" 
+                            @click="showForm = true"
+                            v-if="!showForm"        
+                            >
+                            <div class="d-flex b-thin f-center p-md">
+                                <i class="material-icons font-lg color-1">add</i>             
+                            </div>
+                        </div>
+                    </transition>
                 </div>
             </div>
         </div>
@@ -109,13 +116,18 @@ export default {
 .border{border: 1px solid black}
 .entry{
     background-color: transparent;
-    transition: transform .1s ease;
     transition: background-color .07s ease;
 }
 
 .entry:hover{
     background-color: var(--c-third);
-    transform: scale(1.02);
 }
-.entry:hover h2,#entry:hover h3{color: var(--c-second)}
+.entry:hover i{color: var(--c-second)}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

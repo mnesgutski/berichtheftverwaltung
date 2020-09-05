@@ -30,13 +30,11 @@ export default {
 <style scoped>
 #entry{
     background-color: transparent;
-    transition: transform .1s ease;
     transition: background-color .07s ease;
 }
 
 #entry:hover{
     background-color: var(--c-third);
-    transform: scale(1.02);
 }
 #entry:hover h2,#entry:hover h3{color: var(--c-second)}
 </style>

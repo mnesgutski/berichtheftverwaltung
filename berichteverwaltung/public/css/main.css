@@ -108,6 +108,18 @@ h1, h2, h3, h4, h5, h6{
 .w-xl{width: var(--s-xl)}
 .w-xx{width: var(--s-xx)}
 
+.overflow-auto{overflow: auto}
+.of-y-auto{overflow-y: auto}
+.of-x-auto{overflow-x: auto}
+.of-y-visible{overflow-y: visible}
+.of-x-visible{overflow-x: visible}
+
+.hide-scrollbar{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar{display: none;}
+
 .back-trans{background-color: transparent;}
 
 .d-flex{display: flex;}
