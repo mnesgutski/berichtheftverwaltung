@@ -14,7 +14,7 @@
             </div>
         </div>       
         <div class="d-flex jc-center fill-v">
-            <div class="w-xx blue">
+            <div class="w-xx">
                 <!-- Report Header -->
                 <div class="d-flex b-b-thin m-b-lg">
                     <div class="box-auto b-b-thin" v-if="report.position">
@@ -22,12 +22,14 @@
                     </div>
                     <div class="box-auto">
                         <h2 class="font-md lbl-light">
-                            Vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} 
-                            bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}
-                            | {{this.report.company}} 
-                            | {{this.report.department}}
-        
+                            Bericht vom {{new Date(this.report.begin_date).toLocaleDateString("de")}} 
+                            bis zum {{new Date(this.report.end_date).toLocaleDateString("de")}}    
                         </h2>
+                        <h3 class="font-sm lbl-light">
+                            Auszubildender: Vorname Nachname,
+                            Abteilung: {{this.report.department}},
+                            Unternehmen: {{this.report.company}}
+                        </h3>
                     </div>
                 </div>
                 <!-- Actual Entries -->
@@ -35,8 +37,20 @@
                     <entry class="m-b-md" :header="item.header" :description="item.description"></entry>
                 </div>
                 <!-- Add Entry Form -->
-                <create-entry @entryAdded="fetchEntries()" class="w-xx" :report_id="this.report.id"></create-entry>
-                <i class="material-icons" @click="addEntry">face</i>
+                <create-entry 
+                v-if="showForm" 
+                @entryAdded="fetchEntries()"
+                @cancel="showForm = false"
+                class="w-xx" :report_id="this.report.id"></create-entry>
+                <div 
+                    class="d-flex border" 
+                    @click="showForm = true"
+                    v-if="!showForm"
+                    >
+                    <div class="box d-flex f-center">
+                        <i class="material-icons font-lg color-1">add</i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -50,7 +64,7 @@ export default {
         return{
             entries: [],
             report: {},
-            mountReady: true
+            showForm: false
         }
     },
     components:{
@@ -71,12 +85,10 @@ export default {
             axios.post('/entries/get', {reportId: this.$route.params.report.id})
                 .then((response) => {
                     this.entries = response.data.data;
+                    this.showForm = false;
                 }, (error) => {
                     console.log(error);
                 });
-        },
-        addEntry(){
-
         },
         navBack(){
             this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
@@ -85,5 +97,5 @@ export default {
 }
 </script>
 <style scoped>
-
+.border{border: 1px solid black}
 </style>

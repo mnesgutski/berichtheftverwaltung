@@ -1,23 +1,23 @@
 <template>
-    <div id="wrapper" class="">        
-        <div class="d-flex m-b-lg">
+    <div id="wrapper" class="border p-lg">     
+        <div class="d-flex m-b-lg ">
             <!-- Header Input -->
             <div class="box prop-5 m-r-md">
-                <input type="text" class="font-md" v-model="entry_header" id="inp-entry-header">
+                <input type="text" class="font-sm" v-model="entry_header" id="inp-entry-header">
                 <h2 class="lbl-light font-sm">Kurzbeschreibung</h2>
             </div>
             <!-- Type Input -->
             <div class="box prop-3 m-r-md">
-                <select v-model="entry_type" class="font-md lbl-light color-2">
+                <select v-model="entry_type" class="font-sm lbl-light color-2">
                     <option value="school">schulisch</option>
                     <option value="company">betrieblich</option>
                 </select>
                 <h2 class="lbl-light font-sm">Art</h2>
             </div>
             <!-- Duration Input -->
-            <div class="box m-r-md">
+            <div class="box">
                 <input 
-                class="font-md" 
+                class="font-sm" 
                 type="number" 
                 step="0.25"
                 min="0"
@@ -27,7 +27,7 @@
         </div>     
         <!-- Description Input -->
         <div class="d-flex m-b-md">
-            <div class="box m-r-md">
+            <div class="box">
                 <input 
                 @keydown.enter="createEntry()"
                 type="text" class="fill-h font-sm" v-model="entry_description" id="inp-entry-description">
@@ -35,11 +35,17 @@
             </div>
         </div> 
         <!-- Submit Button -->
-        <div class="d-flex jc-end m-b-md m-r-md">
+        <div class="d-flex jc-end">
+            <div class="box-auto">
+                <button 
+                @click="cancelCreate()"
+                class="btn-hov font-sm color-1 lbl-light">
+                Abbrechen</button>
+            </div> 
             <div class="box-auto">
                 <button 
                 @click="createEntry()"
-                class="btn-hov font-md color-1 lbl-light">
+                class="btn-hov font-sm color-1 lbl-light">
                 Erstellen</button>
             </div>            
         </div> 
@@ -78,6 +84,9 @@ export default {
             }, (error) => {
                 console.log(error);
             });
+        },
+        cancelCreate(){
+            this.$emit('cancel')
         }
     }
 }
@@ -108,4 +117,5 @@ input[type="date"]{
     color: var(--c-second);
     width: 100%;
 }
+.border{border: 1px solid black}
 </style>
