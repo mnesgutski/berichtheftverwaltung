@@ -1,17 +1,17 @@
 <template>
-    <div id="wrapper" class="full-size red">
+    <div id="wrapper" class="full-size">
         <div class="overlay"></div>
-        <div class="center-in-window w-xl p-lg">
+        <div class="center-in-window w-xl p-lg b-thin">
             <div class="fill-parent d-flex fd-column jc-center">
-                <div class="b-thin m-b-md menu-item box d-flex jc-center"
+                <div class="b-b-thin m-b-md menu-item box d-flex jc-center"
                 @click="$emit('edit', item_id)">
                     <h2 class="font-md no-select lbl-light p-md">Bearbeiten</h2>
                 </div>
-                <div class="b-thin m-b-md menu-item box d-flex jc-center"
+                <div class="b-b-thin m-b-md menu-item box d-flex jc-center"
                 @click="$emit('delete', item_id)">
                     <h2 class="font-md no-select lbl-light p-md">Löschen</h2>
                 </div>
-                <div class="b-thin menu-item box d-flex jc-center"
+                <div class="b-b-thin menu-item box d-flex jc-center"
                 @click="$emit('cancel')">
                     <h2 class="font-md no-select lbl-light p-md">Abbrechen</h2>
                 </div>
@@ -38,7 +38,7 @@ export default {
 .overlay{
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: white;
     opacity: .3;
 }
 .menu-item{

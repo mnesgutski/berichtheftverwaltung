@@ -31,9 +31,10 @@
                 <i class="material-icons">keyboard_arrow_right</i>
             </div>
             <div class="box-auto d-flex f-center">
-                <h2 class="no-hov no-select font-sm lbl-light"> 
-                    {{new Date(report.begin_date).toLocaleDateString('de', {dateStyle: 'medium'})}} 
-                    - {{new Date(report.end_date).toLocaleDateString('de', {dateStyle: 'medium'})}}</h2>
+                <h2 class="no-hov no-select font-sm lbl-light">
+                    Nr. {{report.position}}
+                    ({{new Date(report.begin_date).toLocaleDateString('de', {dateStyle: 'medium'})}} 
+                    - {{new Date(report.end_date).toLocaleDateString('de', {dateStyle: 'medium'})}})</h2>
             </div>
         </div> 
         <div class="box d-flex jc-center">
@@ -56,8 +57,28 @@
                 </div>
                 <div class="box of-y-auto hide-scrollbar">
                     <!-- Actual Entries -->
-                    <transition-group name="list">
+                    <!-- <transition-group name="list">
                         <div v-for="item in entries" :key="item.id">
+                            <entry @updated="fetchEntries()" 
+                            class="m-b-md" 
+                            :entry="item"
+                            :report_id="$route.params.report.id" 
+                            :header="item.header" 
+                            :description="item.description"></entry>
+                        </div>
+                    </transition-group> -->
+                    <transition-group name="list">
+                        <div v-for="item in company_entries" :key="item.id">
+                            <entry @updated="fetchEntries()" 
+                            class="m-b-md" 
+                            :entry="item"
+                            :report_id="$route.params.report.id" 
+                            :header="item.header" 
+                            :description="item.description"></entry>
+                        </div>
+                    </transition-group>
+                    <transition-group name="list">
+                        <div v-for="item in school_entries" :key="item.id">
                             <entry @updated="fetchEntries()" 
                             class="m-b-md" 
                             :entry="item"
@@ -102,6 +123,8 @@ export default {
     data(){
         return{
             entries: [],
+            company_entries: [],
+            school_entries: [],
             report: {},
             showForm: false
         }
@@ -125,12 +148,23 @@ export default {
                 .then((response) => {
                     this.entries = response.data.data;
                     this.showForm = false;
+                    this.school_entries = this.filterEntries('school');
+                    this.company_entries = this.filterEntries('company');
                     this.$nextTick(() => {
                         this.$refs.btn_add_entry.focus();     
                     })                                  
                 }, (error) => {
                     console.log(error);
                 });
+        },
+        filterEntries(pType){
+            var result = {};
+            for(var item in this.entries){
+                if(this.entries[item].type == pType){
+                    result[item] = this.entries[item];
+                }
+            }
+            return result;
         },
         navBack(){
             this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})

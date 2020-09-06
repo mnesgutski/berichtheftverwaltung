@@ -2533,6 +2533,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2540,6 +2561,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       entries: [],
+      company_entries: [],
+      school_entries: [],
       report: {},
       showForm: false
     };
@@ -2569,6 +2592,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.entries = response.data.data;
         _this.showForm = false;
+        _this.school_entries = _this.filterEntries('school');
+        _this.company_entries = _this.filterEntries('company');
 
         _this.$nextTick(function () {
           _this.$refs.btn_add_entry.focus();
@@ -2576,6 +2601,17 @@ __webpack_require__.r(__webpack_exports__);
       }, function (error) {
         console.log(error);
       });
+    },
+    filterEntries: function filterEntries(pType) {
+      var result = {};
+
+      for (var item in this.entries) {
+        if (this.entries[item].type == pType) {
+          result[item] = this.entries[item];
+        }
+      }
+
+      return result;
     },
     navBack: function navBack() {
       this.$router.push({
@@ -3208,7 +3244,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.overlay[data-v-c72c8d4a]{\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: black;\r\n    opacity: .3;\n}\n.menu-item[data-v-c72c8d4a]{\r\n    background-color: var(--c-contrast);\r\n    transition: background-color .1s ease;\n}\n.menu-item[data-v-c72c8d4a]:hover{background-color: var(--c-edit);}\n.menu-item:hover h2[data-v-c72c8d4a]{color: var(--c-second);}\n.menu-item:active h2[data-v-c72c8d4a]{color: var(--c-contrast);}\r\n", ""]);
+exports.push([module.i, "\n.overlay[data-v-c72c8d4a]{\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: white;\r\n    opacity: .3;\n}\n.menu-item[data-v-c72c8d4a]{\r\n    background-color: var(--c-contrast);\r\n    transition: background-color .1s ease;\n}\n.menu-item[data-v-c72c8d4a]:hover{background-color: var(--c-edit);}\n.menu-item:hover h2[data-v-c72c8d4a]{color: var(--c-second);}\n.menu-item:active h2[data-v-c72c8d4a]{color: var(--c-contrast);}\r\n", ""]);
 
 // exports
 
@@ -5461,15 +5497,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "full-size red", attrs: { id: "wrapper" } }, [
+  return _c("div", { staticClass: "full-size", attrs: { id: "wrapper" } }, [
     _c("div", { staticClass: "overlay" }),
     _vm._v(" "),
-    _c("div", { staticClass: "center-in-window w-xl p-lg" }, [
+    _c("div", { staticClass: "center-in-window w-xl p-lg b-thin" }, [
       _c("div", { staticClass: "fill-parent d-flex fd-column jc-center" }, [
         _c(
           "div",
           {
-            staticClass: "b-thin m-b-md menu-item box d-flex jc-center",
+            staticClass: "b-b-thin m-b-md menu-item box d-flex jc-center",
             on: {
               click: function($event) {
                 return _vm.$emit("edit", _vm.item_id)
@@ -5486,7 +5522,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "b-thin m-b-md menu-item box d-flex jc-center",
+            staticClass: "b-b-thin m-b-md menu-item box d-flex jc-center",
             on: {
               click: function($event) {
                 return _vm.$emit("delete", _vm.item_id)
@@ -5503,7 +5539,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "b-thin menu-item box d-flex jc-center",
+            staticClass: "b-b-thin menu-item box d-flex jc-center",
             on: {
               click: function($event) {
                 return _vm.$emit("cancel")
@@ -5616,7 +5652,9 @@ var render = function() {
           _c("div", { staticClass: "box-auto d-flex f-center" }, [
             _c("h2", { staticClass: "no-hov no-select font-sm lbl-light" }, [
               _vm._v(
-                " \r\n                    " +
+                "\r\n                    Nr. " +
+                  _vm._s(_vm.report.position) +
+                  "\r\n                    (" +
                   _vm._s(
                     new Date(_vm.report.begin_date).toLocaleDateString("de", {
                       dateStyle: "medium"
@@ -5627,7 +5665,8 @@ var render = function() {
                     new Date(_vm.report.end_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
-                  )
+                  ) +
+                  ")"
               )
             ])
           ])
@@ -5683,7 +5722,36 @@ var render = function() {
             _c(
               "transition-group",
               { attrs: { name: "list" } },
-              _vm._l(_vm.entries, function(item) {
+              _vm._l(_vm.company_entries, function(item) {
+                return _c(
+                  "div",
+                  { key: item.id },
+                  [
+                    _c("entry", {
+                      staticClass: "m-b-md",
+                      attrs: {
+                        entry: item,
+                        report_id: _vm.$route.params.report.id,
+                        header: item.header,
+                        description: item.description
+                      },
+                      on: {
+                        updated: function($event) {
+                          return _vm.fetchEntries()
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c(
+              "transition-group",
+              { attrs: { name: "list" } },
+              _vm._l(_vm.school_entries, function(item) {
                 return _c(
                   "div",
                   { key: item.id },
