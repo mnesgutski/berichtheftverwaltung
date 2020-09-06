@@ -19,11 +19,13 @@
             :report_id="report_id"
             :entry="entry"
             @entryAdded="edit = false; $emit('updated')"
-            @cancel="edit = false"></create-entry>
+            @cancel="edit = false"
+            @delete="deleteEntry()"></create-entry>
         </transition>
     </div>
 </template>
 <script>
+import axios from 'axios'
 import createEntry from './createEntry';
 export default {
     name: 'Entry',
@@ -49,6 +51,15 @@ export default {
         },
         entry:{
             type: Object
+        }
+    },
+    methods: {
+        deleteEntry(){
+            axios.post('/entries/delete', {entry_id: this.entry.id})
+            .then((response) =>{
+                console.log(response);
+                this.$emit('updated');
+            }, (error) => {console.log(error)})
         }
     }
 }

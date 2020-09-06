@@ -2014,6 +2014,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'create-entry',
@@ -2650,7 +2659,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _createEntry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createEntry */ "./resources/js/components/createEntry.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _createEntry__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createEntry */ "./resources/js/components/createEntry.vue");
+//
 //
 //
 //
@@ -2677,10 +2689,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Entry',
   components: {
-    createEntry: _createEntry__WEBPACK_IMPORTED_MODULE_0__["default"]
+    createEntry: _createEntry__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2701,6 +2714,21 @@ __webpack_require__.r(__webpack_exports__);
     },
     entry: {
       type: Object
+    }
+  },
+  methods: {
+    deleteEntry: function deleteEntry() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/entries/delete', {
+        entry_id: this.entry.id
+      }).then(function (response) {
+        console.log(response);
+
+        _this.$emit('updated');
+      }, function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -4999,6 +5027,29 @@ var render = function() {
         _vm._v("\n            |\n        ")
       ]),
       _vm._v(" "),
+      _vm.entry !== null
+        ? _c("div", { staticClass: "box-auto" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn-hov font-sm color-1 lbl-light",
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("delete")
+                  }
+                }
+              },
+              [_vm._v("\n            Löschen")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.entry !== null
+        ? _c("div", { staticClass: "box-auto m-h-md color-1 no-select" }, [
+            _vm._v("\n            |\n        ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("div", { staticClass: "box-auto" }, [
         _c(
           "button",
@@ -5967,6 +6018,9 @@ var render = function() {
                   },
                   cancel: function($event) {
                     _vm.edit = false
+                  },
+                  delete: function($event) {
+                    return _vm.deleteEntry()
                   }
                 }
               })

@@ -49,6 +49,15 @@
             <div class="box-auto m-h-md color-1 no-select">
                 |
             </div>
+            <div v-if="entry !== null" class="box-auto">
+                <button
+                @click="$emit('delete')"
+                class="btn-hov font-sm color-1 lbl-light">
+                Löschen</button>
+            </div>
+            <div v-if="entry !== null" class="box-auto m-h-md color-1 no-select">
+                |
+            </div>
             <div class="box-auto">
                 <button
                 @click="createEntry()"
