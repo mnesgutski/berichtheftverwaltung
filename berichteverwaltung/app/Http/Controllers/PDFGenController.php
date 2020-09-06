@@ -16,19 +16,23 @@ class PDFGenController extends Controller
     {
         //like regular view even with compact for carrying variables
         // comment the find(1) lines when done testing to use proper reports and entries
-    	$report = reports::find($request->id);
+        $report = reports::find($request->id);
 //    	$report = reports::find(1);
-    	$user = User::find(Auth::id());
+        $user = User::find(Auth::id());
 //    	$user = User::find(1);
-    	$data = [];
-    	foreach($report->entries as $entry){
-    	    if($entry->type === 'school'){
+        $data = [];
+        $from = $report->begin_date;
+        $to = $report->end_date;
+
+        $pos = ($report->position !== null) ? $report->position : ' ';
+        foreach ($report->entries as $entry) {
+            if ($entry->type === 'school') {
                 $data['Schule'][$entry->id] = [
                     'duration' => $entry->duration,
                     'header' => $entry->header,
                     'description' => $entry->description,
                 ];
-            }else{
+            } else {
                 $data['Betrieb'][$entry->id] = [
                     'duration' => $entry->duration,
                     'header' => $entry->header,
@@ -36,10 +40,9 @@ class PDFGenController extends Controller
                 ];
             }
 
-    	    }
-    	$report = $data;
-
-        $pdf = PDF::loadView('pdf.report', compact('user','report'));
+        }
+        $report = $data;
+        $pdf = PDF::loadView('pdf.report', compact('user', 'report', 'pos', 'from', 'to'));
 
         return $pdf->download('report.pdf');
     }
