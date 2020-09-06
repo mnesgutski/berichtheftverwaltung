@@ -1936,7 +1936,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(response);
       _this.$user.username = response.data.username;
     }, function (error) {
-      consol.log(error);
+      console.log(error);
     });
   }
 });
@@ -2568,14 +2568,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2662,6 +2654,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _createEntry__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createEntry */ "./resources/js/components/createEntry.vue");
+//
+//
+//
 //
 //
 //
@@ -5777,6 +5772,12 @@ var render = function() {
           "div",
           { staticClass: "box of-y-auto hide-scrollbar" },
           [
+            Object.keys(_vm.company_entries).length !== 0
+              ? _c("h2", { staticClass: "font-sm lbl-light" }, [
+                  _vm._v("Betriebliche Tätigkeiten")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "transition-group",
               { attrs: { name: "list" } },
@@ -5805,6 +5806,12 @@ var render = function() {
               }),
               0
             ),
+            _vm._v(" "),
+            Object.keys(_vm.school_entries).length !== 0
+              ? _c("h2", { staticClass: "font-sm lbl-light" }, [
+                  _vm._v("Schulische Tätigkeiten")
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "transition-group",
@@ -5995,7 +6002,13 @@ var render = function() {
                             _vm._v(_vm._s(_vm.header))
                           ])
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "box d-flex jc-end" }, [
+                        _c("h2", { staticClass: "font-sm lbl-light" }, [
+                          _vm._v(_vm._s(_vm.entry.duration))
+                        ])
+                      ])
                     ]),
                     _vm._v(" "),
                     _vm.description != "" && _vm.description != null

@@ -57,16 +57,7 @@
                 </div>
                 <div class="box of-y-auto hide-scrollbar">
                     <!-- Actual Entries -->
-                    <!-- <transition-group name="list">
-                        <div v-for="item in entries" :key="item.id">
-                            <entry @updated="fetchEntries()"
-                                   class="m-b-md"
-                                   :entry="item"
-                                   :report_id="$route.params.report.id"
-                                   :header="item.header"
-                                   :description="item.description"></entry>
-                        </div>
-                    </transition-group> -->
+                    <h2 v-if="Object.keys(company_entries).length !== 0" class="font-sm lbl-light">Betriebliche Tätigkeiten</h2>
                     <transition-group name="list">
                         <div v-for="item in company_entries" :key="item.id">
                             <entry @updated="fetchEntries()"
@@ -77,6 +68,7 @@
                                    :description="item.description"></entry>
                         </div>
                     </transition-group>
+                    <h2 v-if="Object.keys(school_entries).length !== 0" class="font-sm lbl-light">Schulische Tätigkeiten</h2>
                     <transition-group name="list">
                         <div v-for="item in school_entries" :key="item.id">
                             <entry @updated="fetchEntries()"

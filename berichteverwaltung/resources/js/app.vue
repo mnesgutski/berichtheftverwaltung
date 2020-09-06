@@ -24,7 +24,7 @@ export default {
             console.log(response);
             this.$user.username = response.data.username;
         }, (error) => {
-            consol.log(error);
+            console.log(error);
         });
     }
 }
