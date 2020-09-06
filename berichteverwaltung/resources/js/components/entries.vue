@@ -19,7 +19,7 @@
         <!-- Navigation Tree -->
         <div v-if="$tree.reportBook !== undefined" class="m-b-lg d-flex nav-tree-wrapper">
             <div class="box-auto d-flex f-center">
-                <h2 @click="navBack();" class="no-select font-sm lbl-light">{{$user.username}}</h2>
+                <h2 @click="$router.push({name: 'reportBooks'});" class="no-select font-sm lbl-light">{{$user.username}}</h2>
             </div>
             <div class="box-auto d-flex f-center">
                 <i class="material-icons">keyboard_arrow_right</i>

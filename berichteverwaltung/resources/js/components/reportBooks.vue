@@ -19,7 +19,7 @@
         </div>    
         <!-- Navigation Tree -->
         <div class="m-b-lg nav-tree-wrapper">
-            <h2 class="no-select font-sm lbl-light">{{$user.username}}</h2>            
+            <h2 class="no-hov no-select font-sm lbl-light">{{$user.username}}</h2>            
         </div>     
         <div class="row m-none">
             <!-- All Report Books -->
