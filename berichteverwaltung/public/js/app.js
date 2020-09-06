@@ -1924,6 +1924,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3213,7 +3214,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.fade-enter-active[data-v-23235493], .fade-leave-active[data-v-23235493] {\r\n  transition: opacity .1s;\n}\n.fade-enter[data-v-23235493], .fade-leave-to[data-v-23235493] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.faq-icon[data-v-23235493]{\r\n    position: absolute;\r\n    bottom: var(--pm-md);\r\n    right: var(--pm-md);\n}\n.fade-enter-active[data-v-23235493], .fade-leave-active[data-v-23235493] {\r\n  transition: opacity .1s;\n}\n.fade-enter[data-v-23235493], .fade-leave-to[data-v-23235493] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -4836,7 +4837,20 @@ var render = function() {
           1
         )
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "i",
+      {
+        staticClass: "faq-icon material-icons font-lg color-1",
+        on: {
+          click: function($event) {
+            return _vm.$router.push({ name: "faq" })
+          }
+        }
+      },
+      [_vm._v("sort_by_alpha")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -6125,6 +6139,60 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/faq.vue?vue&type=template&id=7224101b&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/faq.vue?vue&type=template&id=7224101b& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "d-flex" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
+        _c(
+          "i",
+          {
+            staticClass: "nav-i material-icons font-xl color-1",
+            on: {
+              click: function($event) {
+                return _vm.$router.push({ name: "reportBooks" })
+              }
+            }
+          },
+          [_vm._v("\n            keyboard_arrow_left")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-auto" }, [
+      _c("h1", { staticClass: "m-r-lg" }, [_vm._v("FAQ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "b-b-thin" })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -22532,6 +22600,59 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/faq.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/components/faq.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _faq_vue_vue_type_template_id_7224101b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./faq.vue?vue&type=template&id=7224101b& */ "./resources/js/components/faq.vue?vue&type=template&id=7224101b&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _faq_vue_vue_type_template_id_7224101b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _faq_vue_vue_type_template_id_7224101b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/faq.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/faq.vue?vue&type=template&id=7224101b&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/faq.vue?vue&type=template&id=7224101b& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_faq_vue_vue_type_template_id_7224101b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./faq.vue?vue&type=template&id=7224101b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/faq.vue?vue&type=template&id=7224101b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_faq_vue_vue_type_template_id_7224101b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_faq_vue_vue_type_template_id_7224101b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/login.vue":
 /*!*******************************************!*\
   !*** ./resources/js/components/login.vue ***!
@@ -22812,6 +22933,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_reports_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/reports.vue */ "./resources/js/components/reports.vue");
 /* harmony import */ var _components_createReport_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/createReport.vue */ "./resources/js/components/createReport.vue");
 /* harmony import */ var _components_entries_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/entries.vue */ "./resources/js/components/entries.vue");
+/* harmony import */ var _components_faq_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/faq.vue */ "./resources/js/components/faq.vue");
+
 
 
 
@@ -22887,6 +23010,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     meta: {
       header_name: 'Einträge'
     }
+  }, {
+    path: '/faq',
+    name: 'faq',
+    components: {
+      "default": _components_faq_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+    },
+    props: {},
+    children: []
   }]
 }));
 
@@ -22910,8 +23041,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

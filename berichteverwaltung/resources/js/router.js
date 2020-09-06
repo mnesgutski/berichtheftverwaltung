@@ -7,6 +7,7 @@ import CreateReportBook from './components/createReportBook.vue';
 import Reports from './components/reports.vue';
 import CreateReport from './components/createReport.vue';
 import Entries from './components/entries.vue';
+import Faq from './components/faq.vue';
 
 Vue.use(Router);
 
@@ -60,7 +61,15 @@ export default new Router({
 			props: {},
 			children: [],
 			meta: {header_name: 'Einträge'}
+		},
+		{
+			path: '/faq',
+			name: 'faq',
+			components: {default: Faq},
+			props: {},
+			children: []
 		}
+
 
 	],
 

@@ -10,6 +10,7 @@
                 </div>
             </div>
         </div>
+        <i @click="$router.push({name:'faq'})" class="faq-icon material-icons font-lg color-1">sort_by_alpha</i>
     </div>
 </template>
 <script>
@@ -30,6 +31,12 @@ export default {
 }
 </script>
 <style scoped>
+.faq-icon{
+    position: absolute;
+    bottom: var(--pm-md);
+    right: var(--pm-md);
+
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .1s;
 }
