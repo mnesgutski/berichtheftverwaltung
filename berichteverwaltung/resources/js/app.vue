@@ -20,7 +20,11 @@ export default {
         }
     },
     created(){
-        this.$
+        axios.get('/username').then((response) => {
+            this.$user.username = response.data.data.username;
+        }, (error) => {
+            consol.console.log(error);
+        });
     }
 }
 </script>

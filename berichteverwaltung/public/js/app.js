@@ -1930,7 +1930,13 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   created: function created() {
-    this.$;
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/username').then(function (response) {
+      _this.$user.username = response.data.data.username;
+    }, function (error) {
+      consol.console.log(error);
+    });
   }
 });
 
