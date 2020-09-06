@@ -23,7 +23,7 @@ class ReportController extends Controller
                 $reports = $rBook->reports->sortBy('position');
                 $data = [];
                 foreach ($reports as $rep) {
-                    $data[$rep->id] = [
+                    $data[] = [
                         'id' => $rep->id,
                         'type' => $rep->type,
                         'position' => $rep->position,
