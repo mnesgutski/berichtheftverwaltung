@@ -6,20 +6,38 @@
 </head>
 
 <style>
-    *{
+    * {
         font-family: Arial;
     }
-    .table-border{
+
+    .table-border {
         border: 1px solid black;
     }
-    .eightyeight{
+
+    .border-bottom {
+        border-bottom: 1px solid black;
+    }
+    .border-left{
+        border-left: 1px solid black;
+    }
+
+    .eightyeight {
         width: 88%;
     }
-    .twelve{
+
+    .twelve {
         width: 12%;
     }
-    .center{
+
+    .center {
         text-align: center;
+    }
+
+    .small{
+        font-size: 10px;
+        font-style: italic;
+        margin-top: -7px;
+        margin-left: 35px;
     }
 </style>
 
@@ -30,27 +48,27 @@
 <table class="table-border">
     <thead>
     <tr>
-        <td><b>Typ</b></td>
-        <td><b>Inhalt</b></td>
+        <td class="center border-bottom"><b>Typ</b></td>
+        <td class="center border-bottom"><b>Inhalt</b></td>
     </tr>
     </thead>
     <tbody>
     @foreach($report as $type => $entries)
         <tr>
-            <td class="center">
+            <td class="center border-bottom">
                 <b>{{$type}}</b>
             </td>
-            <td>
+            <td class="border-bottom">
                 <table style="width: 100%">
                     <thead>
                     <tr>
-                        <td class="eightyeight center" >Tätigkeit</td>
-                        <td class="twelve center" >Zeit</td>
+                        <td class="eightyeight center border-bottom border-left">Tätigkeit</td>
+                        <td class="twelve center border-bottom">Zeit</td>
                     </tr>
                     </thead>
                     @foreach($entries as $entry)
                         <tr>
-                            <td class="eightyeight">
+                            <td class="eightyeight border-left">
                                 <p style="text-decoration: underline;">{{$entry['header']}}</p>
                                 <p>{{$entry['description']}}</p>
                             </td>
@@ -61,60 +79,39 @@
                     @endforeach
                 </table>
             </td>
+
         </tr>
     @endforeach
     </tbody>
 </table>
+<br>
+<br>
 
-
-
-
-
-
-
-
-
-{{--<table>--}}
-{{--    <thead>--}}
-{{--    <tr>--}}
-{{--        <td><b>Typ</b></td>--}}
-{{--        <td><b>Inhalt</b></td>--}}
-{{--        <td><b>Zeit</b></td>--}}
-{{--    </tr>--}}
-{{--    </thead>--}}
-{{--    <tbody>--}}
-{{--    @foreach($report as $type => $entries)--}}
-{{--        <tr>--}}
-{{--            <td>--}}
-{{--                <b>{{$type}}</b>--}}
-{{--            </td>--}}
-{{--            <td>--}}
-{{--                <table>--}}
-{{--                    @foreach($entries as $entry)--}}
-{{--                        <tr>--}}
-{{--                            <td>--}}
-{{--                                <p style="text-decoration: underline;">{{$entry['header']}}</p>--}}
-{{--                                <p>{{$entry['description']}}</p>--}}
-
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
-{{--                </table>--}}
-{{--            </td>--}}
-{{--            <td>--}}
-{{--                <table>--}}
-{{--                    @foreach($entries as $entry)--}}
-{{--                        <tr>--}}
-{{--                            <td style="float: right;">--}}
-{{--                                {{$entry['duration']}}--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
-{{--                </table>--}}
-{{--            </td>--}}
-{{--        </tr>--}}
-{{--    @endforeach--}}
-{{--    </tbody>--}}
-{{--</table>--}}
+<table style="width:100%">
+    <thead>
+    <tr>
+        <td style="width: 45%; margin-right: 5%;" class="center">Auszubildende/r</td>
+        <td style="width: 45%; margin-right: -5%; float: right;" class="center">Ausbildende/r</td>
+    </tr>
+    </thead>
+    <tr>
+        <td style="width: 50%; ">
+            <br>
+            <br>
+            <br>
+            <br>
+            <hr class="center" style="width: 80%;">
+            <p class="small">Datum, Unterschrift</p>
+        </td>
+        <td style="width: 50%;" >
+            <br>
+            <br>
+            <br>
+            <br>
+            <hr class="center" style="width: 80%;">
+            <p class="small">Datum, Unterschrift</p>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
