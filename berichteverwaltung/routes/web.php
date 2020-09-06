@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ViewController@index')->name('home')->middleware("auth");
+Route::get('/', 'ViewController@redirect')->name('home')->middleware("auth");
 Route::get('/login', 'ViewController@index')->name('login')->middleware('guest');
 //Route::get('/login', 'ViewController@index')->name('login');
 
@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/reports/update', 'ReportController@update')->name('reports.update');
     Route::post('/reports/delete', 'ReportController@delete')->name('reports.delete');
 
-    Route::get('/download/reportpdf', 'PDFGenController@download')->name('reports.pdf');
+    Route::get('/download/reportpdf/{id}', 'PDFGenController@download')->name('reports.pdf');
 
     /**
      * Entry Routes
