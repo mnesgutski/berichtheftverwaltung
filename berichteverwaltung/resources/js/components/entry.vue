@@ -6,14 +6,14 @@
                     <div class="d-flex">
                         <div class="box-auto" 
                         v-bind:class="{'b-b-thin' : ((description != '')&&(description != null))}">
-                             <h2 class="font-sm">{{header}}</h2>
+                             <h2 class="no-select font-sm">{{header}}</h2>
                         </div> 
                         <div class="box d-flex jc-end" v-if="entry.duration !== null">
-                            <h2 class="font-sm lbl-light">{{entry.duration}} Std.</h2>
+                            <h2 class="no-select font-sm lbl-light">{{entry.duration}} Std.</h2>
                         </div>              
                     </div>
                     <div class="box" v-if="((description != '')&&(description != null))">
-                        <h3 class="font-sm lbl-light">{{description}}</h3>
+                        <h3 class="no-select font-sm lbl-light">{{description}}</h3>
                     </div>            
                 </div>
             </div>
