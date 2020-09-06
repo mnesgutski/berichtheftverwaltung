@@ -2533,8 +2533,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -5639,18 +5637,12 @@ var render = function() {
     _c("div", { staticClass: "box d-flex jc-center" }, [
       _c("div", { staticClass: "w-xx p-md d-flex fd-column" }, [
         _c("div", { staticClass: "d-flex box-auto m-b-lg" }, [
-          _vm.report.position
-            ? _c("div", { staticClass: "box-auto b-b-thin" }, [
-                _c("h2", { staticClass: "font-md lbl-light" }, [
-                  _vm._v("Nummer: " + _vm._s(this.report.position))
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
           _c("div", { staticClass: "box" }, [
             _c("h2", { staticClass: "font-md lbl-light" }, [
               _vm._v(
-                "\r\n                            Bericht vom " +
+                "\r\n                            Bericht Nr. " +
+                  _vm._s(this.report.position) +
+                  "\r\n                            vom " +
                   _vm._s(
                     new Date(this.report.begin_date).toLocaleDateString("de", {
                       dateStyle: "medium"

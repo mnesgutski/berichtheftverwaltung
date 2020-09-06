@@ -40,12 +40,10 @@
             <div class="w-xx p-md d-flex fd-column">
                 <!-- Report Header -->
                 <div class="d-flex box-auto m-b-lg">
-                    <div class="box-auto b-b-thin" v-if="report.position">
-                        <h2 class="font-md lbl-light">Nummer: {{this.report.position}}</h2>
-                    </div>
                     <div class="box">
                         <h2 class="font-md lbl-light">
-                            Bericht vom {{new Date(this.report.begin_date).toLocaleDateString("de",{dateStyle: 'medium'})}} 
+                            Bericht Nr. {{this.report.position}}
+                            vom {{new Date(this.report.begin_date).toLocaleDateString("de",{dateStyle: 'medium'})}} 
                             bis zum {{new Date(this.report.end_date).toLocaleDateString("de",{dateStyle: 'medium'})}}    
                         </h2>
                         <div class="b-b-thin"></div>
