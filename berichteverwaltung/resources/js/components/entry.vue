@@ -18,7 +18,7 @@
             v-else 
             :report_id="report_id"
             :entry="entry"
-            @entryAdded="$emit('updated')"
+            @entryAdded="edit = false; $emit('updated')"
             @cancel="edit = false"></create-entry>
         </transition>
     </div>

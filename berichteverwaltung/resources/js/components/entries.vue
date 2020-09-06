@@ -17,7 +17,7 @@
             </div>
         </div>       
         <div class="box d-flex jc-center">
-            <div class="w-xx b-thin p-md d-flex fd-column">
+            <div class="w-xx p-md d-flex fd-column">
                 <!-- Report Header -->
                 <div class="d-flex box-auto m-b-lg">
                     <div class="box-auto b-b-thin" v-if="report.position">
@@ -59,8 +59,10 @@
                         </create-entry>
                     
                         <!-- Add Entry Button -->
-                        <div 
+                        <div ref="btn_add_entry"   
+                            tabindex="0"             
                             class="entry" 
+                            @keydown.enter="showForm = true"
                             @click="showForm = true"
                             v-if="!showForm"        
                             >
@@ -105,6 +107,9 @@ export default {
                 .then((response) => {
                     this.entries = response.data.data;
                     this.showForm = false;
+                    this.$nextTick(() => {
+                        this.$refs.btn_add_entry.focus();     
+                    })                                  
                 }, (error) => {
                     console.log(error);
                 });
@@ -120,15 +125,21 @@ export default {
 </script>
 <style scoped>
 .border{border: 1px solid black}
+
+div[tabindex]{
+    outline: none;
+}
+
 .entry{
     background-color: transparent;
     transition: background-color .07s ease;
 }
 
-.entry:hover{
+.entry:hover, .entry:focus{
     background-color: var(--c-third);
 }
-.entry:hover i{color: var(--c-second)}
+.entry:hover i, .entry:focus i{color: var(--c-second)}
+
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s;

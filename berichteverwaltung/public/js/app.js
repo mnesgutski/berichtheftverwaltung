@@ -2018,7 +2018,9 @@ __webpack_require__.r(__webpack_exports__);
       entry_header: '',
       entry_description: '',
       entry_type: 'company',
-      entry_duration: ''
+      entry_duration: '',
+      entry_id: null,
+      button_text: 'Erstellen'
     };
   },
   mounted: function mounted() {
@@ -2029,13 +2031,15 @@ __webpack_require__.r(__webpack_exports__);
       this.entry_description = this.entry.description;
       this.entry_type = this.entry.type;
       this.entry_duration = this.entry.duration;
+      this.entry_id = this.entry.id;
+      this.button_text = "Speichern";
     }
   },
   methods: {
     createEntry: function createEntry() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(entry == null ? 'entries/create' : 'entries/update', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.entry == null ? 'entries/create' : 'entries/update', {
         report_id: this.report_id,
         position: 1,
         duration: this.entry_duration,
@@ -2505,6 +2509,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2541,6 +2547,10 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.entries = response.data.data;
         _this.showForm = false;
+
+        _this.$nextTick(function () {
+          _this.$refs.btn_add_entry.focus();
+        });
       }, function (error) {
         console.log(error);
       });
@@ -3182,7 +3192,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.border[data-v-00693e15]{border: 1px solid black}\n.entry[data-v-00693e15]{\r\n    background-color: transparent;\r\n    transition: background-color .07s ease;\n}\n.entry[data-v-00693e15]:hover{\r\n    background-color: var(--c-third);\n}\n.entry:hover i[data-v-00693e15]{color: var(--c-second)}\n.fade-enter-active[data-v-00693e15], .fade-leave-active[data-v-00693e15] {\r\n  transition: opacity .3s;\n}\n.fade-enter[data-v-00693e15], .fade-leave-to[data-v-00693e15] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.border[data-v-00693e15]{border: 1px solid black}\ndiv[tabindex][data-v-00693e15]{\r\n    outline: none;\n}\n.entry[data-v-00693e15]{\r\n    background-color: transparent;\r\n    transition: background-color .07s ease;\n}\n.entry[data-v-00693e15]:hover, .entry[data-v-00693e15]:focus{\r\n    background-color: var(--c-third);\n}\n.entry:hover i[data-v-00693e15], .entry:focus i[data-v-00693e15]{color: var(--c-second)}\n.fade-enter-active[data-v-00693e15], .fade-leave-active[data-v-00693e15] {\r\n  transition: opacity .3s;\n}\n.fade-enter[data-v-00693e15], .fade-leave-to[data-v-00693e15] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -4770,6 +4780,15 @@ var render = function() {
             ],
             staticClass: "font-sm lbl-light color-2",
             on: {
+              keydown: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.createEntry()
+              },
               change: function($event) {
                 var $$selectedVal = Array.prototype.filter
                   .call($event.target.options, function(o) {
@@ -4906,7 +4925,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n            Erstellen")]
+          [_vm._v("\n            " + _vm._s(_vm.button_text))]
         )
       ])
     ])
@@ -5502,7 +5521,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "box d-flex jc-center" }, [
-      _c("div", { staticClass: "w-xx b-thin p-md d-flex fd-column" }, [
+      _c("div", { staticClass: "w-xx p-md d-flex fd-column" }, [
         _c("div", { staticClass: "d-flex box-auto m-b-lg" }, [
           _vm.report.position
             ? _c("div", { staticClass: "box-auto b-b-thin" }, [
@@ -5600,8 +5619,25 @@ var render = function() {
                   ? _c(
                       "div",
                       {
+                        ref: "btn_add_entry",
                         staticClass: "entry",
+                        attrs: { tabindex: "0" },
                         on: {
+                          keydown: function($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            _vm.showForm = true
+                          },
                           click: function($event) {
                             _vm.showForm = true
                           }
@@ -5719,7 +5755,8 @@ var render = function() {
                 attrs: { report_id: _vm.report_id, entry: _vm.entry },
                 on: {
                   entryAdded: function($event) {
-                    return _vm.$emit("updated")
+                    _vm.edit = false
+                    _vm.$emit("updated")
                   },
                   cancel: function($event) {
                     _vm.edit = false

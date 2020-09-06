@@ -11,7 +11,7 @@
             </div>
             <!-- Type Input -->
             <div class="box prop-3 m-r-md">
-                <select v-model="entry_type" class="font-sm lbl-light color-2">
+                <select @keydown.enter="createEntry()" v-model="entry_type" class="font-sm lbl-light color-2">
                     <option value="school">schulisch</option>
                     <option value="company">betrieblich</option>
                 </select>
@@ -53,7 +53,7 @@
                 <button 
                 @click="createEntry()"
                 class="btn-hov font-sm color-1 lbl-light">
-                Erstellen</button>
+                {{button_text}}</button>
             </div>            
         </div> 
     </div>
@@ -76,7 +76,9 @@ export default {
             entry_header: '',
             entry_description: '',
             entry_type: 'company',
-            entry_duration: '',            
+            entry_duration: '',  
+            entry_id: null,
+            button_text: 'Erstellen'          
         }
     },
     mounted(){
@@ -86,11 +88,13 @@ export default {
             this.entry_description = this.entry.description;
             this.entry_type = this.entry.type;
             this.entry_duration = this.entry.duration;
+            this.entry_id = this.entry.id;
+            this.button_text = "Speichern";
         }
     },
     methods: {
         createEntry(){
-            axios.post(entry == null ? 'entries/create' : 'entries/update', {
+            axios.post(this.entry == null ? 'entries/create' : 'entries/update', {
                 report_id: this.report_id,
                 position: 1,
                 duration: this.entry_duration,
