@@ -2443,10 +2443,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _entry_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entry.vue */ "./resources/js/components/entry.vue");
 /* harmony import */ var _createEntry_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createEntry.vue */ "./resources/js/components/createEntry.vue");
-var _data$components$moun;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2567,14 +2563,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_data$components$moun = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       entries: [],
       company_entries: [],
       school_entries: [],
       report: {},
-      showForm: false
+      showForm: false,
+      downloadRoute: '/download/reportpdf/' + this.$route.params.report.id
     };
   },
   components: {
@@ -2592,57 +2589,47 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     console.log(this.$route.params.report);
     this.report = this.$route.params.report;
     this.fetchEntries();
-  }
-}, _defineProperty(_data$components$moun, "mounted", function mounted() {
-  if (this.$route.params.report === undefined) {
-    this.$router.push({
-      name: 'reportBooks'
-    });
-    return;
-  }
+  },
+  methods: {
+    fetchEntries: function fetchEntries() {
+      var _this = this;
 
-  console.log(this.$route.params.report);
-  this.report = this.$route.params.report;
-  this.fetchEntries();
-}), _defineProperty(_data$components$moun, "methods", {
-  fetchEntries: function fetchEntries() {
-    var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/entries/get', {
+        reportId: this.$route.params.report.id
+      }).then(function (response) {
+        _this.entries = response.data.data;
+        _this.showForm = false;
+        _this.school_entries = _this.filterEntries('school');
+        _this.company_entries = _this.filterEntries('company');
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/entries/get', {
-      reportId: this.$route.params.report.id
-    }).then(function (response) {
-      _this.entries = response.data.data;
-      _this.showForm = false;
-      _this.school_entries = _this.filterEntries('school');
-      _this.company_entries = _this.filterEntries('company');
-
-      _this.$nextTick(function () {
-        _this.$refs.btn_add_entry.focus();
+        _this.$nextTick(function () {
+          _this.$refs.btn_add_entry.focus();
+        });
+      }, function (error) {
+        console.log(error);
       });
-    }, function (error) {
-      console.log(error);
-    });
-  },
-  filterEntries: function filterEntries(pType) {
-    var result = {};
+    },
+    filterEntries: function filterEntries(pType) {
+      var result = {};
 
-    for (var item in this.entries) {
-      if (this.entries[item].type == pType) {
-        result[item] = this.entries[item];
+      for (var item in this.entries) {
+        if (this.entries[item].type == pType) {
+          result[item] = this.entries[item];
+        }
       }
+
+      return result;
+    },
+    navBack: function navBack() {
+      this.$router.push({
+        name: 'reports',
+        params: {
+          report_book_id: this.$route.params.report_book_id
+        }
+      });
     }
-
-    return result;
-  },
-  navBack: function navBack() {
-    this.$router.push({
-      name: 'reports',
-      params: {
-        report_book_id: this.$route.params.report_book_id
-      }
-    });
   }
-}), _data$components$moun);
+});
 
 /***/ }),
 

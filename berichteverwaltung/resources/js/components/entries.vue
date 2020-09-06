@@ -127,21 +127,13 @@
                 company_entries: [],
                 school_entries: [],
                 report: {},
-                showForm: false
+                showForm: false,
+                downloadRoute: '/download/reportpdf/'+this.$route.params.report.id,
             }
         },
         components: {
             entry,
             createEntry
-        },
-        mounted() {
-            if (this.$route.params.report === undefined) {
-                this.$router.push({name: 'reportBooks'});
-                return;
-            }
-            console.log(this.$route.params.report);
-            this.report = this.$route.params.report;
-            this.fetchEntries();
         },
         mounted() {
             if (this.$route.params.report === undefined) {
