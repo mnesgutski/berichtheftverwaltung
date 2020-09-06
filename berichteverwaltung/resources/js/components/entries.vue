@@ -8,7 +8,7 @@
                 <div class="b-b-thin"></div>
             </div>
             <div class="box d-flex jc-end ai-center">
-                <a href="">
+                <a :href="downloadRoute">
                     <i class="nav-i material-icons font-md color-1">arrow_downward</i>
                 </a>
                 <i class="nav-i material-icons font-xl color-1"
@@ -128,7 +128,7 @@
                 school_entries: [],
                 report: {},
                 showForm: false,
-                downloadRoute: '/download/reportpdf/'+this.$route.params.report.id,
+                downloadRoute: '/download/reportpdf/',
             }
         },
         components: {
@@ -143,6 +143,7 @@
             console.log(this.$route.params.report);
             this.report = this.$route.params.report;
             this.fetchEntries();
+            this.downloadRoute += '' + this.$route.params.report.id;
         },
         methods: {
             fetchEntries() {

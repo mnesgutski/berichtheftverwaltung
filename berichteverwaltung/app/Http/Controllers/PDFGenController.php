@@ -6,6 +6,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\reports;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PDFGenController extends Controller
 {
@@ -15,11 +16,10 @@ class PDFGenController extends Controller
     {
         //like regular view even with compact for carrying variables
         // comment the find(1) lines when done testing to use proper reports and entries
-
-    	//$report = reports::find($request->report_id);
-    	$report = reports::find(1);
-    	//$user = User::find(Auth::id());
-    	$user = User::find(1);
+    	$report = reports::find($request->id);
+//    	$report = reports::find(1);
+    	$user = User::find(Auth::id());
+//    	$user = User::find(1);
     	$data = [];
     	foreach($report->entries as $entry){
     		$data[$entry->type][$entry->id] = [
