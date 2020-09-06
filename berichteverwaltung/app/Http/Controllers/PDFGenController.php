@@ -22,12 +22,21 @@ class PDFGenController extends Controller
 //    	$user = User::find(1);
     	$data = [];
     	foreach($report->entries as $entry){
-    		$data[$entry->type][$entry->id] = [
-    				'duration' => $entry->duration,
-    				'header' => $entry->header,
-    				'description' => $entry->description,
-    			];
-    	}
+    	    if($entry->type === 'school'){
+                $data['Schule'][$entry->id] = [
+                    'duration' => $entry->duration,
+                    'header' => $entry->header,
+                    'description' => $entry->description,
+                ];
+            }else{
+                $data['Betrieb'][$entry->id] = [
+                    'duration' => $entry->duration,
+                    'header' => $entry->header,
+                    'description' => $entry->description,
+                ];
+            }
+
+    	    }
     	$report = $data;
 
         $pdf = PDF::loadView('pdf.report', compact('user','report'));

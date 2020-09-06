@@ -7,7 +7,7 @@
 <body>
 
 <h1>Ausbildungsbericht von {{$user->username}}</h1>
-<table class="table table-bordered">
+<table style="border-color: #1b1e21; border-width: 2px;">
     <thead>
     <tr>
         <td><b>Typ</b></td>
@@ -16,25 +16,24 @@
     </tr>
     </thead>
     <tbody>
-        @foreach($report as $type => $entries)
-    <tr>
-        <td>
-            <b>{{$type}}</b>
-        </td>
-        <td>
-            @foreach($entries as $entry)
-            <p style="text-decoration: underline;">{{$entry['header']}}</p>
-            <p>{{$entry['description']}}</p>
-            @endforeach
-        </td>
-        <td>
-            @foreach($entries as $entry)
-            {{$entry['duration']}}
-            @endforeach
-        </td>
-        <hr>
-    </tr>
-        @endforeach
+    @foreach($report as $type => $entries)
+        <tr>
+            <td>
+                <b>{{$type}}</b>
+            </td>
+            <td>
+                @foreach($entries as $entry)
+                    <p style="text-decoration: underline;">{{$entry['header']}}</p>
+                    <p>{{$entry['description']}}</p>
+                @endforeach
+            </td>
+            <td>
+                @foreach($entries as $entry)
+                    {{$entry['duration']}}
+                @endforeach
+            </td>
+        </tr>
+    @endforeach
     </tbody>
 </table>
 </body>
