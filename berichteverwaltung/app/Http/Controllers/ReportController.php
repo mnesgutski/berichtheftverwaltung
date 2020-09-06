@@ -20,7 +20,7 @@ class ReportController extends Controller
         if (Auth::check()) {
             $rBook = report_books::where('id', '=', $request->reportBookId)->first();
             if ($rBook !== null) {
-                $reports = $rBook->reports;
+                $reports = $rBook->reports->sortBy('position');
                 $data = [];
                 foreach ($reports as $rep) {
                     $data[$rep->id] = [
