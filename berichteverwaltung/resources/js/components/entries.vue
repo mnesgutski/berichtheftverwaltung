@@ -177,28 +177,9 @@ export default {
             console.log(this.$route.params.report);
             this.report = this.$route.params.report;
             this.fetchEntries();
-        },
-        methods: {
-            fetchEntries() {
-                axios.post('/entries/get', {reportId: this.$route.params.report.id})
-                    .then((response) => {
-                        this.entries = response.data.data;
-                        this.showForm = false;
-                        this.$nextTick(() => {
-                            this.$refs.btn_add_entry.focus();
-                        })
-                    }, (error) => {
-                        console.log(error);
-                    });
-            },
-            navBack() {
-                this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
-            },
-            downloadPDF() {
-
-            }
         }
     }
+}
 </script>
 <style scoped>
     .border {
