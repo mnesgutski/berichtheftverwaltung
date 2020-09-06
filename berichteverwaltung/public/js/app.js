@@ -6070,7 +6070,7 @@ var render = function() {
                           }
                         },
                         [
-                          _c("h2", { staticClass: "font-sm" }, [
+                          _c("h2", { staticClass: "no-select font-sm" }, [
                             _vm._v(_vm._s(_vm.header))
                           ])
                         ]
@@ -6078,18 +6078,22 @@ var render = function() {
                       _vm._v(" "),
                       _vm.entry.duration !== null
                         ? _c("div", { staticClass: "box d-flex jc-end" }, [
-                            _c("h2", { staticClass: "font-sm lbl-light" }, [
-                              _vm._v(_vm._s(_vm.entry.duration) + " Std.")
-                            ])
+                            _c(
+                              "h2",
+                              { staticClass: "no-select font-sm lbl-light" },
+                              [_vm._v(_vm._s(_vm.entry.duration) + " Std.")]
+                            )
                           ])
                         : _vm._e()
                     ]),
                     _vm._v(" "),
                     _vm.description != "" && _vm.description != null
                       ? _c("div", { staticClass: "box" }, [
-                          _c("h3", { staticClass: "font-sm lbl-light" }, [
-                            _vm._v(_vm._s(_vm.description))
-                          ])
+                          _c(
+                            "h3",
+                            { staticClass: "no-select font-sm lbl-light" },
+                            [_vm._v(_vm._s(_vm.description))]
+                          )
                         ])
                       : _vm._e()
                   ])
