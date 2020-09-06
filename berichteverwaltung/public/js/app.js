@@ -2537,29 +2537,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2567,8 +2544,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       entries: [],
-      company_entries: [],
-      school_entries: [],
       report: {},
       showForm: false
     };
@@ -2598,8 +2573,6 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.entries = response.data.data;
         _this.showForm = false;
-        _this.school_entries = _this.filterEntries('school');
-        _this.company_entries = _this.filterEntries('company');
 
         _this.$nextTick(function () {
           _this.$refs.btn_add_entry.focus();
@@ -2608,17 +2581,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    filterEntries: function filterEntries(pType) {
-      var result = {};
-
-      for (var item in this.entries) {
-        if (this.entries[item].type == pType) {
-          result[item] = this.entries[item];
-        }
-      }
-
-      return result;
-    },
     navBack: function navBack() {
       this.$router.push({
         name: 'reports',
@@ -2626,18 +2588,6 @@ __webpack_require__.r(__webpack_exports__);
           report_book_id: this.$route.params.report_book_id
         }
       });
-    },
-    mounted: function mounted() {
-      if (this.$route.params.report === undefined) {
-        this.$router.push({
-          name: 'reportBooks'
-        });
-        return;
-      }
-
-      console.log(this.$route.params.report);
-      this.report = this.$route.params.report;
-      this.fetchEntries();
     }
   }
 });
@@ -3280,7 +3230,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.border[data-v-00693e15] {\n    border: 1px solid black\n}\ndiv[tabindex][data-v-00693e15] {\n    outline: none;\n}\n.entry[data-v-00693e15] {\n    background-color: transparent;\n    transition: background-color .07s ease;\n}\n.entry[data-v-00693e15]:hover, .entry[data-v-00693e15]:focus {\n    background-color: var(--c-third);\n}\n.entry:hover i[data-v-00693e15], .entry:focus i[data-v-00693e15] {\n    color: var(--c-second)\n}\n.fade-enter-active[data-v-00693e15], .fade-leave-active[data-v-00693e15] {\n    transition: opacity .3s;\n}\n.fade-enter[data-v-00693e15], .fade-leave-to[data-v-00693e15] /* .fade-leave-active below version 2.1.8 */\n{\n    opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.border[data-v-00693e15]{border: 1px solid black}\ndiv[tabindex][data-v-00693e15]{\r\n    outline: none;\n}\n.entry[data-v-00693e15]{\r\n    background-color: transparent;\r\n    transition: background-color .07s ease;\n}\n.entry[data-v-00693e15]:hover, .entry[data-v-00693e15]:focus{\r\n    background-color: var(--c-third);\n}\n.entry:hover i[data-v-00693e15], .entry:focus i[data-v-00693e15]{color: var(--c-second)}\n.fade-enter-active[data-v-00693e15], .fade-leave-active[data-v-00693e15] {\r\n  transition: opacity .3s;\n}\n.fade-enter[data-v-00693e15], .fade-leave-to[data-v-00693e15] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -5600,10 +5550,8 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
-        _c("a", { attrs: { href: _vm.downloadPDF() } }, [
-          _c("i", { staticClass: "nav-i material-icons font-md color-1" }, [
-            _vm._v("arrow_downward")
-          ])
+        _c("i", { staticClass: "nav-i material-icons font-md color-1" }, [
+          _vm._v("arrow_downward")
         ]),
         _vm._v(" "),
         _c(
@@ -5662,21 +5610,18 @@ var render = function() {
           _c("div", { staticClass: "box-auto d-flex f-center" }, [
             _c("h2", { staticClass: "no-hov no-select font-sm lbl-light" }, [
               _vm._v(
-                "\n                Nr. " +
-                  _vm._s(_vm.report.position) +
-                  "\n                (" +
+                "\r\n                    " +
                   _vm._s(
                     new Date(_vm.report.begin_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
                   ) +
-                  "\n                - " +
+                  "\r\n                    - " +
                   _vm._s(
                     new Date(_vm.report.end_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
-                  ) +
-                  ")"
+                  )
               )
             ])
           ])
@@ -5689,21 +5634,21 @@ var render = function() {
           _c("div", { staticClass: "box" }, [
             _c("h2", { staticClass: "font-md lbl-light" }, [
               _vm._v(
-                "\n                        Bericht Nr. " +
+                "\r\n                            Bericht Nr. " +
                   _vm._s(this.report.position) +
-                  "\n                        vom " +
+                  "\r\n                            vom " +
                   _vm._s(
                     new Date(this.report.begin_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
                   ) +
-                  "\n                        bis zum " +
+                  "\r\n                            bis zum " +
                   _vm._s(
                     new Date(this.report.end_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
                   ) +
-                  "\n                    "
+                  "\r\n                        "
               )
             ]),
             _vm._v(" "),
@@ -5732,36 +5677,7 @@ var render = function() {
             _c(
               "transition-group",
               { attrs: { name: "list" } },
-              _vm._l(_vm.company_entries, function(item) {
-                return _c(
-                  "div",
-                  { key: item.id },
-                  [
-                    _c("entry", {
-                      staticClass: "m-b-md",
-                      attrs: {
-                        entry: item,
-                        report_id: _vm.$route.params.report.id,
-                        header: item.header,
-                        description: item.description
-                      },
-                      on: {
-                        updated: function($event) {
-                          return _vm.fetchEntries()
-                        }
-                      }
-                    })
-                  ],
-                  1
-                )
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _c(
-              "transition-group",
-              { attrs: { name: "list" } },
-              _vm._l(_vm.school_entries, function(item) {
+              _vm._l(_vm.entries, function(item) {
                 return _c(
                   "div",
                   { key: item.id },
