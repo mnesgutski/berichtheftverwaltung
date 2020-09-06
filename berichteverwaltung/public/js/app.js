@@ -2298,7 +2298,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: default */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\development\\berichtheftverwaltung\\berichteverwaltung\\resources\\js\\components\\entries.vue: Unexpected token (124:0)\n\n\u001b[0m \u001b[90m 122 | \u001b[39m\u001b[90m//\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 123 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 124 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 | \u001b[39m\u001b[36mimport\u001b[39m axios from \u001b[32m'axios'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 126 | \u001b[39m\u001b[36mimport\u001b[39m entry from \u001b[32m'./entry.vue'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 127 | \u001b[39m\u001b[36mimport\u001b[39m createEntry from \u001b[32m'./createEntry.vue'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Parser._raise (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:766:17)\n    at Parser.raiseWithData (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:759:17)\n    at Parser.raise (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:753:17)\n    at Parser.unexpected (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:8966:16)\n    at Parser.parseExprAtom (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:10282:20)\n    at Parser.parseExprSubscripts (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9844:23)\n    at Parser.parseUpdate (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9824:21)\n    at Parser.parseMaybeUnary (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9813:17)\n    at Parser.parseExprOps (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9683:23)\n    at Parser.parseMaybeConditional (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9657:23)\n    at Parser.parseMaybeAssign (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9620:21)\n    at Parser.parseExpressionBase (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9564:23)\n    at C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9558:39\n    at Parser.allowInAnd (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11297:16)\n    at Parser.parseExpression (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9558:17)\n    at Parser.parseStatementContent (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11562:23)\n    at Parser.parseStatement (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11431:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:12013:25)\n    at Parser.parseBlockBody (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11999:10)\n    at Parser.parseTopLevel (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11362:10)\n    at Parser.parse (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:13045:10)\n    at parse (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:13098:38)\n    at parser (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\core\\lib\\parser\\index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:99:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\core\\lib\\transformation\\index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\core\\lib\\transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\gensync\\index.js:254:32)\n    at C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\gensync\\index.js:266:13\n    at async.call.result.err.err (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\gensync\\index.js:216:11)");
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\development\\berichtheftverwaltung\\berichteverwaltung\\resources\\js\\components\\entries.vue: Unexpected token, expected \",\" (202:0)\n\n\u001b[0m \u001b[90m 200 | \u001b[39m        }\u001b[0m\n\u001b[0m \u001b[90m 201 | \u001b[39m    }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 202 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n    at Parser._raise (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:766:17)\n    at Parser.raiseWithData (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:759:17)\n    at Parser.raise (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:753:17)\n    at Parser.unexpected (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:8966:16)\n    at Parser.expect (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:8952:28)\n    at Parser.parseObjectLike (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:10655:14)\n    at Parser.parseExprAtom (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:10198:23)\n    at Parser.parseExprSubscripts (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9844:23)\n    at Parser.parseUpdate (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9824:21)\n    at Parser.parseMaybeUnary (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9813:17)\n    at Parser.parseExprOps (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9683:23)\n    at Parser.parseMaybeConditional (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9657:23)\n    at Parser.parseMaybeAssign (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9620:21)\n    at C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9586:39\n    at Parser.allowInAnd (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11297:16)\n    at Parser.parseMaybeAssignAllowIn (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:9586:17)\n    at Parser.parseExportDefaultExpression (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:12620:24)\n    at Parser.parseExport (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:12530:31)\n    at Parser.parseStatementContent (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11537:27)\n    at Parser.parseStatement (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11431:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:12013:25)\n    at Parser.parseBlockBody (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11999:10)\n    at Parser.parseTopLevel (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:11362:10)\n    at Parser.parse (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:13045:10)\n    at parse (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\parser\\lib\\index.js:13098:38)\n    at parser (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\core\\lib\\parser\\index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:99:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\core\\lib\\transformation\\index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\@babel\\core\\lib\\transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\gensync\\index.js:254:32)\n    at C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\gensync\\index.js:266:13\n    at async.call.result.err.err (C:\\development\\berichtheftverwaltung\\berichteverwaltung\\node_modules\\gensync\\index.js:216:11)");
 
 /***/ }),
 
@@ -4925,15 +4925,15 @@ var render = function() {
           _c("div", { staticClass: "box-auto d-flex f-center" }, [
             _c("h2", { staticClass: "no-hov no-select font-sm lbl-light" }, [
               _vm._v(
-                "\n<<<<<<< HEAD\n                    Nr. " +
+                "\n                Nr. " +
                   _vm._s(_vm.report.position) +
-                  "\n                    (" +
+                  "\n                (" +
                   _vm._s(
                     new Date(_vm.report.begin_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
                   ) +
-                  " \n                    - " +
+                  " \n                - " +
                   _vm._s(
                     new Date(_vm.report.end_date).toLocaleDateString("de", {
                       dateStyle: "medium"
@@ -4941,24 +4941,7 @@ var render = function() {
                   ) +
                   ")"
               )
-            ]),
-            _vm._v(
-              "\n=======\n                    " +
-                _vm._s(
-                  new Date(_vm.report.begin_date).toLocaleDateString("de", {
-                    dateStyle: "medium"
-                  })
-                ) +
-                "\n                    - " +
-                _vm._s(
-                  new Date(_vm.report.end_date).toLocaleDateString("de", {
-                    dateStyle: "medium"
-                  })
-                )
-            ),
-            _vm._v(
-              "\n>>>>>>> b9bc8850fcac89790437f386772b4787417a1e40\n            "
-            )
+            ])
           ])
         ])
       : _vm._e(),
@@ -4969,21 +4952,21 @@ var render = function() {
           _c("div", { staticClass: "box" }, [
             _c("h2", { staticClass: "font-md lbl-light" }, [
               _vm._v(
-                "\n                            Bericht Nr. " +
+                "\n                        Bericht Nr. " +
                   _vm._s(this.report.position) +
-                  "\n                            vom " +
+                  "\n                        vom " +
                   _vm._s(
                     new Date(this.report.begin_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
                   ) +
-                  "\n                            bis zum " +
+                  "\n                        bis zum " +
                   _vm._s(
                     new Date(this.report.end_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
                   ) +
-                  "\n                        "
+                  "\n                    "
               )
             ]),
             _vm._v(" "),
