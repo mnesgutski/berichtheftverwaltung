@@ -72,7 +72,7 @@ class ReportController extends Controller
             $data = [
                 'id' => $rep->id,
                 'type' => $rep->type,
-                'position' => $rep->postion,
+                'position' => $rep->position,
                 'begin_date' => $rep->begin_date,
                 'end_date' => $rep->end_date,
                 'department' => $rep->department,
