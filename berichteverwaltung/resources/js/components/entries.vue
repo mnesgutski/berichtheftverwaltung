@@ -57,7 +57,7 @@
                 </div>
                 <div class="box of-y-auto hide-scrollbar">
                     <!-- Actual Entries -->
-                    <h2 v-if="Object.keys(company_entries).length !== 0" class="font-sm lbl-light">Betriebliche Tätigkeiten</h2>
+                    <h2 v-if="Object.keys(company_entries).length !== 0" class="no-select font-sm lbl-light">Betriebliche Tätigkeiten</h2>
                     <transition-group name="list">
                         <div v-for="item in company_entries" :key="item.id">
                             <entry @updated="fetchEntries()"
@@ -81,8 +81,8 @@
                         </div>
                     </transition-group>
                     <div v-if="this.duration_sum > 0" 
-                        class="no-select d-flex jc-end m-b-md">
-                        <h2 class="font-sm lbl-light">
+                        class="d-flex jc-end m-b-md">
+                        <h2 class="no-select font-sm lbl-light">
                             {{this.duration_sum}} Std. gesamt
                         </h2>
                     </div>

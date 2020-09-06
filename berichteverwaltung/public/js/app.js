@@ -5849,7 +5849,7 @@ var render = function() {
           { staticClass: "box of-y-auto hide-scrollbar" },
           [
             Object.keys(_vm.company_entries).length !== 0
-              ? _c("h2", { staticClass: "font-sm lbl-light" }, [
+              ? _c("h2", { staticClass: "no-select font-sm lbl-light" }, [
                   _vm._v("Betriebliche Tätigkeiten")
                 ])
               : _vm._e(),
@@ -5919,8 +5919,8 @@ var render = function() {
             ),
             _vm._v(" "),
             this.duration_sum > 0
-              ? _c("div", { staticClass: "no-select d-flex jc-end m-b-md" }, [
-                  _c("h2", { staticClass: "font-sm lbl-light" }, [
+              ? _c("div", { staticClass: "d-flex jc-end m-b-md" }, [
+                  _c("h2", { staticClass: "no-select font-sm lbl-light" }, [
                     _vm._v(
                       "\n                        " +
                         _vm._s(this.duration_sum) +

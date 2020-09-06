@@ -25,7 +25,7 @@ class EntryController extends Controller
             $data = [];
             if($rep !== null){
                 foreach ($entries as $entry) {
-                    $data[$entry->id] = [
+                    $data[] = [
                         'id' => $entry->id,
                         'position' => $entry->position,
                         'duration' => $entry->duration,
