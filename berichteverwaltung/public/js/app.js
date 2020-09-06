@@ -5028,7 +5028,12 @@ var render = function() {
                     expression: "report_position"
                   }
                 ],
-                attrs: { type: "text", id: "inp-rep-position" },
+                attrs: {
+                  step: "1",
+                  min: "0",
+                  type: "number",
+                  id: "inp-rep-position"
+                },
                 domProps: { value: _vm.report_position },
                 on: {
                   input: function($event) {

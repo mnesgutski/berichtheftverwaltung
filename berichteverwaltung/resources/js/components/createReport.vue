@@ -18,7 +18,7 @@
                 <!-- Apprenticeship Input -->
                 <div class="row m-b-xl">
                     <div class="col">
-                        <input type="text" v-model="report_position" id="inp-rep-position">
+                        <input step="1" min="0" type="number" v-model="report_position" id="inp-rep-position">
                         <h2 class="lbl-light font-sm">Nummer</h2>
                     </div>
                     <div class="col">
