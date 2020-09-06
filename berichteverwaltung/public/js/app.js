@@ -2035,7 +2035,8 @@ __webpack_require__.r(__webpack_exports__);
     createEntry: function createEntry() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(entry == null ? 'entries/create' : 'entries/update', {
+      console.log("entered create function");
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.entry == null ? 'entries/create' : 'entries/update', {
         report_id: this.report_id,
         position: 1,
         duration: this.entry_duration,
@@ -3068,7 +3069,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.fade-enter-active[data-v-23235493], .fade-leave-active[data-v-23235493] {\r\n  transition: opacity .1s;\n}\n.fade-enter[data-v-23235493], .fade-leave-to[data-v-23235493] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.fade-enter-active[data-v-23235493], .fade-leave-active[data-v-23235493] {\n  transition: opacity .1s;\n}\n.fade-enter[data-v-23235493], .fade-leave-to[data-v-23235493] /* .fade-leave-active below version 2.1.8 */ {\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -3087,7 +3088,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.list-item {\r\n  display: inline-block;\r\n  margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\r\n  transition: all .3s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\r\n  transform: translateY(30px);\n}\n.item-hov{\r\n    background-color: transparent;\r\n    transition: background-color .1s ease;\n}\n.item-hov:hover{\r\n    background-color: var(--c-third);\n}\n.item-hov:hover i, \r\n.item-hov:hover h2, \r\n.item-hov:hover h3{color: var(--c-second)}\ni.material-icons{\r\n    color: var(--c-main);\r\n    transition: color .1s ease;\n}\ni.material-icons:hover{color: var(--c-second)}\n.edit-item{transition: background-color .1s ease;}\n.edit-item h1,\r\n.edit-item h2,\r\n.edit-item h3,\r\n.edit-item i{transition: color .1s ease;}\n.edit-item-active{background-color: var(--c-edit);}\n.edit-item-active h1,\r\n.edit-item-active h2,\r\n.edit-item-active h3,\r\n.edit-item-active i{color: var(--c-contrast);}\r\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n  transition: all .3s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n  opacity: 0;\n  transform: translateY(30px);\n}\n.item-hov{\n    background-color: transparent;\n    transition: background-color .1s ease;\n}\n.item-hov:hover{\n    background-color: var(--c-third);\n}\n.item-hov:hover i, \n.item-hov:hover h2, \n.item-hov:hover h3{color: var(--c-second)}\ni.material-icons{\n    color: var(--c-main);\n    transition: color .1s ease;\n}\ni.material-icons:hover{color: var(--c-second)}\n.edit-item{transition: background-color .1s ease;}\n.edit-item h1,\n.edit-item h2,\n.edit-item h3,\n.edit-item i{transition: color .1s ease;}\n.edit-item-active{background-color: var(--c-edit);}\n.edit-item-active h1,\n.edit-item-active h2,\n.edit-item-active h3,\n.edit-item-active i{color: var(--c-contrast);}\n", ""]);
 
 // exports
 
@@ -3106,7 +3107,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ninput[type=\"text\"][data-v-9bbcc64a], input[type=\"number\"][data-v-9bbcc64a], select[data-v-9bbcc64a]{\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\r\n    width: 100%;\r\n    height: 1em;\n}\nselect[data-v-9bbcc64a]:focus{\r\n    background-color: var(--c-second);\r\n    color: var(--c-main);\n}\ninput[type=\"date\"][data-v-9bbcc64a]{\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\r\n    width: 100%;\n}\n.border[data-v-9bbcc64a]{border: 1px solid black}\r\n", ""]);
+exports.push([module.i, "\ninput[type=\"text\"][data-v-9bbcc64a], input[type=\"number\"][data-v-9bbcc64a], select[data-v-9bbcc64a]{\n    font-family: roboto-light;\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid var(--c-second);\n    outline: none;\n    color: var(--c-second);\n    width: 100%;\n    height: 1em;\n}\nselect[data-v-9bbcc64a]:focus{\n    background-color: var(--c-second);\n    color: var(--c-main);\n}\ninput[type=\"date\"][data-v-9bbcc64a]{\n    font-family: roboto-light;\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid var(--c-second);\n    outline: none;\n    color: var(--c-second);\n    width: 100%;\n}\n.border[data-v-9bbcc64a]{border: 1px solid black}\n", ""]);
 
 // exports
 
@@ -3125,7 +3126,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.offset-xl[data-v-7cf53d1b]{\r\n    height: 200px;\r\n    width: 0px;\n}\ninput[type=\"text\"][data-v-7cf53d1b],input[type=\"number\"][data-v-7cf53d1b], select[data-v-7cf53d1b]{\r\n    width: 100%;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\nselect[data-v-7cf53d1b]{-moz-appearance:none;}\nselect[data-v-7cf53d1b]:focus{background-color: var(--c-edit)}\noption[data-v-7cf53d1b]{font-family: roboto-light; font-size: var(--f-md);}\ninput[type=\"date\"][data-v-7cf53d1b]{\r\n    width: 100%;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\n.form-container[data-v-7cf53d1b]{width: var(--s-xx)}\r\n", ""]);
+exports.push([module.i, "\n.offset-xl[data-v-7cf53d1b]{\n    height: 200px;\n    width: 0px;\n}\ninput[type=\"text\"][data-v-7cf53d1b],input[type=\"number\"][data-v-7cf53d1b], select[data-v-7cf53d1b]{\n    width: 100%;\n    font-size: 30px;\n    font-family: roboto-light;\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid var(--c-second);\n    outline: none;\n    color: var(--c-second);\n}\nselect[data-v-7cf53d1b]{-moz-appearance:none;}\nselect[data-v-7cf53d1b]:focus{background-color: var(--c-edit)}\noption[data-v-7cf53d1b]{font-family: roboto-light; font-size: var(--f-md);}\ninput[type=\"date\"][data-v-7cf53d1b]{\n    width: 100%;\n    font-size: 30px;\n    font-family: roboto-light;\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid var(--c-second);\n    outline: none;\n    color: var(--c-second);\n}\n.form-container[data-v-7cf53d1b]{width: var(--s-xx)}\n", ""]);
 
 // exports
 
@@ -3144,7 +3145,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.offset-xl[data-v-0df573b8]{\r\n    height: 200px;\r\n    width: 0px;\n}\ninput[type=\"text\"][data-v-0df573b8]{\r\n    width: 100%;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\ninput[type=\"date\"][data-v-0df573b8]{\r\n    width: 100%;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\n.form-container[data-v-0df573b8]{width: var(--s-xx)}\r\n", ""]);
+exports.push([module.i, "\n.offset-xl[data-v-0df573b8]{\n    height: 200px;\n    width: 0px;\n}\ninput[type=\"text\"][data-v-0df573b8]{\n    width: 100%;\n    font-size: 30px;\n    font-family: roboto-light;\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid var(--c-second);\n    outline: none;\n    color: var(--c-second);\n}\ninput[type=\"date\"][data-v-0df573b8]{\n    width: 100%;\n    font-size: 30px;\n    font-family: roboto-light;\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid var(--c-second);\n    outline: none;\n    color: var(--c-second);\n}\n.form-container[data-v-0df573b8]{width: var(--s-xx)}\n", ""]);
 
 // exports
 
@@ -3163,7 +3164,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.overlay[data-v-c72c8d4a]{\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: black;\r\n    opacity: .3;\n}\n.menu-item[data-v-c72c8d4a]{\r\n    background-color: var(--c-contrast);\r\n    transition: background-color .1s ease;\n}\n.menu-item[data-v-c72c8d4a]:hover{background-color: var(--c-edit);}\n.menu-item:hover h2[data-v-c72c8d4a]{color: var(--c-second);}\n.menu-item:active h2[data-v-c72c8d4a]{color: var(--c-contrast);}\r\n", ""]);
+exports.push([module.i, "\n.overlay[data-v-c72c8d4a]{\n    width: 100%;\n    height: 100%;\n    background-color: black;\n    opacity: .3;\n}\n.menu-item[data-v-c72c8d4a]{\n    background-color: var(--c-contrast);\n    transition: background-color .1s ease;\n}\n.menu-item[data-v-c72c8d4a]:hover{background-color: var(--c-edit);}\n.menu-item:hover h2[data-v-c72c8d4a]{color: var(--c-second);}\n.menu-item:active h2[data-v-c72c8d4a]{color: var(--c-contrast);}\n", ""]);
 
 // exports
 
@@ -3182,7 +3183,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.border[data-v-00693e15]{border: 1px solid black}\n.entry[data-v-00693e15]{\r\n    background-color: transparent;\r\n    transition: background-color .07s ease;\n}\n.entry[data-v-00693e15]:hover{\r\n    background-color: var(--c-third);\n}\n.entry:hover i[data-v-00693e15]{color: var(--c-second)}\n.fade-enter-active[data-v-00693e15], .fade-leave-active[data-v-00693e15] {\r\n  transition: opacity .3s;\n}\n.fade-enter[data-v-00693e15], .fade-leave-to[data-v-00693e15] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.border[data-v-00693e15]{border: 1px solid black}\n.entry[data-v-00693e15]{\n    background-color: transparent;\n    transition: background-color .07s ease;\n}\n.entry[data-v-00693e15]:hover{\n    background-color: var(--c-third);\n}\n.entry:hover i[data-v-00693e15]{color: var(--c-second)}\n.fade-enter-active[data-v-00693e15], .fade-leave-active[data-v-00693e15] {\n  transition: opacity .3s;\n}\n.fade-enter[data-v-00693e15], .fade-leave-to[data-v-00693e15] /* .fade-leave-active below version 2.1.8 */ {\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -3201,7 +3202,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#entry[data-v-3e51d837]{\r\n    background-color: transparent;\r\n    transition: background-color .07s ease;\n}\n#entry[data-v-3e51d837]:hover{\r\n    background-color: var(--c-third);\n}\n#entry:hover h2[data-v-3e51d837],#entry:hover h3[data-v-3e51d837]{color: var(--c-second)}\n.fade-enter-active[data-v-3e51d837], .fade-leave-active[data-v-3e51d837] {\r\n  transition: opacity .3s;\n}\n.fade-enter[data-v-3e51d837], .fade-leave-to[data-v-3e51d837] /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n#entry[data-v-3e51d837]{\n    background-color: transparent;\n    transition: background-color .07s ease;\n}\n#entry[data-v-3e51d837]:hover{\n    background-color: var(--c-third);\n}\n#entry:hover h2[data-v-3e51d837],#entry:hover h3[data-v-3e51d837]{color: var(--c-second)}\n.fade-enter-active[data-v-3e51d837], .fade-leave-active[data-v-3e51d837] {\n  transition: opacity .3s;\n}\n.fade-enter[data-v-3e51d837], .fade-leave-to[data-v-3e51d837] /* .fade-leave-active below version 2.1.8 */ {\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -3220,7 +3221,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\r\n    width: 100%;\r\n    font-size: 25px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    border-radius: 0;\r\n    border-bottom: 1px solid var(--c-second);\r\n    outline: none;\r\n    color: var(--c-second);\n}\nbutton[data-v-172b28a4]{\r\n    background-color: transparent;\r\n    padding: 5px;\r\n    font-size: 30px;\r\n    font-family: roboto-light;\r\n    border: none;\r\n    outline: none;\n}\n.force-center[data-v-172b28a4]{\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%,-50%);\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n*[data-v-172b28a4]{color: var(--c-main);}\n.comp-w-sm[data-v-172b28a4]{width: 200px;}\n.comp-w-md[data-v-172b28a4]{width: 400px;}\n.m-b-sm[data-v-172b28a4]{margin-bottom: 5px;}\n.m-b-md[data-v-172b28a4]{margin-bottom: 10px;}\n.m-b-lg[data-v-172b28a4]{margin-bottom: 20px;}\n.m-b-xl[data-v-172b28a4]{margin-bottom: 40px;}\ninput[type=\"text\"][data-v-172b28a4], input[type=\"password\"][data-v-172b28a4]{\n    width: 100%;\n    font-size: 25px;\n    font-family: roboto-light;\n    border: none;\n    border-radius: 0;\n    border-bottom: 1px solid var(--c-second);\n    outline: none;\n    color: var(--c-second);\n}\nbutton[data-v-172b28a4]{\n    background-color: transparent;\n    padding: 5px;\n    font-size: 30px;\n    font-family: roboto-light;\n    border: none;\n    outline: none;\n}\n.force-center[data-v-172b28a4]{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%,-50%);\n}\n\n", ""]);
 
 // exports
 
@@ -3239,7 +3240,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-second);\n}\n.divider[data-v-3437344a]{\r\n    height: 1px;\r\n    width: 100%;\r\n    background-color: var(--c-second);\r\n    margin: var(--pm-md) 0px;\n}\n.wrap[data-v-3437344a]{word-wrap: anywhere;}\r\n", ""]);
+exports.push([module.i, "\n.report-book-container[data-v-3437344a]{\n    height: var(--s-lg);\n    width: var(--s-lg);\n    border: 1px solid var(--c-second);\n}\n.divider[data-v-3437344a]{\n    height: 1px;\n    width: 100%;\n    background-color: var(--c-second);\n    margin: var(--pm-md) 0px;\n}\n.wrap[data-v-3437344a]{word-wrap: anywhere;}\n", ""]);
 
 // exports
 
@@ -3258,7 +3259,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.report-container[data-v-666cdbc4]{\r\n    height: var(--s-lg);\r\n    width: var(--s-lg);\r\n    border: 1px solid var(--c-second);\n}\n.divider[data-v-666cdbc4]{\r\n    height: 1px;\r\n    width: 100%;\r\n    background-color: var(--c-second);\r\n    margin: var(--pm-md) 0px;\n}\r\n", ""]);
+exports.push([module.i, "\n.report-container[data-v-666cdbc4]{\n    height: var(--s-lg);\n    width: var(--s-lg);\n    border: 1px solid var(--c-second);\n}\n.divider[data-v-666cdbc4]{\n    height: 1px;\n    width: 100%;\n    background-color: var(--c-second);\n    margin: var(--pm-md) 0px;\n}\n", ""]);
 
 // exports
 
@@ -5515,19 +5516,19 @@ var render = function() {
           _c("div", { staticClass: "box" }, [
             _c("h2", { staticClass: "font-md lbl-light" }, [
               _vm._v(
-                "\r\n                            Bericht vom " +
+                "\n                            Bericht vom " +
                   _vm._s(
                     new Date(this.report.begin_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
                   ) +
-                  " \r\n                            bis zum " +
+                  " \n                            bis zum " +
                   _vm._s(
                     new Date(this.report.end_date).toLocaleDateString("de", {
                       dateStyle: "medium"
                     })
                   ) +
-                  "    \r\n                        "
+                  "    \n                        "
               )
             ]),
             _vm._v(" "),
@@ -5535,11 +5536,11 @@ var render = function() {
             _vm._v(" "),
             _c("h3", { staticClass: "font-sm lbl-light" }, [
               _vm._v(
-                "\r\n                            Auszubildender: Vorname Nachname,\r\n                            Abteilung: " +
+                "\n                            Auszubildender: Vorname Nachname,\n                            Abteilung: " +
                   _vm._s(this.report.department) +
-                  ",\r\n                            Unternehmen: " +
+                  ",\n                            Unternehmen: " +
                   _vm._s(this.report.company) +
-                  "\r\n                        "
+                  "\n                        "
               )
             ])
           ])
@@ -22471,8 +22472,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/maik/Projects/berichtheftverwaltung/berichteverwaltung/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/maik/Projects/berichtheftverwaltung/berichteverwaltung/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

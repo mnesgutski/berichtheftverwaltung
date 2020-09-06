@@ -92,6 +92,7 @@ class EntryController extends Controller
         ];
 
         if (Auth::check()) {
+          dd($request->entry_id);
             $ent = entries::where('id', '=', $request->entry_id)->first();
             $ent->position = $request->position;
             $ent->header = $request->duration;
