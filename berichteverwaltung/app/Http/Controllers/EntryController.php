@@ -36,6 +36,7 @@ class EntryController extends Controller
                         'updated_at' => $entry->updated_at,
                     ];
                 }
+
                 $response['error'] = false;
                 $response['data'] = $data;
                 return response()->json($response);
