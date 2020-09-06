@@ -110,4 +110,8 @@ class LoginController extends Controller
         return response()->json($response);
     }
 
+    public function username(){
+        return response()->json(['username' => Auth::user()->username]);
+    }
+
 }
