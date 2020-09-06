@@ -25,7 +25,8 @@ class PDFGenController extends Controller
         $to = $report->end_date;
 
         $pos = ($report->position !== null) ? $report->position : ' ';
-        foreach ($report->entries as $entry) {
+        $entries = $report->entries->sortBy('position');
+        foreach ($entries as $entry) {
             if ($entry->type === 'school') {
                 $data['Schule'][$entry->id] = [
                     'duration' => $entry->duration,

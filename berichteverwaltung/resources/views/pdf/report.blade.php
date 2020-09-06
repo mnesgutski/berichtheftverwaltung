@@ -45,7 +45,7 @@
 
 <h1>Ausbildungsbericht Nr. {{$pos}} von {{$user->username}} </h1>
 <p>vom {{$from}} bis {{$to}}</p>
-<table class="table-border" style="width: 100%;">
+<table class="table-border" style="width: 100%;" cellspacing="0">
     <thead>
     <tr>
         <td class="center border-bottom"><b>Typ</b></td>
@@ -59,7 +59,7 @@
                 <b>{{$type}}</b>
             </td>
             <td class="border-bottom">
-                <table style="width: 100%">
+                <table style="width: 100%" cellspacing="0">
                     <thead>
                     <tr>
                         <td class="eightyeight center border-bottom border-left">Tätigkeit</td>
@@ -87,7 +87,7 @@
 <br>
 <br>
 
-<table style="width:100%">
+<table style="width:100%" cellspacing="0">
     <thead>
     <tr>
         <td style="width: 45%; margin-right: 5%;" class="center">Auszubildende/r</td>

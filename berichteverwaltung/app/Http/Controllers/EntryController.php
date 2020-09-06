@@ -20,9 +20,11 @@ class EntryController extends Controller
 
         if (Auth::check()) {
             $rep = reports::where('id', '=', $request->reportId)->first();
+            $entries = $rep->entries;
+            $entries = $entries->sortBy('position');
             $data = [];
             if($rep !== null){
-                foreach ($rep->entries as $entry) {
+                foreach ($entries as $entry) {
                     $data[$entry->id] = [
                         'id' => $entry->id,
                         'position' => $entry->position,
@@ -34,7 +36,6 @@ class EntryController extends Controller
                         'updated_at' => $entry->updated_at,
                     ];
                 }
-
                 $response['error'] = false;
                 $response['data'] = $data;
                 return response()->json($response);
