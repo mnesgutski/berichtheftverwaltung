@@ -6316,7 +6316,10 @@ var render = function() {
                     [
                       _c(
                         "h2",
-                        { staticClass: "lbl-light font-sm lbl-center wrap" },
+                        {
+                          staticClass:
+                            "no-select lbl-light font-sm lbl-center wrap"
+                        },
                         [_vm._v(_vm._s(item.name))]
                       ),
                       _vm._v(" "),
@@ -6324,7 +6327,9 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "h2",
-                        { staticClass: "lbl-light font-sm lbl-center" },
+                        {
+                          staticClass: "no-select lbl-light font-sm lbl-center"
+                        },
                         [
                           _vm._v(
                             "\n                        " +
@@ -6530,7 +6535,10 @@ var render = function() {
                     [
                       _c(
                         "h2",
-                        { staticClass: "lbl-light font-sm lbl-center wrap" },
+                        {
+                          staticClass:
+                            "no-select lbl-light font-sm lbl-center wrap"
+                        },
                         [_vm._v(_vm._s(_vm.reportTypes[item.type]))]
                       ),
                       _vm._v(" "),
@@ -6538,7 +6546,9 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "h2",
-                        { staticClass: "lbl-light font-sm lbl-center" },
+                        {
+                          staticClass: "no-select lbl-light font-sm lbl-center"
+                        },
                         [
                           _vm._v(
                             "\n                        " +

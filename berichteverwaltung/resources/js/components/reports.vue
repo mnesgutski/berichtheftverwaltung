@@ -36,9 +36,9 @@
                     <div class="edit-item item-hov report-container d-flex fd-column f-center p-md" 
                     :class="{'edit-item-active':editMode}"
                     @click="clickReport(item)">
-                        <h2 class="lbl-light font-sm lbl-center wrap">{{reportTypes[item.type]}}</h2>
+                        <h2 class="no-select lbl-light font-sm lbl-center wrap">{{reportTypes[item.type]}}</h2>
                         <div class="divider"></div>
-                        <h2 class="lbl-light font-sm lbl-center">
+                        <h2 class="no-select lbl-light font-sm lbl-center">
                             {{new Date(item.begin_date).toLocaleDateString('de',{dateStyle: 'medium'})}} -
                             <br>{{new Date(item.end_date).toLocaleDateString('de',{dateStyle: 'medium'})}}
                         </h2>                                                              

@@ -26,9 +26,9 @@
             <transition-group class="d-flex" name="list">
                 <div class="col-auto pm-none m-r-lg m-b-lg" v-for="item in reportBooks" :key="item.id" @click="clickOnReportBook(item)">
                     <div :class="{'edit-item-active':editMode}" class="edit-item item-hov report-book-container d-flex fd-column f-center p-md">
-                        <h2 class="lbl-light font-sm lbl-center wrap">{{item.name}}</h2>
+                        <h2 class="no-select lbl-light font-sm lbl-center wrap">{{item.name}}</h2>
                         <div class="divider"></div>
-                        <h2 class="lbl-light font-sm lbl-center">
+                        <h2 class="no-select lbl-light font-sm lbl-center">
                             {{new Date(item.begin_date).toLocaleDateString('de',{dateStyle: 'medium'})}} -
                             <br>{{new Date(item.end_date).toLocaleDateString('de',{dateStyle: 'medium'})}}
                         </h2>                                                              
