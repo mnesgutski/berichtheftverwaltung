@@ -4,10 +4,17 @@
     <meta charset="utf-8">
     <title>Report</title>
 </head>
+
+<style>
+    td{
+        border: 1px solid black;
+    }
+</style>
+
 <body>
 
 <h1>Ausbildungsbericht von {{$user->username}}</h1>
-<table style="border-color: #1b1e21; border-width: 2px;">
+<table>
     <thead>
     <tr>
         <td><b>Typ</b></td>
@@ -22,15 +29,28 @@
                 <b>{{$type}}</b>
             </td>
             <td>
-                @foreach($entries as $entry)
-                    <p style="text-decoration: underline;">{{$entry['header']}}</p>
-                    <p>{{$entry['description']}}</p>
-                @endforeach
+                <table>
+                    @foreach($entries as $entry)
+                        <tr>
+                            <td>
+                                <p style="text-decoration: underline;">{{$entry['header']}}</p>
+                                <p>{{$entry['description']}}</p>
+
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
             </td>
             <td>
-                @foreach($entries as $entry)
-                    {{$entry['duration']}}
-                @endforeach
+                <table>
+                    @foreach($entries as $entry)
+                        <tr>
+                            <td style="float: right;">
+                                {{$entry['duration']}}
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
             </td>
         </tr>
     @endforeach
