@@ -68,7 +68,8 @@
                                    :description="item.description"></entry>
                         </div>
                     </transition-group>
-                    <h2 v-if="Object.keys(school_entries).length !== 0" class="font-sm lbl-light">Schulische Tätigkeiten</h2>
+                    <h2 v-if="Object.keys(school_entries).length !== 0" 
+                    class="no-select font-sm lbl-light">Schulische Tätigkeiten</h2>
                     <transition-group name="list">
                         <div v-for="item in school_entries" :key="item.id">
                             <entry @updated="fetchEntries()"
@@ -79,7 +80,8 @@
                                    :description="item.description"></entry>
                         </div>
                     </transition-group>
-                    <div v-if="this.duration_sum > 0" class="d-flex jc-end m-b-md">
+                    <div v-if="this.duration_sum > 0" 
+                        class="no-select d-flex jc-end m-b-md">
                         <h2 class="font-sm lbl-light">
                             {{this.duration_sum}} Std. gesamt
                         </h2>
