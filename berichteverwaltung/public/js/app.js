@@ -5600,7 +5600,7 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
-        _c("a", { attrs: { href: _vm.downloadPDF } }, [
+        _c("a", { attrs: { href: _vm.downloadPDF() } }, [
           _c("i", { staticClass: "nav-i material-icons font-md color-1" }, [
             _vm._v("arrow_downward")
           ])
