@@ -79,7 +79,7 @@
                                    :description="item.description"></entry>
                         </div>
                     </transition-group>
-                    <div class="d-flex jc-end m-b-md">
+                    <div v-if="this.duration_sum > 0" class="d-flex jc-end m-b-md">
                         <h2 class="font-sm lbl-light">
                             {{this.duration_sum}} Std. gesamt
                         </h2>
@@ -137,7 +137,6 @@
                 var sum = 0;
                 for(var item in this.entries){                    
                     sum += this.entries[item].duration;
-                    console.log(this.entries[item].duration);
                 }
                 return sum;
             }

@@ -161,6 +161,9 @@ h1, h2, h3, h4, h5, h6{
 .prop-3{flex-grow: 3;}
 .prop-4{flex-grow: 4;}
 .prop-5{flex-grow: 5;}
+.prop-6{flex-grow: 6;}
+.prop-7{flex-grow: 7;}
+.prop-8{flex-grow: 8;}
 
 .box-auto {
     -webkit-box-flex: 0;

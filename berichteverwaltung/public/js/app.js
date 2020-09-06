@@ -2023,6 +2023,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'create-entry',
@@ -2042,6 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
       entry_type: 'company',
       entry_duration: '',
       entry_id: null,
+      entry_position: '',
       button_text: 'Erstellen'
     };
   },
@@ -2053,6 +2061,7 @@ __webpack_require__.r(__webpack_exports__);
       this.entry_description = this.entry.description;
       this.entry_type = this.entry.type;
       this.entry_duration = this.entry.duration;
+      this.entry_position = this.entry.position;
       this.entry_id = this.entry.id;
       this.button_text = "Speichern";
     }
@@ -2063,7 +2072,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.entry == null ? 'entries/create' : 'entries/update', {
         report_id: this.report_id,
-        position: 1,
+        position: this.entry_position,
         duration: this.entry_duration,
         header: this.entry_header,
         description: this.entry_description,
@@ -2597,7 +2606,6 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var item in this.entries) {
         sum += this.entries[item].duration;
-        console.log(this.entries[item].duration);
       }
 
       return sum;
@@ -4983,7 +4991,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "d-flex m-b-md" }, [
-      _c("div", { staticClass: "box" }, [
+      _c("div", { staticClass: "box m-r-md prop-8" }, [
         _c("input", {
           directives: [
             {
@@ -5016,6 +5024,41 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("h2", { staticClass: "lbl-light font-sm" }, [_vm._v("Beschreibung")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "box" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.entry_position,
+              expression: "entry_position"
+            }
+          ],
+          staticClass: "fill-h font-sm",
+          attrs: { type: "number", step: "1", min: "0" },
+          domProps: { value: _vm.entry_position },
+          on: {
+            keydown: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.createEntry()
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.entry_position = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("h2", { staticClass: "lbl-light font-sm" }, [_vm._v("Position")])
       ])
     ]),
     _vm._v(" "),
@@ -5859,15 +5902,17 @@ var render = function() {
               0
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "d-flex jc-end m-b-md" }, [
-              _c("h2", { staticClass: "font-sm lbl-light" }, [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(this.duration_sum) +
-                    " Std. gesamt\n                    "
-                )
-              ])
-            ]),
+            this.duration_sum > 0
+              ? _c("div", { staticClass: "d-flex jc-end m-b-md" }, [
+                  _c("h2", { staticClass: "font-sm lbl-light" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(this.duration_sum) +
+                        " Std. gesamt\n                    "
+                    )
+                  ])
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "transition",

@@ -31,11 +31,18 @@
         </div>
         <!-- Description Input -->
         <div class="d-flex m-b-md">
-            <div class="box">
+            <div class="box m-r-md prop-8">
                 <input
                 @keydown.enter="createEntry()"
                 type="text" class="fill-h font-sm" v-model="entry_description" id="inp-entry-description">
                 <h2 class="lbl-light font-sm">Beschreibung</h2>
+            </div>
+            <!-- Position Input -->
+            <div class="box">
+                <input
+                @keydown.enter="createEntry()"
+                type="number" step="1" min="0" class="fill-h font-sm" v-model="entry_position">
+                <h2 class="lbl-light font-sm">Position</h2>
             </div>
         </div>
         <!-- Submit Buttons -->
@@ -87,6 +94,7 @@ export default {
             entry_type: 'company',
             entry_duration: '',  
             entry_id: null,
+            entry_position: '',
             button_text: 'Erstellen'          
         }
     },
@@ -97,6 +105,7 @@ export default {
             this.entry_description = this.entry.description;
             this.entry_type = this.entry.type;
             this.entry_duration = this.entry.duration;
+            this.entry_position = this.entry.position;
             this.entry_id = this.entry.id;
             this.button_text = "Speichern";
         }
@@ -105,7 +114,7 @@ export default {
         createEntry(){
             axios.post(this.entry == null ? 'entries/create' : 'entries/update', {
                 report_id: this.report_id,
-                position: 1,
+                position: this.entry_position,
                 duration: this.entry_duration,
                 header: this.entry_header,
                 description: this.entry_description,
