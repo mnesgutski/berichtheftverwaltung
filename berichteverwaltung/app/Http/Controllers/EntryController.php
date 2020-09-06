@@ -25,7 +25,7 @@ class EntryController extends Controller
             $data = [];
             if($rep !== null){
                 foreach ($entries as $entry) {
-                    $data[$entry->id] = [
+                    $data[] = [
                         'id' => $entry->id,
                         'position' => $entry->position,
                         'duration' => $entry->duration,
@@ -36,6 +36,7 @@ class EntryController extends Controller
                         'updated_at' => $entry->updated_at,
                     ];
                 }
+
                 $response['error'] = false;
                 $response['data'] = $data;
                 return response()->json($response);
