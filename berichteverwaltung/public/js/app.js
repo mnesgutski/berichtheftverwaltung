@@ -2577,7 +2577,7 @@ __webpack_require__.r(__webpack_exports__);
       school_entries: [],
       report: {},
       showForm: false,
-      downloadRoute: '/download/reportpdf/' + this.$route.params.report.id
+      downloadRoute: '/download/reportpdf/'
     };
   },
   components: {
@@ -2595,6 +2595,7 @@ __webpack_require__.r(__webpack_exports__);
     console.log(this.$route.params.report);
     this.report = this.$route.params.report;
     this.fetchEntries();
+    this.downloadRoute += '' + this.$route.params.report.id;
   },
   methods: {
     fetchEntries: function fetchEntries() {
@@ -5595,7 +5596,11 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
-        _vm._m(1),
+        _c("a", { attrs: { href: _vm.downloadRoute } }, [
+          _c("i", { staticClass: "nav-i material-icons font-md color-1" }, [
+            _vm._v("arrow_downward")
+          ])
+        ]),
         _vm._v(" "),
         _c(
           "i",
@@ -5629,7 +5634,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "div",
@@ -5648,7 +5653,7 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm._m(3),
+          _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "box-auto d-flex f-center" }, [
             _c("h2", { staticClass: "no-hov no-select font-sm lbl-light" }, [
@@ -5858,16 +5863,6 @@ var staticRenderFns = [
       _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Bericht")]),
       _vm._v(" "),
       _c("div", { staticClass: "b-b-thin" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "" } }, [
-      _c("i", { staticClass: "nav-i material-icons font-md color-1" }, [
-        _vm._v("arrow_downward")
-      ])
     ])
   },
   function() {
