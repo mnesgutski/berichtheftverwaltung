@@ -2568,6 +2568,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2585,6 +2590,18 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     entry: _entry_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     createEntry: _createEntry_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  computed: {
+    duration_sum: function duration_sum() {
+      var sum = 0;
+
+      for (var item in this.entries) {
+        sum += this.entries[item].duration;
+        console.log(this.entries[item].duration);
+      }
+
+      return sum;
+    }
   },
   mounted: function mounted() {
     if (this.$route.params.report === undefined) {
@@ -5842,6 +5859,16 @@ var render = function() {
               0
             ),
             _vm._v(" "),
+            _c("div", { staticClass: "d-flex jc-end m-b-md" }, [
+              _c("h2", { staticClass: "font-sm lbl-light" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(this.duration_sum) +
+                    " Std. gesamt\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
             _c(
               "transition",
               { attrs: { name: "fade" } },
@@ -6004,11 +6031,13 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "box d-flex jc-end" }, [
-                        _c("h2", { staticClass: "font-sm lbl-light" }, [
-                          _vm._v(_vm._s(_vm.entry.duration))
-                        ])
-                      ])
+                      _vm.entry.duration !== null
+                        ? _c("div", { staticClass: "box d-flex jc-end" }, [
+                            _c("h2", { staticClass: "font-sm lbl-light" }, [
+                              _vm._v(_vm._s(_vm.entry.duration) + " Std.")
+                            ])
+                          ])
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _vm.description != "" && _vm.description != null
@@ -22820,8 +22849,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\dev\Bericht\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\development\berichtheftverwaltung\berichteverwaltung\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

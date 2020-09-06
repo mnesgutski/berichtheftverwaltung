@@ -38,7 +38,7 @@
                 <h2 class="lbl-light font-sm">Beschreibung</h2>
             </div>
         </div>
-        <!-- Submit Button -->
+        <!-- Submit Buttons -->
         <div class="d-flex jc-end">
             <div class="box-auto">
                 <button

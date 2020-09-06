@@ -79,6 +79,11 @@
                                    :description="item.description"></entry>
                         </div>
                     </transition-group>
+                    <div class="d-flex jc-end m-b-md">
+                        <h2 class="font-sm lbl-light">
+                            {{this.duration_sum}} Std. gesamt
+                        </h2>
+                    </div>
                     <!-- Add Entry Form -->
                     <transition name="fade">
                         <create-entry
@@ -119,13 +124,23 @@
                 company_entries: [],
                 school_entries: [],
                 report: {},
-                showForm: false,
+                showForm: false,          
                 downloadRoute: '/download/reportpdf/',
             }
         },
         components: {
             entry,
             createEntry
+        },
+        computed:{
+            duration_sum(){
+                var sum = 0;
+                for(var item in this.entries){                    
+                    sum += this.entries[item].duration;
+                    console.log(this.entries[item].duration);
+                }
+                return sum;
+            }
         },
         mounted() {
             if (this.$route.params.report === undefined) {
