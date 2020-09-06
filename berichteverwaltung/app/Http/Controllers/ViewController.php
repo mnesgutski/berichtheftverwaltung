@@ -13,4 +13,8 @@ class ViewController extends Controller
     {
         return view('app');
     }
+
+    public function redirect(){
+        return redirect()->route('login');
+    }
 }

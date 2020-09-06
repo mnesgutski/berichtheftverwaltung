@@ -8,7 +8,7 @@
                 <div class="b-b-thin"></div>
             </div>
             <div class="box d-flex jc-end ai-center">
-                <a href="">
+                <a :href="downloadPDF">
                     <i class="nav-i material-icons font-md color-1">arrow_downward</i>
                 </a>
                 <i class="nav-i material-icons font-xl color-1"
@@ -33,7 +33,7 @@
             <div class="box-auto d-flex f-center">
                 <h2 class="no-hov no-select font-sm lbl-light">
                     Nr. {{report.position}}
-                    ({{new Date(report.begin_date).toLocaleDateString('de', {dateStyle: 'medium'})}} 
+                    ({{new Date(report.begin_date).toLocaleDateString('de', {dateStyle: 'medium'})}}
                     - {{new Date(report.end_date).toLocaleDateString('de', {dateStyle: 'medium'})}})</h2>
             </div>
         </div>
@@ -69,22 +69,22 @@
                     </transition-group> -->
                     <transition-group name="list">
                         <div v-for="item in company_entries" :key="item.id">
-                            <entry @updated="fetchEntries()" 
-                            class="m-b-md" 
-                            :entry="item"
-                            :report_id="$route.params.report.id" 
-                            :header="item.header" 
-                            :description="item.description"></entry>
+                            <entry @updated="fetchEntries()"
+                                   class="m-b-md"
+                                   :entry="item"
+                                   :report_id="$route.params.report.id"
+                                   :header="item.header"
+                                   :description="item.description"></entry>
                         </div>
                     </transition-group>
                     <transition-group name="list">
                         <div v-for="item in school_entries" :key="item.id">
-                            <entry @updated="fetchEntries()" 
-                            class="m-b-md" 
-                            :entry="item"
-                            :report_id="$route.params.report.id" 
-                            :header="item.header" 
-                            :description="item.description"></entry>
+                            <entry @updated="fetchEntries()"
+                                   class="m-b-md"
+                                   :entry="item"
+                                   :report_id="$route.params.report.id"
+                                   :header="item.header"
+                                   :description="item.description"></entry>
                         </div>
                     </transition-group>
                     <!-- Add Entry Form -->
@@ -116,58 +116,23 @@
     </div>
 </template>
 <script>
-import axios from 'axios';
-import entry from './entry.vue';
-import createEntry from './createEntry.vue';
-export default {
-    data(){
-        return{
-            entries: [],
-            company_entries: [],
-            school_entries: [],
-            report: {},
-            showForm: false
-        }
-    },
-    components:{
-        entry,
-        createEntry
-    },
-    mounted(){
-        if(this.$route.params.report === undefined){
-            this.$router.push({name: 'reportBooks'});
-            return;
-        }
-        console.log(this.$route.params.report);
-        this.report = this.$route.params.report;
-        this.fetchEntries();
-    },
-    methods:{
-        fetchEntries(){
-            axios.post('/entries/get', {reportId: this.$route.params.report.id})
-                .then((response) => {
-                    this.entries = response.data.data;
-                    this.showForm = false;
-                    this.school_entries = this.filterEntries('school');
-                    this.company_entries = this.filterEntries('company');
-                    this.$nextTick(() => {
-                        this.$refs.btn_add_entry.focus();     
-                    })                                  
-                }, (error) => {
-                    console.log(error);
-                });
-        },
-        filterEntries(pType){
-            var result = {};
-            for(var item in this.entries){
-                if(this.entries[item].type == pType){
-                    result[item] = this.entries[item];
-                }
+    import axios from 'axios';
+    import entry from './entry.vue';
+    import createEntry from './createEntry.vue';
+
+    export default {
+        data() {
+            return {
+                entries: [],
+                company_entries: [],
+                school_entries: [],
+                report: {},
+                showForm: false
             }
-            return result;
         },
-        navBack(){
-            this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
+        components: {
+            entry,
+            createEntry
         },
         mounted() {
             if (this.$route.params.report === undefined) {
@@ -177,9 +142,45 @@ export default {
             console.log(this.$route.params.report);
             this.report = this.$route.params.report;
             this.fetchEntries();
+        },
+        methods: {
+            fetchEntries() {
+                axios.post('/entries/get', {reportId: this.$route.params.report.id})
+                    .then((response) => {
+                        this.entries = response.data.data;
+                        this.showForm = false;
+                        this.school_entries = this.filterEntries('school');
+                        this.company_entries = this.filterEntries('company');
+                        this.$nextTick(() => {
+                            this.$refs.btn_add_entry.focus();
+                        })
+                    }, (error) => {
+                        console.log(error);
+                    });
+            },
+            filterEntries(pType) {
+                var result = {};
+                for (var item in this.entries) {
+                    if (this.entries[item].type == pType) {
+                        result[item] = this.entries[item];
+                    }
+                }
+                return result;
+            },
+            navBack() {
+                this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
+            },
+            mounted() {
+                if (this.$route.params.report === undefined) {
+                    this.$router.push({name: 'reportBooks'});
+                    return;
+                }
+                console.log(this.$route.params.report);
+                this.report = this.$route.params.report;
+                this.fetchEntries();
+            }
         }
     }
-}
 </script>
 <style scoped>
     .border {
