@@ -45,7 +45,7 @@
 
 <h1>Ausbildungsbericht Nr. {{$pos}} von {{$user->username}} </h1>
 <p>vom {{$from}} bis {{$to}}</p>
-<table class="table-border">
+<table class="table-border" style="width: 100%;">
     <thead>
     <tr>
         <td class="center border-bottom"><b>Typ</b></td>
