@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Header -->
-        <div class="d-flex m-b-lg">
+        <div class="d-flex">
             <div class="box-auto">
                 <h1 class="m-r-lg">Berichtshefte</h1>
                 <div class="b-b-thin"></div>
@@ -16,7 +16,11 @@
                 class="nav-i material-icons font-xl color-1">
                 keyboard_arrow_left</i>
             </div>
-        </div>        
+        </div>    
+        <!-- Navigation Tree -->
+        <div class="m-b-lg nav-tree-wrapper">
+            <h2 class="no-select font-sm lbl-light">{{$user.username}}</h2>            
+        </div>     
         <div class="row m-none">
             <!-- All Report Books -->
             <transition-group class="d-flex" name="list">
@@ -67,6 +71,7 @@ export default {
     },
     mounted(){
         this.fetchReportBooks();
+                            console.log(this.$user);
     },
     methods: {
         fetchReportBooks(){
@@ -85,16 +90,15 @@ export default {
             this.$router.push({name: 'createReportBook'});
         },
         enterReportBook(id){
-            var apprenticeship = '';
             for(var ele in this.reportBooks){
                 if(ele == id){
-                    apprenticeship = this.reportBooks[ele].name;
+                    this.$tree.reportBook = this.reportBooks[ele];
+                    console.log(this.$tree.reportBook)
                 }
             }
             this.$router.push({name: 'reports', 
             params: {
-                report_book_id: id,
-                apprenticeship: apprenticeship
+                report_book_id: id
             }});
         },
         logout(){

@@ -28,6 +28,7 @@ import router from './router';
 
 // Variables
 Vue.prototype.$user = {};
+Vue.prototype.$tree = {};
 // Init Vue App
 const app = new Vue({
     el: '#app',

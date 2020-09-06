@@ -114,10 +114,11 @@ export default {
             this.$router.push({name: 'reports', params: {report_book_id: this.$route.params.report_book_id}})
         },
         createReport: function(){
+            console.log(this.report_position);
             axios.post(this.edit ? '/reports/update' : '/reports/create', {
                 type: this.report_type,
                 report_book_id: this.$route.params.report_book_id,
-                position: this.report_position == null ? 1 : this.report_position,
+                position: this.report_position,
                 begin_date: this.report_begin_date,
                 end_date: this.report_end_date,
                 hours_targeted: this.report_hours,

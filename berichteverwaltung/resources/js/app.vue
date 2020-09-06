@@ -71,4 +71,19 @@ i.material-icons:hover{color: var(--c-second)}
 .edit-item-active h2,
 .edit-item-active h3,
 .edit-item-active i{color: var(--c-contrast);}
+
+.nav-tree-wrapper h2{
+    color: var(--c-main);
+    transition: color .1s ease;
+    }
+
+.nav-tree-wrapper h2:hover{
+    color: var(--c-second)
+}
+.nav-tree-wrapper .no-hov:hover{
+    color: var(--c-main)
+}
+.nav-tree-wrapper i:hover{
+    color: var(--c-main)
+}
 </style>

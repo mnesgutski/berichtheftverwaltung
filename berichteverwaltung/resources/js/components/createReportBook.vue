@@ -22,7 +22,7 @@
                         <!-- Apprenticeship Input -->
                         <div class="row m-b-xl">
                             <div class="col">
-                                <input type="text" v-model="apprenticeship_name" id="inp-username">
+                                <input @keydown.enter="createReportBook" type="text" v-model="apprenticeship_name" id="inp-username">
                                 <h2 class="lbl-light font-sm">Ausbildungsberuf</h2>
                             </div>
                         </div> 
@@ -85,7 +85,7 @@ export default {
         enterReportBook(id){
             this.$router.push({name: 'reports', params: {report_book_id: id}});
         },
-        createReportBook: function(){
+        createReportBook: function(){            
             axios.post(this.edit ? '/reportBooks/update' : '/reportBooks/create', {
                 apprenticeship_name: this.apprenticeship_name,
                 begin_date: this.begin_date,
@@ -96,6 +96,9 @@ export default {
                     alert(response.data.error_message);
                 }else{
                     console.log(response.data.data);
+                    console.log(this.$tree);
+                    this.$tree.reportBook = response.data.data;
+                    console.log(this.$tree);
                     this.enterReportBook(response.data.data.id, response.data.data.name);
                 }
             }, (error) => {

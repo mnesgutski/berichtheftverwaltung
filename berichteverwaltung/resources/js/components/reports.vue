@@ -17,8 +17,17 @@
                 >keyboard_arrow_left</i>
             </div>
         </div> 
-        <div class="m-b-lg">
-            <h2 class="font-md lbl-light">{{$route.params.apprenticeship}}</h2>
+        <!-- Navigation Tree -->
+        <div v-if="$tree.reportBook !== undefined" class="m-b-lg d-flex nav-tree-wrapper">            
+            <div class="box-auto d-flex f-center">
+                <h2 @click="navBack();" class="no-select font-sm lbl-light">{{$user.username}}</h2>
+            </div>
+            <div class="box-auto d-flex f-center">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </div>
+            <div class="box-auto d-flex f-center">
+                <h2 class="no-hov no-select font-sm lbl-light">{{$tree.reportBook.name}}</h2>
+            </div>
         </div>      
         <div class="row m-none">
             <!-- All Reports -->

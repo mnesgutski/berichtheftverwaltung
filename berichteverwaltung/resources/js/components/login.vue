@@ -45,10 +45,9 @@ export default {
                     passwort: this.password
                 })
                 .then((response) => {
-                    console.log(response.data);
-                    
+                    console.log(response.data);                                 
+                    this.$user.username = response.data.data.username;       
                     this.$router.push({name: 'reportBooks'})
-
                 }, (error) => {
                     console.log(error);
                 });

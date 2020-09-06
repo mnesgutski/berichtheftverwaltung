@@ -2200,10 +2200,11 @@ __webpack_require__.r(__webpack_exports__);
     createReport: function createReport() {
       var _this = this;
 
+      console.log(this.report_position);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.edit ? '/reports/update' : '/reports/create', {
         type: this.report_type,
         report_book_id: this.$route.params.report_book_id,
-        position: this.report_position == null ? 1 : this.report_position,
+        position: this.report_position,
         begin_date: this.report_begin_date,
         end_date: this.report_end_date,
         hours_targeted: this.report_hours,
@@ -2356,6 +2357,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           alert(response.data.error_message);
         } else {
           console.log(response.data.data);
+          console.log(_this.$tree);
+          _this.$tree.reportBook = response.data.data;
+          console.log(_this.$tree);
 
           _this.enterReportBook(response.data.data.id, response.data.data.name);
         }
@@ -2433,6 +2437,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _entry_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entry.vue */ "./resources/js/components/entry.vue");
 /* harmony import */ var _createEntry_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createEntry.vue */ "./resources/js/components/createEntry.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2694,6 +2718,7 @@ __webpack_require__.r(__webpack_exports__);
         passwort: this.password
       }).then(function (response) {
         console.log(response.data);
+        _this.$user.username = response.data.data.username;
 
         _this.$router.push({
           name: 'reportBooks'
@@ -2771,6 +2796,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2787,6 +2816,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.fetchReportBooks();
+    console.log(this.$user);
   },
   methods: {
     fetchReportBooks: function fetchReportBooks() {
@@ -2808,19 +2838,17 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     enterReportBook: function enterReportBook(id) {
-      var apprenticeship = '';
-
       for (var ele in this.reportBooks) {
         if (ele == id) {
-          apprenticeship = this.reportBooks[ele].name;
+          this.$tree.reportBook = this.reportBooks[ele];
+          console.log(this.$tree.reportBook);
         }
       }
 
       this.$router.push({
         name: 'reports',
         params: {
-          report_book_id: id,
-          apprenticeship: apprenticeship
+          report_book_id: id
         }
       });
     },
@@ -2894,6 +2922,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _editConfirm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editConfirm.vue */ "./resources/js/components/editConfirm.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3097,7 +3134,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.list-item {\r\n  display: inline-block;\r\n  margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\r\n  transition: all .3s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\r\n  transform: translateY(30px);\n}\n.item-hov{\r\n    background-color: transparent;\r\n    transition: background-color .1s ease;\n}\n.item-hov:hover{\r\n    background-color: var(--c-third);\n}\n.item-hov:hover i, \r\n.item-hov:hover h2, \r\n.item-hov:hover h3{color: var(--c-second)}\ni.material-icons{\r\n    color: var(--c-main);\r\n    transition: color .1s ease;\n}\ni.material-icons:hover{color: var(--c-second)}\n.edit-item{transition: background-color .1s ease;}\n.edit-item h1,\r\n.edit-item h2,\r\n.edit-item h3,\r\n.edit-item i{transition: color .1s ease;}\n.edit-item-active{background-color: var(--c-edit);}\n.edit-item-active h1,\r\n.edit-item-active h2,\r\n.edit-item-active h3,\r\n.edit-item-active i{color: var(--c-contrast);}\r\n", ""]);
+exports.push([module.i, "\n.list-item {\r\n  display: inline-block;\r\n  margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\r\n  transition: all .3s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\r\n  transform: translateY(30px);\n}\n.item-hov{\r\n    background-color: transparent;\r\n    transition: background-color .1s ease;\n}\n.item-hov:hover{\r\n    background-color: var(--c-third);\n}\n.item-hov:hover i, \r\n.item-hov:hover h2, \r\n.item-hov:hover h3{color: var(--c-second)}\ni.material-icons{\r\n    color: var(--c-main);\r\n    transition: color .1s ease;\n}\ni.material-icons:hover{color: var(--c-second)}\n.edit-item{transition: background-color .1s ease;}\n.edit-item h1,\r\n.edit-item h2,\r\n.edit-item h3,\r\n.edit-item i{transition: color .1s ease;}\n.edit-item-active{background-color: var(--c-edit);}\n.edit-item-active h1,\r\n.edit-item-active h2,\r\n.edit-item-active h3,\r\n.edit-item-active i{color: var(--c-contrast);}\n.nav-tree-wrapper h2{\r\n    color: var(--c-main);\r\n    transition: color .1s ease;\n}\n.nav-tree-wrapper h2:hover{\r\n    color: var(--c-second)\n}\n.nav-tree-wrapper .no-hov:hover{\r\n    color: var(--c-main)\n}\n.nav-tree-wrapper i:hover{\r\n    color: var(--c-main)\n}\r\n", ""]);
 
 // exports
 
@@ -5294,6 +5331,21 @@ var render = function() {
                     attrs: { type: "text", id: "inp-username" },
                     domProps: { value: _vm.apprenticeship_name },
                     on: {
+                      keydown: function($event) {
+                        if (
+                          !$event.type.indexOf("key") &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
+                          )
+                        ) {
+                          return null
+                        }
+                        return _vm.createReportBook($event)
+                      },
                       input: function($event) {
                         if ($event.target.composing) {
                           return
@@ -5488,7 +5540,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "fill-parent d-flex fd-column" }, [
-    _c("div", { staticClass: "box-auto d-flex m-b-lg" }, [
+    _c("div", { staticClass: "box-auto d-flex" }, [
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
@@ -5519,6 +5571,65 @@ var render = function() {
         )
       ])
     ]),
+    _vm._v(" "),
+    _vm.$tree.reportBook !== undefined
+      ? _c("div", { staticClass: "m-b-lg d-flex nav-tree-wrapper" }, [
+          _c("div", { staticClass: "box-auto d-flex f-center" }, [
+            _c(
+              "h2",
+              {
+                staticClass: "no-select font-sm lbl-light",
+                on: {
+                  click: function($event) {
+                    return _vm.navBack()
+                  }
+                }
+              },
+              [_vm._v(_vm._s(_vm.$user.username))]
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "box-auto d-flex f-center",
+              on: {
+                click: function($event) {
+                  return _vm.navBack()
+                }
+              }
+            },
+            [
+              _c("h2", { staticClass: "no-select font-sm lbl-light" }, [
+                _vm._v(_vm._s(_vm.$tree.reportBook.name))
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "box-auto d-flex f-center" }, [
+            _c("h2", { staticClass: "no-hov no-select font-sm lbl-light" }, [
+              _vm._v(
+                " \r\n                    " +
+                  _vm._s(
+                    new Date(_vm.report.begin_date).toLocaleDateString("de", {
+                      dateStyle: "medium"
+                    })
+                  ) +
+                  " \r\n                    - " +
+                  _vm._s(
+                    new Date(_vm.report.end_date).toLocaleDateString("de", {
+                      dateStyle: "medium"
+                    })
+                  )
+              )
+            ])
+          ])
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "box d-flex jc-center" }, [
       _c("div", { staticClass: "w-xx p-md d-flex fd-column" }, [
@@ -5552,14 +5663,18 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "b-b-thin" }),
             _vm._v(" "),
-            _c("h3", { staticClass: "font-sm lbl-light" }, [
-              _vm._v(
-                "\r\n                            Auszubildender: Vorname Nachname,\r\n                            Abteilung: " +
-                  _vm._s(this.report.department) +
-                  ",\r\n                            Unternehmen: " +
-                  _vm._s(this.report.company) +
-                  "\r\n                        "
-              )
+            _c("div", { staticClass: "d-flex" }, [
+              _c("h3", { staticClass: "font-sm lbl-light m-r-sm" }, [
+                _vm._v("Auszubildender: " + _vm._s(this.$user.username) + ",")
+              ]),
+              _vm._v(" "),
+              _c("h3", { staticClass: "font-sm lbl-light m-r-sm" }, [
+                _vm._v("Abteilung: " + _vm._s(this.report.department) + ",")
+              ]),
+              _vm._v(" "),
+              _c("h3", { staticClass: "font-sm lbl-light" }, [
+                _vm._v("Unternehmen: " + _vm._s(this.report.company))
+              ])
             ])
           ])
         ]),
@@ -5677,6 +5792,26 @@ var staticRenderFns = [
       _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Bericht")]),
       _vm._v(" "),
       _c("div", { staticClass: "b-b-thin" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-auto d-flex f-center" }, [
+      _c("i", { staticClass: "material-icons" }, [
+        _vm._v("keyboard_arrow_right")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-auto d-flex f-center" }, [
+      _c("i", { staticClass: "material-icons" }, [
+        _vm._v("keyboard_arrow_right")
+      ])
     ])
   }
 ]
@@ -5904,7 +6039,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "d-flex m-b-lg" }, [
+      _c("div", { staticClass: "d-flex" }, [
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "box d-flex jc-end ai-center" }, [
@@ -5929,6 +6064,12 @@ var render = function() {
             },
             [_vm._v("\n            keyboard_arrow_left")]
           )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "m-b-lg nav-tree-wrapper" }, [
+        _c("h2", { staticClass: "no-select font-sm lbl-light" }, [
+          _vm._v(_vm._s(_vm.$user.username))
         ])
       ]),
       _vm._v(" "),
@@ -6122,11 +6263,32 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "m-b-lg" }, [
-        _c("h2", { staticClass: "font-md lbl-light" }, [
-          _vm._v(_vm._s(_vm.$route.params.apprenticeship))
-        ])
-      ]),
+      _vm.$tree.reportBook !== undefined
+        ? _c("div", { staticClass: "m-b-lg d-flex nav-tree-wrapper" }, [
+            _c("div", { staticClass: "box-auto d-flex f-center" }, [
+              _c(
+                "h2",
+                {
+                  staticClass: "no-select font-sm lbl-light",
+                  on: {
+                    click: function($event) {
+                      return _vm.navBack()
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.$user.username))]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "box-auto d-flex f-center" }, [
+              _c("h2", { staticClass: "no-hov no-select font-sm lbl-light" }, [
+                _vm._v(_vm._s(_vm.$tree.reportBook.name))
+              ])
+            ])
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
@@ -6202,7 +6364,7 @@ var render = function() {
                     staticClass: "item-hov report-container",
                     on: { click: _vm.createReport }
                   },
-                  [_vm._m(1)]
+                  [_vm._m(2)]
                 )
               ])
             : _vm._e()
@@ -6234,6 +6396,16 @@ var staticRenderFns = [
       _c("h1", { staticClass: "m-r-lg" }, [_vm._v("Berichte")]),
       _vm._v(" "),
       _c("div", { staticClass: "b-b-thin" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-auto d-flex f-center" }, [
+      _c("i", { staticClass: "material-icons" }, [
+        _vm._v("keyboard_arrow_right")
+      ])
     ])
   },
   function() {
@@ -21491,7 +21663,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
  // Variables
 
-Vue.prototype.$user = {}; // Init Vue App
+Vue.prototype.$user = {};
+Vue.prototype.$tree = {}; // Init Vue App
 
 var app = new Vue({
   el: '#app',
