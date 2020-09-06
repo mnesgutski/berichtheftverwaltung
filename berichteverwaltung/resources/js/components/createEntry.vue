@@ -1,10 +1,10 @@
 <template>
-    <div id="wrapper" class="border p-lg">     
+    <div id="wrapper" class="border p-lg">
         <div class="d-flex m-b-lg ">
             <!-- Header Input -->
             <div class="box prop-5 m-r-md">
-                <input 
-                ref="inp_header" 
+                <input
+                ref="inp_header"
                 @keydown.enter="createEntry()"
                 type="text" class="font-sm" v-model="entry_header" id="inp-entry-header">
                 <h2 class="lbl-light font-sm">Kurzbeschreibung</h2>
@@ -19,38 +19,38 @@
             </div>
             <!-- Duration Input -->
             <div class="box">
-                <input 
-                class="font-sm" 
-                type="number" 
+                <input
+                class="font-sm"
+                type="number"
                 step="0.25"
                 min="0"
                 v-model="entry_duration" id="inp-entry-duration"
                 @keydown.enter="createEntry()">
                 <h2 class="lbl-light font-sm">Stunden</h2>
             </div>
-        </div>     
+        </div>
         <!-- Description Input -->
         <div class="d-flex m-b-md">
             <div class="box">
-                <input 
+                <input
                 @keydown.enter="createEntry()"
                 type="text" class="fill-h font-sm" v-model="entry_description" id="inp-entry-description">
                 <h2 class="lbl-light font-sm">Beschreibung</h2>
             </div>
-        </div> 
+        </div>
         <!-- Submit Button -->
         <div class="d-flex jc-end">
             <div class="box-auto">
-                <button 
+                <button
                 @click="cancelCreate()"
                 class="btn-hov font-sm color-1 lbl-light">
                 Abbrechen</button>
-            </div> 
+            </div>
             <div class="box-auto m-h-md color-1 no-select">
                 |
             </div>
             <div class="box-auto">
-                <button 
+                <button
                 @click="createEntry()"
                 class="btn-hov font-sm color-1 lbl-light">
                 {{button_text}}</button>
@@ -64,7 +64,7 @@ export default {
     name: 'create-entry',
     props: {
         report_id: {
-            default: 0, 
+            default: 0,
             type: Number
         },
         entry:{

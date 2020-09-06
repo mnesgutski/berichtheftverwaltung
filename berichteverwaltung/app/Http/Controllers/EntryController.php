@@ -90,8 +90,9 @@ class EntryController extends Controller
             'error_message' => '',
             'data' => []
         ];
-
-        if (Auth::check()) {
+        
+        if($request->entry_id !== null){
+          if (Auth::check()) {
             $ent = entries::where('id', '=', $request->entry_id)->first();
             $ent->position = $request->position;
             $ent->header = $request->duration;
@@ -102,20 +103,20 @@ class EntryController extends Controller
             $ent->save();
 
             $data[$ent->id] = [
-                'position' => $ent->position,
-                'duration' => $ent->duration,
-                'header' => $ent->header,
-                'description' => $ent->description,
-                'type' => $ent->type,
-                'created_at' => $ent->created_at,
-                'updated_at' => $ent->updated_at,
+              'position' => $ent->position,
+              'duration' => $ent->duration,
+              'header' => $ent->header,
+              'description' => $ent->description,
+              'type' => $ent->type,
+              'created_at' => $ent->created_at,
+              'updated_at' => $ent->updated_at,
             ];
 
             $response['error'] = false;
             $response['data'] = $data;
             return response()->json($response);
+          }
         }
-
         $response['error_message'] = 'Something went wrong';
         return response()->json($response);
     }
