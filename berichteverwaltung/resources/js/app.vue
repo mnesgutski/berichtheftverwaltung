@@ -21,9 +21,10 @@ export default {
     },
     created(){
         axios.get('/username').then((response) => {
-            this.$user.username = response.data.data.username;
+            console.log(response);
+            this.$user.username = response.data.username;
         }, (error) => {
-            consol.console.log(error);
+            consol.log(error);
         });
     }
 }
