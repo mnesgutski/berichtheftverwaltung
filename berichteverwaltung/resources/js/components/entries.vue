@@ -8,7 +8,7 @@
                 <div class="b-b-thin"></div>
             </div>
             <div class="box d-flex jc-end ai-center">
-                <i class="nav-i material-icons font-md color-1">arrow_downward</i>
+                <a href=""><i class="nav-i material-icons font-md color-1">arrow_downward</i></a>
                 <i class="nav-i material-icons font-xl color-1"
                 @click="navBack()"
                 >keyboard_arrow_left</i>
@@ -101,7 +101,8 @@ export default {
         return{
             entries: [],
             report: {},
-            showForm: false
+            showForm: false,
+            downloadRoute: '/download/reportpdf/'+this.$route.params.report.id,
         }
     },
     components:{
