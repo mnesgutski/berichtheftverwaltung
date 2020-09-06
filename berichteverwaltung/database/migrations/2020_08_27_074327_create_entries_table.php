@@ -19,7 +19,7 @@ class CreateEntriesTable extends Migration
             $table->integer('position')->nullable();
             $table->double('duration')->nullable();
             $table->string('header')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->enum('type',['school','company']);
             $table->timestamps();
         });

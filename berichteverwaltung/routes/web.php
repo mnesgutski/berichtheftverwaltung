@@ -62,6 +62,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/entries/create', 'EntryController@create')->name('entries.create');
     Route::post('/entries/update', 'EntryController@update')->name('entries.update');
     Route::post('/entries/delete', 'EntryController@delete')->name('entries.delete');
+
+    Route::get('/username', 'LoginController@username')->name('user.getname');
 });
 
 /**
