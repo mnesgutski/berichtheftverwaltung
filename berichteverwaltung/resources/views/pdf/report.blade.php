@@ -69,7 +69,7 @@
                     @foreach($entries as $entry)
                         <tr>
                             <td class="eightyeight border-left">
-                                <p style="text-decoration: underline;">{{$entry['header']}}</p>
+                                <p style="word-wrap: always; text-decoration: underline;">{{$entry['header']}}</p>
                                 <p>{{$entry['description']}}</p>
                             </td>
                             <td class="twelve center">
